@@ -4,10 +4,11 @@
    
 <head>
 <body>
+   <h1 id="instructions">Red Light, Green Light!</h1>
    <img id="image" src="images/are_you_mad.PNG">
    <br>
-   <button type="button" onclick="setInterval(startPic_Array, 1000)">Try Me! (uses ARRAYS)</button>
-   <button id="buttonOne" type="button" onclick="setInterval(startPic, 1000)">Try Me! (no ARRAYS)</button>
+   <!--<button type="button" onclick="setInterval(startPic_Array, 1000)">Try Me! (uses ARRAYS)</button>-->
+   <button id="buttonOne" type="button" onclick="setInterval(startPic, 1000)">Start Game</button>
    <script>
    
      function startPic() {
@@ -42,9 +43,9 @@
       }
       function startPic_Array()
       {
-         let pics = ["a.PNG", "like.PNG"];
+         let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad"];
          var num = Math.floor(Math.random()*pics.length);
-         document.getElementById("image").src = pics[num];
+         document.getElementById("image").src = "images/"+pics[num]+".PNG";
       }
       function stop() {
         document.body.style.background = "red";
