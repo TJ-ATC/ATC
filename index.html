@@ -26,54 +26,56 @@
       <img id="image" src="images/are_you_mad.PNG">
       <br>
   
-      <button id="buttonOne" type="button" onclick="setInterval(startPic_Array, 1000)">Start Game</button>
+      <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+
+      <button id="buttonStop" type="button" onclick="stop_game()">Stop Game</button>
+
       
    </div>
 
-   
 
    <script>
-   
-     function startPic() {
-         document.getElementById("buttonOne").onclick="stop()";
-         document.getElementById("image").src="are_you_mad.PNG";
-         var num = Math.floor(Math.random()*10)+1;
-         switch(num)
-         {
-            case 1: document.getElementById("image").src="are_you_mad.PNG";
-            break;
-            case 2: document.getElementById("image").src="i_like_to.PNG";
-            break;
-            case 3: document.getElementById("image").src="i_feel.PNG";
-            break;
-            case 4: document.getElementById("image").src="help_me.PNG";
-            break;
-            case 5: document.getElementById("image").src="how_are_you.PNG";
-            break;
-            case 6: document.getElementById("image").src="i_like_that.PNG";
-            break;
-            case 7: document.getElementById("image").src="favorite_animal.PNG";
-            break;
-            case 8: document.getElementById("image").src="favorite_activity.PNG";
-            break;
-            case 9: document.getElementById("image").src="favorite_color.PNG";
-            break;
-            case 10: document.getElementById("image").src="ask_for_name";
-            break;
-            default: document.getElementById("image").src="are_you_mad.PNG";
-         }
+      var game_intervals;
+      function start_game(){
+
+         document.getElementById("instructions").innerHTML = "Let's get ready!!!";
+         game_intervals = setInterval(startPic_Array, 4000);
+         
+
+      }
+      function stop_game(){
+         clearInterval(game_intervals);
+         document.body.style.background = "lightgreen";
+         document.getElementById("instructions").innerHTML = "Play again!";
+         
          
       }
       function startPic_Array()
       {
+      
          stop();
+         
          let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
          var num = Math.floor(Math.random()*pics.length);
          document.getElementById("image").src = "images/"+pics[num]+".PNG";
+
+         setTimeout(go, 2000);
+         
       }
       function stop() {
         document.body.style.background = "red";
-        document.getElementById("instructions").innerHTML = "Say this!";
+        document.getElementById("instructions").innerHTML = "Type it in!";
+
       }
+      function go(){
+         if(document.getElementById("instructions").innerHTML == "Play again!"){
+            return;
+         }
+        document.body.style.background = "lightgreen";
+
+        document.getElementById("instructions").innerHTML = "Say it!";
+      }
+
+      
      </script>
 </body>
