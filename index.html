@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <head>
    <title>Random Images</title>
-   
+   <link href="main.css" type="text/css" rel="stylesheet">
 <head>
 <body>
-   <img id="image" src="images/are_you_mad.PNG">
-   <br>
-   <button type="button" onclick="setInterval(startPic_Array, 1000)">Try Me! (uses ARRAYS)</button>
-   <button id="buttonOne" type="button" onclick="setInterval(startPic, 1000)">Try Me! (no ARRAYS)</button>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+          <div class="nav-link-wrapper active-nav-link">
+              <a href="index.html">Red Light Green Light</a>
+          </div>
+      </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>Assistive Technology Games</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <img id="image" src="images/are_you_mad.PNG">
+      <br>
+      <p id="Instructions"> Press a button!</p>
+      <button type="button" onclick="setInterval(startPic_Array, 1000)">Try Me! (uses ARRAYS)</button>
+      <button id="buttonOne" type="button" onclick="setInterval(startPic, 1000)">Try Me! (no ARRAYS)</button>
+
+   </div>
    <script>
    
      function startPic() {

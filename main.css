@@ -1,0 +1,17 @@
+
+body {
+    background-color: lightgreen;
+}
+
+div.elements-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
