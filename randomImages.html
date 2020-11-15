@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+   <title>Random Images</title>
+   
+<head>
+<body>
+   <img id="image" src="are_you_mad.PNG">
+   <br>
+   <button type="button" onclick="setInterval(startPic_Array, 1000)">Try Me! (uses ARRAYS)</button>
+   <button id="buttonOne" type="button" onclick="setInterval(startPic, 1000)">Try Me! (no ARRAYS)</button>
+   <script>
+   
+     function startPic() {
+         document.getElementById("buttonOne").onclick="stop()";
+         document.getElementById("image").src="are_you_mad.PNG";
+         var num = Math.floor(Math.random()*10)+1;
+         switch(num)
+         {
+            case 1: document.getElementById("image").src="are_you_mad.PNG";
+            break;
+            case 2: document.getElementById("image").src="i_like_to.PNG";
+            break;
+            case 3: document.getElementById("image").src="i_feel.PNG";
+            break;
+            case 4: document.getElementById("image").src="help_me.PNG";
+            break;
+            case 5: document.getElementById("image").src="how_are_you.PNG";
+            break;
+            case 6: document.getElementById("image").src="i_like_that.PNG";
+            break;
+            case 7: document.getElementById("image").src="favorite_animal.PNG";
+            break;
+            case 8: document.getElementById("image").src="favorite_activity.PNG";
+            break;
+            case 9: document.getElementById("image").src="favorite_color.PNG";
+            break;
+            case 10: document.getElementById("image").src="ask_for_name";
+            break;
+            default: document.getElementById("image").src="are_you_mad.PNG";
+         }
+         
+      }
+      function startPic_Array()
+      {
+         let pics = ["a.PNG", "like.PNG"];
+         var num = Math.floor(Math.random()*pics.length);
+         document.getElementById("image").src = pics[num];
+      }
+      function stop() {
+        document.body.style.background = "red";
+      }
+     </script>
+</body>
