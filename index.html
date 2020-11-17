@@ -57,7 +57,12 @@
          
          let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
          var num = Math.floor(Math.random()*pics.length);
-         document.getElementById("image").src = "images/"+pics[num]+".PNG";
+         if(pics[num].includes("_"))
+         {
+         document.getElementById("image").src = "images/"+pics[num]+".png";
+         }
+         else
+            document.getElementById("image").src = "images/"+pics[num]+".PNG";
 
          setTimeout(go, 2000);
          
