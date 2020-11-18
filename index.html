@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <head>
-   <title>Random Images</title>
+   <title>ATC Game Center</title>
    <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <head>
 <body>
    <div class="nav-wrapper">
       <div class="left-nav">
+         <div class="nav-link-wrapper">
+            <a href="home.html">Home</a>
+        </div>
           <div class="nav-link-wrapper active-nav-link">
-              <a href="index.html">Red Light Green Light</a>
+              <a href="index.html">Lights</a>
           </div>
       </div>
 
       <div class="right-nav">
           <div class="brand">
-              <div>Assistive Technology Games</div>
+              <div>ATC Game Center</div>
           </div>
 
       </div>
@@ -23,12 +28,15 @@
       <br>
       <h1 id="instructions">Red Light, Green Light!</h1>
 
-      <img id="image" src="images/traffic_light.PNG" height="200px">
+      <img id="image" src="images/traffic_light.png" height="200px">
       <br>
       <div class="button-container">
-         <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
-
-         <button id="buttonStop" type="button" onclick="stop_game()">Stop Game</button>
+         <div class="start-button">
+            <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+         </div>
+         <div class="stop-button">
+            <button id="buttonStop" type="button" onclick="stop_game()">Stop Game</button>
+         </div>
       </div>
       
    </div>
@@ -38,7 +46,7 @@
       var game_intervals;
       function start_game(){
 
-         document.getElementById("instructions").innerHTML = "Let's get ready!!!";
+         document.getElementById("instructions").innerHTML = "Let's get ready...";
          game_intervals = setInterval(startPic_Array, 4000);
          
 
@@ -55,10 +63,16 @@
       
          stop();
          
-         let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
+         let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad.png", "ask_for_name.png", "bad", "big", "can_i_help.png", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity.png", "favorite_animal.png", "favorite_color.png", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me.png", "how_are_you.png", "i", "i_feel.png", "i_like_that.png", "i_like_to.png", "in", "is", "it", "Lacrosse.png", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
          var num = Math.floor(Math.random()*pics.length);
-         document.getElementById("image").src = "images/"+pics[num]+".PNG";
-
+         if(pics[num].includes(".png"))
+         {
+         document.getElementById("image").src = "images/"+pics[num];
+         }
+         else
+         {
+            document.getElementById("image").src = "images/"+pics[num]+".PNG";
+         }
          setTimeout(go, 2000);
          
       }
