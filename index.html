@@ -47,7 +47,8 @@
       function start_game(){
 
          document.getElementById("instructions").innerHTML = "Let's get ready...";
-         game_intervals = setInterval(startPic_Array, 4000);
+         setTimeout(startPic_Array, 1000);
+         game_intervals = setInterval(startPic_Array, 30000);
          
 
       }
@@ -73,7 +74,7 @@
          {
             document.getElementById("image").src = "images/"+pics[num]+".PNG";
          }
-         setTimeout(go, 2000);
+         setTimeout(go, 20000);
          
       }
       function stop() {
