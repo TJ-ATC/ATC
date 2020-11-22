@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper">
+            <a href="home.html">Home</a>
+        </div>
+          <div class="nav-link-wrapper active-nav-link">
+              <a href="index.html">Lights</a>
+          </div>
+      </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <br>
+      <h1 id="instructions">Sentence Builder!</h1>
+
+      <img id="image" src="images/traffic_light.png" height="200px">
+      <br>
+      <div class="button-container">
+         <div class="sentence-button">
+            <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+         </div>
+      </div>
+      
+   </div>
+
+
+   <script>
+      let image_sets = [["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",]]
+      let my_image_set = [];
+      var image_counter = 0;
+      function start_game(){
+
+         my_image_set = image_sets[Math.floor(Math.random() * image_sets.length)];
+         document.getElementById("instructions").innerHTML = "Say the new part of the sentence!";
+         document.getElementById("buttonOne").innerHTML = "Next Part";
+         document.getElementById("buttonOne").onclick = nextImage;
+         nextImage();
+         
+      }
+
+      function nextImage(){
+          if(image_counter >= my_image_set.length){
+            document.getElementById("instructions").innerHTML = "GOOD JOB!!";
+            image_counter = 0;
+            document.getElementById("buttonOne").innerHTML = "Play again";
+            document.getElementById("buttonOne").onclick = start_game;
+            return;
+          }
+
+          document.getElementById("instructions").innerHTML = "Say the new part of the sentence!";
+          console.log("image counter: " + image_counter);
+          document.getElementById("image").src = "images/" + my_image_set[image_counter] + ".PNG";
+          image_counter = image_counter + 1;
+
+          console.log("onlick: " + document.getElementById("buttonOne").onclick);
+
+      }
+
+      
+     </script>
+</body>
