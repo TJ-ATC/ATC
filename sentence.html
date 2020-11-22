@@ -40,12 +40,13 @@
 
 
    <script>
-      let image_sets = [["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",]]
+      let image_sets = [["sentence_one(1)", "sentence_one(2)", "sentence_one(3)","sentence_one(4)"],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",],["a", "like", "all", "an", "and", "are",]]
       let my_image_set = [];
       var image_counter = 0;
       function start_game(){
 
          my_image_set = image_sets[Math.floor(Math.random() * image_sets.length)];
+         my_image_set = image_sets[0];
          document.getElementById("instructions").innerHTML = "Say the new part of the sentence!";
          document.getElementById("buttonOne").innerHTML = "Next Part";
          document.getElementById("buttonOne").onclick = nextImage;
