@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
+    
 }
 
 /*navigation bar*/
@@ -138,3 +139,41 @@ div.elements-container {
     margin: 20px;
 }
 
+/*games page styles*/
+.games-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game-styles-wrapper{
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+
+}
+.games-img-background {
+    height: 200px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-size: cover; /* crops the images of different sizes so they sit next to each other*/
+    background-position: center;
+    align-content: center;
+    justify-content: center;
+
+    border: 10px solid transparent;
+}
+
+.img-text{
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 130px;
+    color: white;
+}
+
+.games-img-background:hover {
+    border-color:  #a57ace;
+}
