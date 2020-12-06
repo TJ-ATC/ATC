@@ -35,7 +35,7 @@
             <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
          </div>
          <div class="stop-button">
-            <button id="buttonStop" type="button" onclick="stop_game()">Stop Game</button>
+            <button id="buttonStop" type="button" onclick="stop_game()">Pause Game</button>
          </div>
       </div>
       
@@ -54,8 +54,8 @@
       }
       function stop_game(){
          clearInterval(game_intervals);
-         document.body.style.background = "white";
-         document.getElementById("instructions").innerHTML = "Play again!";
+         document.body.style.background = "lightgreen";
+         document.getElementById("instructions").innerHTML = "Say it!";
          
          
       }
