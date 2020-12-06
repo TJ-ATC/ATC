@@ -31,8 +31,7 @@
    <div class="elements-container">
       <br>
       <h1 id="instructions">Sentence Builder!</h1>
-
-      <img id="image" src="images/traffic_light.png" height="200px">
+      <img id="image" src="images/sentenceMain.png" width="90%">
       <br>
       <div class="button-container">
          <div class="sentence-button">
@@ -44,14 +43,14 @@
 
 
    <script>
-      let image_sets = [["sentence_one(1)", "sentence_one(2)", "sentence_one(3)","sentence_one(4)"],["sentence_two(1)","sentence_two(2)","sentence_two(3)","sentence_two(4)","sentence_two(5)","sentence_two(6)"],["sentence_three(1)","sentence_three(2)","sentence_three(3)","sentence_three(4)","sentence_three(5)"]]
+      let image_sets = [["sentence_one(1)", "sentence_one(2)", "sentence_one(3)","sentence_one(4)"],["sentence_two(1)","sentence_two(2)","sentence_two(3)","sentence_two(4)","sentence_two(5)","sentence_two(6)"],["sentence_three(1)","sentence_three(2)","sentence_three(3)","sentence_three(4)","sentence_three(5)"],["sentence_four(1)","sentence_four(2)","sentence_four(3)","sentence_four(4)","sentence_four(5)"],["sentence_five(1)","sentence_five(2)","sentence_five(3)","sentence_five(4)","sentence_five(5)"],["sentence_six(1)","sentence_six(2)","sentence_six(3)","sentence_six(4)","sentence_six(5)"]]
       let my_image_set = [];
       var image_counter = 0;
       function start_game(){
 
          my_image_set = image_sets[Math.floor(Math.random() * image_sets.length)];
          
-         document.getElementById("instructions").innerHTML = "Say the new sentence!";
+         document.getElementById("instructions").innerHTML = "Say the new part of the sentence!";
          document.getElementById("buttonOne").innerHTML = "Next Part";
          document.getElementById("buttonOne").onclick = nextImage;
          nextImage();
@@ -61,12 +60,12 @@
       function nextImage(){
           if(image_counter >= my_image_set.length){
             document.getElementById("instructions").innerHTML = "GOOD JOB!!";
+            document.getElementById("image").src = "images/" + "good_job"+ Math.floor(Math.random()*9+1) + ".png";
             image_counter = 0;
             document.getElementById("buttonOne").innerHTML = "Play again";
             document.getElementById("buttonOne").onclick = start_game;
-            return;
+            return; 
           }
-
           document.getElementById("instructions").innerHTML = "Say the new part of the sentence!";
           console.log("image counter: " + image_counter);
           document.getElementById("image").src = "images/" + my_image_set[image_counter] + ".png";
