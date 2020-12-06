@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+  <link href="main.css" type="text/css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+</head>
+<body>
+   <h1>Answer the Question</h1>
+   <img src="images/start.png" id="question" class="center">
+   <div id="center-button">
+      <button id="next" type="button" onclick="next()">Start</button>
+  </div>
+   <script>
+      let images = ["weather_question", "cat_dog", "family_size", "day_question", "color_question", "like_school", "like_animals", "food_question"];
+      function next() {
+         document.getElementById("next").innerHTML = "Next Question";
+         var myImg = images[Math.floor(Math.random()*images.length)];
+         document.getElementById("question").src = "images/"+myImg+".png";
+      }
+   </script>
+</body>

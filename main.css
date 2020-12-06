@@ -92,10 +92,26 @@ button{
     transition: color .5s;
     color: lightgreen;
 }
-
 .stop-button > button:hover{
     transition: color .5s;
     color: red;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#next {
+  position: relative;
+  margin-top: 30px;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+}
+#center-button {
+   text-align: center;
+   
 }
 /*home styles */
 
