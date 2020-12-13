@@ -117,6 +117,9 @@ button{
   width: 20%;
   height: 100%;
 }
+#question {
+   border: 10px solid black;
+}
 #center-button {
    text-align: center;
    

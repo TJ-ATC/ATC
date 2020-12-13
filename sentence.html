@@ -36,6 +36,7 @@
       <div class="button-container">
          <div class="sentence-button">
             <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+            <button type="button" id="holidays" onclick="holidayMode()">Holiday Mode</button>
          </div>
       </div>
       
@@ -46,6 +47,7 @@
       let image_sets = [["sentence_one(1)", "sentence_one(2)", "sentence_one(3)","sentence_one(4)"],["sentence_two(1)","sentence_two(2)","sentence_two(3)","sentence_two(4)","sentence_two(5)","sentence_two(6)"],["sentence_three(1)","sentence_three(2)","sentence_three(3)","sentence_three(4)","sentence_three(5)"],["sentence_four(1)","sentence_four(2)","sentence_four(3)","sentence_four(4)","sentence_four(5)"],["sentence_five(1)","sentence_five(2)","sentence_five(3)","sentence_five(4)","sentence_five(5)"],["sentence_six(1)","sentence_six(2)","sentence_six(3)","sentence_six(4)","sentence_six(5)"]]
       let my_image_set = [];
       var image_counter = 0;
+      var holidayModes = false;
       function start_game(){
 
          my_image_set = image_sets[Math.floor(Math.random() * image_sets.length)];
@@ -74,7 +76,25 @@
           console.log("onlick: " + document.getElementById("buttonOne").onclick);
 
       }
-      
+      function holidayMode() {
+         holidayModes = !(holidayModes);
+         if(holidayModes) {
+            document.getElementById("instructions").style.color="white";
+            document.body.style.backgroundImage = "url('images/background-image(2).jpeg')";
+            document.getElementById("buttonOne").style.backgroundColor = "#b38600";
+            document.getElementById("holidays").style.backgroundColor = "#b38600";
+            document.getElementById("holidays").style.color = "black";
+            document.getElementById("buttonOne").style.color = "black";
+         }
+         else if (!holidayModes){
+            document.getElementById("instructions").style.color="black";
+            document.body.style.backgroundImage = "url('#')";
+            document.getElementById("buttonOne").style.backgroundColor = "black";
+            document.getElementById("holidays").style.backgroundColor = "black";
+            document.getElementById("holidays").style.color = "white";
+            document.getElementById("buttonOne").style.color = "white";
+         }
+      }
       
      </script>
 </body>
