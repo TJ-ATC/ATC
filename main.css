@@ -103,12 +103,22 @@ button{
   margin-right: auto;
   width: 50%;
 }
-#next {
+/*#next {
+  position: relative;
+  margin-top: 30px;
+  display: inline-block;
+  
+  height: 100%;
+}
+#holiday {
   position: relative;
   margin-top: 30px;
   display: inline-block;
   width: 20%;
   height: 100%;
+}
+#question {
+   border: 10px solid black;
 }
 #center-button {
    text-align: center;
