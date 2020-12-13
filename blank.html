@@ -7,11 +7,31 @@
 
 </head>
 <body>
-   <h1>Answer the Question</h1>
-   <img src="images/start.png" id="question" class="center">
-   <div id="center-button">
-      <button id="next" type="button" onclick="next()">Start</button>
-  </div>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+       </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+   <div class="elements-container">
+      <h1>Answer the Question</h1>
+      <img src="images/start.png" id="question" class="center">
+      <div id="center-button">
+         <button id="next" type="button" onclick="next()">Start</button>
+      </div>
+   </div>
+
    <script>
       let images = ["weather_question", "cat_dog", "family_size", "day_question", "color_question", "like_school", "like_animals", "food_question"];
       function next() {
@@ -20,4 +40,5 @@
          document.getElementById("question").src = "images/"+myImg+".png";
       }
    </script>
+
 </body>
