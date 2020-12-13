@@ -110,6 +110,13 @@ button{
   width: 20%;
   height: 100%;
 }
+#holiday {
+  position: relative;
+  margin-top: 30px;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+}
 #center-button {
    text-align: center;
    
