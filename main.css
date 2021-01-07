@@ -230,5 +230,11 @@ div.elements-container {
     margin-right: 20%;
     align-self: center;
 }
-
+.books-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto
+}
 
