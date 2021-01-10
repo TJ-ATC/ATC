@@ -26,4 +26,56 @@
     
           </div>
     </div>
+    <div class="elements-container">
+        <h1 id="title">Welcome to the Shop!</h1>
+        <div class="board">
+            <img height="70%" src="images/space_0.png" id="main">
+            <div class="coin-values">
+                <input style="display: none;" type="text" name="text" id="text" value="Type Amount to Pay"></input>
+                <button  style="display: none;" type="button" id="check" onclick="check()">Pay</button>
+        
+            </div>
+        </div>
+        <div class="spinner">
+            <!--spinner will go here-->
+            <button type="button" onclick="spin()">Spin</button>
+        </div>
+    </div>
+    <script>
+        var current_space=0;
+        var move=2;
+        var correct_amount=0; //how much money to pay
+        function spin() {
+            //spin the spinner
+            //update move based on spinner result
+            current_space+=move;
+            if(current_space>29)
+                current_space=29;
+            document.getElementById("main").src = getShopImage();
+            document.getElementById("title").innerHTML = "Welcome to the Shop!";
+            document.getElementById("text").style.display="inline-block";
+            document.getElementById("check").style.display="inline-block";
+        }
+        function getShopImage(){
+            //return the full location of one of the shop backgrounds
+            //set the correct value depending on shop image
+            return "assets/shop.jpg";
+        }
+        function check() {
+            if(document.getElementById("text").value==correct_amount)
+            {
+                document.getElementById("title").innerHTML = "Correct!"
+                document.getElementById("text").style.display="none";
+                document.getElementById("check").style.display="none";
+                document.getElementById("main").src="images/space_"+current_space+".png";
+                if(current_space==29)
+                    {
+                        //you won, do you want to replay?
+                    }
+            }
+            else {
+                document.getElementById("title").innerHTML = "Please try again."
+            }
+        }
+    </script>
 </body>
