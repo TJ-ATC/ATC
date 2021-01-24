@@ -8,10 +8,10 @@
 <body>
     <div class="nav-wrapper">
         <div class="left-nav">
-            <div class="nav-link-wrapper active-nav-link">
+            <div class="nav-link-wrapper">
                 <a href="index.html">Home</a>
             </div>
-              <div class="nav-link-wrapper ">
+              <div class="nav-link-wrapper active-nav-link">
                   <a href="games.html">Games</a>
               </div>
               <div class="nav-link-wrapper">
@@ -29,37 +29,82 @@
     <div class="elements-container">
         <h1 id="title">Welcome to the Shop!</h1>
         <div class="board">
-            <img height="70%" src="images/space_0.png" id="main">
-            <div class="coin-values">
-                <input style="display: none;" type="text" name="text" id="text" value="Type Amount to Pay"></input>
-                <button  style="display: none;" type="button" id="check" onclick="check()">Pay</button>
-        
+            <img src="images/space_0.png" id="main">
+            <div class="spinner">
+                <!--spinner will go here-->
+                <h2 id="spin-amount"></h2>
+                <button type="button" id="spin" onclick="spin()">Spin</button>
             </div>
         </div>
-        <div class="spinner">
-            <!--spinner will go here-->
-            <button type="button" onclick="spin()">Spin</button>
+        <div class="coin-values">
+            <input style="display: none;" type="text" name="text" id="text" value="Type Amount to Pay"></input>
+            <button  style="display: none;" type="button" id="check" onclick="check()">Pay</button>
+    
         </div>
     </div>
     <script>
+        class ShopScene{
+             source;
+             moneyAmount=0;
+            constructor(src, money){
+                this.source=src;
+                this.moneyAmount=money;
+            }
+            getSource(){
+                return this.source;
+            }
+            getMoneyAmount(){
+                console.log(this.moneyAmount)
+                return this.moneyAmount;
+            }
+            setSource(src){
+                this.source=src;
+            }
+            setMoneyAmount(money){
+                this.moneyAmount=money;
+            }
+        }
+        var index = -1;
+        var numImages=9;
+        let images = [new ShopScene("images/pickles.png", 16), new ShopScene("images/cake.png", 75), new ShopScene("images/horse.png", 75), new ShopScene("images/hammer.png", 27), new ShopScene("images/vegetables.png", 14), new ShopScene("images/grapes.png", 15), new ShopScene("images/dog_toy.png", 38), new ShopScene("images/diamond.png", 35), new ShopScene("images.phone_booth.png", 15)];
         var current_space=0;
         var move=2;
         var correct_amount=0; //how much money to pay
+       var paid = true;
         function spin() {
             //spin the spinner
+        
+            move=Math.floor(Math.random()*8+1);
+            document.getElementById("spin-amount").innerHTML="You spun a "+ move+".";
             //update move based on spinner result
             current_space+=move;
             if(current_space>29)
                 current_space=29;
-            document.getElementById("main").src = getShopImage();
+            document.getElementById("main").src="images/space_"+current_space+".png";
             document.getElementById("title").innerHTML = "Welcome to the Shop!";
-            document.getElementById("text").style.display="inline-block";
+            document.getElementById("spin").style.display="none";
+            setTimeout(function(){
+                document.getElementById("main").src=getShopImage();
+                document.getElementById("text").style.display="inline-block";
             document.getElementById("check").style.display="inline-block";
+            }, 5000);
+        
+
         }
+        
         function getShopImage(){
             //return the full location of one of the shop backgrounds
             //set the correct value depending on shop image
-            return "assets/shop.jpg";
+            
+            index++;
+            if(index>=numImages)
+                index=-1;
+            correct_amount=images[index].getMoneyAmount();
+            return images[index].getSource();
+        }
+        function pickNumber(){
+            //pick a number without repeating old ones if possible
+            return Math.floor(Math.random()*numImages);
         }
         function check() {
             if(document.getElementById("text").value==correct_amount)
@@ -68,14 +113,18 @@
                 document.getElementById("text").style.display="none";
                 document.getElementById("check").style.display="none";
                 document.getElementById("main").src="images/space_"+current_space+".png";
+                document.getElementById("spin").style.display="inline-block";
                 if(current_space==29)
                     {
                         //you won, do you want to replay?
+                        document.getElementById("main").src="images/congradulations.jpg";
+                        document.getElementById("title").innerHTML = "You Won!";
                     }
             }
             else {
                 document.getElementById("title").innerHTML = "Please try again."
             }
         }
+        
     </script>
 </body>

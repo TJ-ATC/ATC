@@ -246,5 +246,9 @@ div.elements-container {
     
 }
 .spinner{
-
+    text-align: center;
+}
+#main{
+    height: 70%;
+    max-width: 80%;
 }
