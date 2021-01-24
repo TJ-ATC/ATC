@@ -238,3 +238,13 @@ div.elements-container {
     margin: auto
 }
 
+/*shopping game*/
+.board{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.spinner{
+
+}
