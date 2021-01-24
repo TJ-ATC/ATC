@@ -28,6 +28,26 @@
         </div> 
     <div class="books-container">
         <h2>ATC Books</h2>    
-        <p>Check back later for new books!</p>
     </div>
+
+    <script>
+        docsURL = "https://docs.google.com/document/d/";
+        
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", "google/book_ID.txt", false);
+        rawFile.onreadystatechange = function ()
+        {
+            if(rawFile.readyState === 4)
+            {
+                if(rawFile.status === 200 || rawFile.status == 0)
+                {
+                    var allText = rawFile.responseText;
+                    alert(allText);
+                }
+            }
+        }
+        rawFile.send(null);
+        console.log(allText);
+             
+    </script> 
 </body>
