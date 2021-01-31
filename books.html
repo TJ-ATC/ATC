@@ -32,7 +32,8 @@
 
     <script>
         docsURL = "https://docs.google.com/document/d/";
-        fileURL = "https://github.com/coding-girl314/AT-RedGreenGame/blob/master/google/book_ID.txt";
+        fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/google/book_ID.txt";
+        
         async function* makeTextFileLineIterator(fileURL) {
             const utf8Decoder = new TextDecoder('utf-8');
             const response = await fetch(fileURL, {mode: 'no-cors'});
@@ -63,6 +64,13 @@
                 // last line didn't end in a newline char
                 yield chunk.substr(startIndex);
             }
+            //mydiv = document.getElementById('booksList');
+            //a1 = document.createElement('a', );
+            //d1 = document.createElement('div', );
+            //d2 = document.createElement('div', );
+            //d1.appendChild(d1);
+            //a1.appendChild(d1);
+            //mydiv.appendChild(a1);
         }
 
         async function run() {
@@ -74,4 +82,9 @@
         run();
              
     </script> 
+
+<div id='booksList'>
+    
+jhjhj
+</div>
 </body>
