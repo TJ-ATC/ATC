@@ -8,5 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: cd google
+      - run: cd ../../google
       - run: python3 quickstart.py
