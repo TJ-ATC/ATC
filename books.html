@@ -26,17 +26,17 @@
     
           </div>
         </div> 
-    <div class="books-container">
+    <div class="books-container" id="books-container">
         <h2>ATC Books</h2>    
     </div>
 
     <script>
-        docsURL = "https://docs.google.com/document/d/";
+        docsURL = "https://docs.google.com/presentation/d/"; //only for documents
         fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/google/book_ID.txt";
-        
+
         async function* makeTextFileLineIterator(fileURL) {
             const utf8Decoder = new TextDecoder('utf-8');
-            const response = await fetch(fileURL, {mode: 'no-cors'});
+            const response = await fetch(fileURL); //, {mode: 'no-cors'});
             const reader = response.body.getReader();
             let { value: chunk, done: readerDone } = await reader.read();
             chunk = chunk ? utf8Decoder.decode(chunk) : '';
@@ -64,27 +64,22 @@
                 // last line didn't end in a newline char
                 yield chunk.substr(startIndex);
             }
-            //mydiv = document.getElementById('booksList');
-            //a1 = document.createElement('a', );
-            //d1 = document.createElement('div', );
-            //d2 = document.createElement('div', );
-            //d1.appendChild(d1);
-            //a1.appendChild(d1);
-            //mydiv.appendChild(a1);
         }
 
         async function run() {
             for await (let line of makeTextFileLineIterator(fileURL)) {
-                processLine(line);
+                console.log(line);
+                var books_container = document.getElementById('books-container');
+                console.log(docsURL + line);
+                var a1 = document.createElement('a');
+                a1.setAttribute('href', docsURL + line);
+                a1.innerHTML = "book title";
+                books_container.appendChild(a1);
             }
         }
 
         run();
              
     </script> 
-
-<div id='booksList'>
-    
-jhjhj
 </div>
 </body>

@@ -48,7 +48,7 @@ def main():
         print('Files:')
         for item in items:
             print(u'{0} ({1})'.format(item['name'], item['id']))
-            file_books.write(item['id']) #eventually get thumbnails lol 
+            file_books.write(item['id']) #eventually get thumbnails and names 
             file_books.write("\n")
     file_books.close()
 
