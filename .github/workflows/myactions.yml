@@ -1,4 +1,7 @@
-on: [push]
+on: 
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '1 */1 * * *'
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -9,3 +12,15 @@ jobs:
            python-version: 3.8 #install the python needed
       - run: pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
       - run: python3 quickstart.py
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          git commit -m "Add changes" -a
+      - name: Push changes
+      #if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
