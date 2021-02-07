@@ -42,6 +42,7 @@ def main():
 
     #printing
     file_books = open(r"book_ID.txt", 'w+')
+    file_booknames = open(r"book_names.txt", 'w+')
     if not items:
         print('No files found.')
     else:
@@ -49,8 +50,14 @@ def main():
         for item in items:
             print(u'{0} ({1})'.format(item['name'], item['id']))
             file_books.write(item['id']) #eventually get thumbnails and names 
+            file_booknames.write(item['name'])
             file_books.write("\n")
+            file_booknames.write('\n')
     file_books.close()
+    file_booknames.close()
+
+    
+
 
     
     
