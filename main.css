@@ -342,3 +342,13 @@ div.elements-container {
 #cell-9{
     border-style: none none none none;/*top right bottom left*/  
 }
+
+.player{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+.score-container{
+    display: flex;
+    flex-direction: row;
+}
