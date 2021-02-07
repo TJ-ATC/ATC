@@ -78,18 +78,20 @@
 
             for await (let line of makeTextFileLineIterator(names_fileURL)) {
                 console.log(line);
-                names.push(line)
+                names.push(line);
             }
+
+            for (var i = 0; i < IDs.length; i++) {
+                var books_container = document.getElementById('books-container');
+                console.log(docsURL + IDs[i]);
+                var a1 = document.createElement('a');
+                a1.setAttribute('href', docsURL + IDs[i]);
+                a1.innerHTML = names[i];
+                books_container.appendChild(a1);
+            }   
         }
         
-        for (var i = 0; i < IDs.length; i++) {
-            var books_container = document.getElementById('books-container');
-            console.log(docsURL + IDs[i]);
-            var a1 = document.createElement('a');
-            a1.setAttribute('href', docsURL + line);
-            a1.innerHTML = names[i];
-            books_container.appendChild(a1);
-        }   
+        
 
         run();  
     </script> 
