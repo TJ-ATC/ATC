@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
+    
 }
 
 /*navigation bar*/
@@ -92,11 +93,37 @@ button{
     transition: color .5s;
     color: lightgreen;
 }
-
 .stop-button > button:hover{
     transition: color .5s;
     color: red;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/*#next {
+  position: relative;
+  margin-top: 30px;
+  display: inline-block;
+  
+  height: 100%;
+}
+#holiday {
+  position: relative;
+  margin-top: 30px;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+}
+#question {
+   border: 10px solid black;
+}
+#center-button {
+   text-align: center;
+   
+}*/
 /*home styles */
 
 .home-container{
@@ -138,3 +165,196 @@ div.elements-container {
     margin: 20px;
 }
 
+/*games page styles*/
+.games-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game-styles-wrapper{
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+
+}
+.games-img-background {
+    height: 200px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-size: cover; /* crops the images of different sizes so they sit next to each other*/
+    background-position: center;
+    align-content: center;
+    justify-content: center;
+
+    border: 8px solid transparent;
+    transition: border 0.5s;
+}
+
+.img-text{
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 130px;
+    color: white;
+}
+
+.games-img-background:hover{
+    border-bottom-color: #a57ace;
+    border-right-color:  #a57ace;
+    
+}
+
+/* banner styles*/
+.close-announcement{
+    font-size: 3vh;
+    color: white;
+    transition: 0.2s ease;
+    cursor: pointer;
+    width: 1.5vh;
+    margin-left: 20%;
+}
+
+.announcement-banner{
+    background-color: #a57ace;
+    width: 100%;
+    height: min-content;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 12px;
+}
+.announcement-banner > h2{
+    margin-left: 20%;
+    margin-right: 20%;
+    align-self: center;
+}
+.books-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto
+}
+
+/*shopping game*/
+.board{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.spinner{
+    margin-left: 10%;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+}
+#main{
+    height: 50%;
+    max-height: 450px;
+    max-width: 50%;
+    overflow: hidden;
+}
+.coins-values{
+    margin-top: 20px;
+}
+.spinning{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all ease 2s;
+}
+.space1{
+    clip-path: polygon(50% 50%, 100% 100%, 0 100%);
+    position: relative;
+    bottom: 203%;
+    left: 0%;
+    
+}
+.space2{
+    clip-path: polygon(50% 50%, 100% 0, 0 0);
+    position: relative;
+    bottom: 305%;
+    left: 0px;
+}
+.space3{
+    clip-path: polygon(50% 50%, 0 100%, 0 0);
+    position: relative;
+    vertical-align: middle;
+    top:0px;
+    left:0px;
+}
+.space4{
+    clip-path: polygon(50% 50%, 100% 100%, 100% 0);
+    position: relative;
+    left:0px;
+    bottom:100%;
+}
+.row{
+    display: flex;
+    width: 100%;
+    padding-top: 0%;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.col{
+    flex: 1;
+  padding: 16px;
+  border-color: black;
+  background-color: white;
+}
+.elements-container{
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+#cell-1{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-2{
+    
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-3{
+    border-style: none none solid none;/*top right bottom left*/  
+}
+#cell-4{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-5{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-6{
+    border-style: none none solid none;/*top right bottom left*/  
+}
+#cell-7{
+    border-style: none solid none none;/*top right bottom left*/  
+}
+#cell-8{
+    border-style: none solid none none;/*top right bottom left*/  
+}
+#cell-9{
+    border-style: none none none none;/*top right bottom left*/  
+}
+
+.player{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+.score-container{
+    display: flex;
+    flex-direction: row;
+}
+.container{
+    margin-bottom: 20px;
+}
+#question-img{
+    margin-bottom: 20px;
+}

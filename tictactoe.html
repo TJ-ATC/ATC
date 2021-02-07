@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+           <div class="nav-link-wrapper ">
+               <a href="index.html">Home</a>
+           </div>
+             <div class="nav-link-wrapper">
+                 <a href="games.html">Games</a>
+             </div>
+         </div>
+  
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+  
+        </div>
+     </div> 
+     <div class="elements-container">
+        <div class ="score-container" id ="score-container">
+          <h2 class="player" id="player-one" style="font-weight: bold; background-color: lightpink;">Player One</h2>
+          <h2 class="player" id="player-two" style="font-weight: normal;">Player Two</h2>
+        </div>
+        <div class="container" id="container">
+            <div class="row">
+              <div class="col" id="cell-1" onclick="fill(this)">
+                One of three columns
+              </div>
+              <div class="col" id="cell-2" onclick="fill(this)">
+                One of three columns
+              </div>
+              <div class="col" id="cell-3" onclick="fill(this)">
+                One of three columns
+              </div>
+            </div>
+            <div class="row">
+                <div class="col" id="cell-4" onclick="fill(this)">
+                  One of three columns
+                </div>
+                <div class="col" id="cell-5" onclick="fill(this)">
+                  One of three columns
+                </div>
+                <div class="col" id="cell-6" onclick="fill(this)">
+                  One of three columns
+                </div>
+              </div>
+              <div class="row">
+                <div class="col" id="cell-7" onclick="fill(this)">
+                  One of three columns
+                </div>
+                <div class="col" id="cell-8" onclick="fill(this)">
+                  One of three columns
+                </div>
+                <div class="col" id="cell-9" onclick="fill(this)">
+                  One of three columns
+                </div>
+              </div>
+          </div>
+          <div id="button-container">
+            <button type="button" onclick="reset()">Reset</button>
+          </div>
+          <div id="question" style="display: none;">
+            <img id = "question-img" src="#">
+            <button type="button" onclick = "play()">Done!</button>
+          </div>
+     </div>
+     <script>
+       //They click the square they want to play, then say the sentence that will pop up.
+       //Press done when they have finished, and they square will be filled
+       //Press reset if someone wins or if all the spaces are full
+       var turn = 0;
+       var currentSquare;
+        function fill(elem){
+          
+          currentSquare = elem;
+          showQuestion();
+          
+        }
+        function play(){
+          //make the things visible
+          document.getElementById("score-container").style.display = "flex";
+          document.getElementById("score-container").style.flexDirection="row"
+          document.getElementById("container").style.display = "inline-block";
+          document.getElementById("button-container").style.display = "inline-block";
+
+          document.getElementById("question").style.display = "none";
+          if(turn % 2 ==0){
+            currentSquare.style.backgroundColor = "lightpink";
+            //bold player two
+            document.getElementById("player-two").style.fontWeight="bold";
+            document.getElementById("player-two").style.backgroundColor="lightblue";
+            document.getElementById("player-one").style.fontWeight = "normal";
+            document.getElementById("player-one").style.backgroundColor = "white";
+          }
+          else{
+            currentSquare.style.backgroundColor = "lightblue";
+            //bold player one
+            document.getElementById("player-two").style.fontWeight="normal";
+            document.getElementById("player-two").style.backgroundColor="white";
+            document.getElementById("player-one").style.fontWeight = "bold";
+            document.getElementById("player-one").style.backgroundColor = "lightpink";
+          }
+          
+
+          turn++;
+          
+        }
+        function reset(){
+          for(var k=1; k<=9; k++){
+            document.getElementById("cell-"+k).style.backgroundColor = "white";
+            turn = 0;
+          }
+          document.getElementById("player-two").style.fontWeight="normal";
+          document.getElementById("player-two").style.backgroundColor="white";
+          document.getElementById("player-one").style.fontWeight = "bold";
+          document.getElementById("player-one").style.backgroundColor = "lightpink";
+        }
+        function showQuestion(){
+          document.getElementById("score-container").style.display = "none";
+          document.getElementById("container").style.display = "none";
+          document.getElementById("button-container").style.display = "none";
+          //show question, press done button -> onclick (play()) will make all elements above visible again
+          document.getElementById("question").style.display = "flex";
+          document.getElementById("question").style.flexDirection = "column";
+          document.getElementById("question-img").src = getQuestion();
+          
+
+        }
+        function getQuestion(){
+          //returns the name of the question image. will need to change
+          return "images/a.PNG"
+        }
+     </script>
+</body>
