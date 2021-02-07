@@ -28,14 +28,13 @@
         </div> 
     <div class="books-container" id="books-container">
         <h2>ATC Books</h2>   
-        <h3>books!</h3>
-        <button id="new-book" onclick="addBook()">Add Book!</button>  
-        <a href="https://docs.google.com/presentation/d/1YOXf8V1QHzb260xy7wxj6FEVY-7WgwxcVSvMeBah5BE/edit?usp=sharing">Test Book</a>
     </div>
 
     <script>
-        docsURL = "https://docs.google.com/presentation/d/"; //only for documents
-        fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/book_ID.txt";
+        docsURL = "https://docs.google.com/presentation/d/"; //only for presentations!!!!
+        ID_fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/book_ID.txt"; //ID file on github
+        names_fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/book_names.txt"; //Names file on github
+
         
         async function* makeTextFileLineIterator(fileURL) {
             const utf8Decoder = new TextDecoder('utf-8');
@@ -69,31 +68,30 @@
             }
         }
 
+        var IDs = [];
+        var names = [];
         async function run() {
-            for await (let line of makeTextFileLineIterator(fileURL)) {
+            for await (let line of makeTextFileLineIterator(ID_fileURL)) {
                 console.log(line);
-                var books_container = document.getElementById('books-container');
-                console.log(docsURL + line);
-                var a1 = document.createElement('a');
-                a1.setAttribute('href', docsURL + line);
-                a1.innerHTML = "book title";
-                books_container.appendChild(a1);
+                IDs.push(line);
+            }
+
+            for await (let line of makeTextFileLineIterator(names_fileURL)) {
+                console.log(line);
+                names.push(line)
             }
         }
+        
+        for (var i = 0; i < IDs.length; i++) {
+            var books_container = document.getElementById('books-container');
+            console.log(docsURL + IDs[i]);
+            var a1 = document.createElement('a');
+            a1.setAttribute('href', docsURL + line);
+            a1.innerHTML = names[i];
+            books_container.appendChild(a1);
+        }   
 
-        run();
-         function addBook(){
-              
-             var newLink = "1YOXf8V1QHzb260xy7wxj6FEVY-7WgwxcVSvMeBah5BE/edit?usp=sharing";
-             var newTitle="Book!";
-            var container = document.getElementById('books-container');
-            var newBook = document.createElement('a');
-            newBook.setAttribute('href', newLink);
-            newBook.innerHTML = newTitle;
-            container.appendChild(newBook);
-     
-
-         }    
+        run();  
     </script> 
 </div>
 </body>
