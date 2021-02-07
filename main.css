@@ -296,3 +296,49 @@ div.elements-container {
     left:0px;
     bottom:100%;
 }
+.row{
+    display: flex;
+    width: 100%;
+    padding-top: 0%;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.col{
+    flex: 1;
+  padding: 16px;
+  border-color: black;
+  background-color: white;
+}
+.elements-container{
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+#cell-1{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-2{
+    
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-3{
+    border-style: none none solid none;/*top right bottom left*/  
+}
+#cell-4{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-5{
+    border-style: none solid solid none;/*top right bottom left*/  
+}
+#cell-6{
+    border-style: none none solid none;/*top right bottom left*/  
+}
+#cell-7{
+    border-style: none solid none none;/*top right bottom left*/  
+}
+#cell-8{
+    border-style: none solid none none;/*top right bottom left*/  
+}
+#cell-9{
+    border-style: none none none none;/*top right bottom left*/  
+}
