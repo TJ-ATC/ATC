@@ -37,7 +37,7 @@ def main():
 
     # Call the Drive v3 API
     results = service.files().list(
-        q="name contains 'atc_book'", fields="nextPageToken, files(id, name)").execute()
+        q="parents in '1C7XpnMbHfk8qONvlJf4lfrE1Z0omhoPg'", fields="nextPageToken, files(id, name)").execute()
     items = results.get('files', [])
 
     #printing
