@@ -129,7 +129,8 @@
           document.getElementById("container").style.display = "none";
           document.getElementById("button-container").style.display = "none";
           //show question, press done button -> onclick (play()) will make all elements above visible again
-          document.getElementById("question").style.display = "inline-block";
+          document.getElementById("question").style.display = "flex";
+          document.getElementById("question").style.flexDirection = "column";
           document.getElementById("question-img").src = getQuestion();
           
 

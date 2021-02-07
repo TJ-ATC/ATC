@@ -352,3 +352,9 @@ div.elements-container {
     display: flex;
     flex-direction: row;
 }
+.container{
+    margin-bottom: 20px;
+}
+#question-img{
+    margin-bottom: 20px;
+}
