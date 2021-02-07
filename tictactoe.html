@@ -32,35 +32,35 @@
         </div>
         <div class="container" id="container">
             <div class="row">
-              <div class="col" id="cell-1" onclick="fill(this)">
+              <div class="col" id="cell-1" onclick="fill(this, 1)">
                  1  
               </div>
-              <div class="col" id="cell-2" onclick="fill(this)">
+              <div class="col" id="cell-2" onclick="fill(this, 2)">
                   2  
               </div>
-              <div class="col" id="cell-3" onclick="fill(this)">
+              <div class="col" id="cell-3" onclick="fill(this, 3)">
                   3  
               </div>
             </div>
             <div class="row">
-                <div class="col" id="cell-4" onclick="fill(this)">
+                <div class="col" id="cell-4" onclick="fill(this, 4)">
                     4  
                 </div>
-                <div class="col" id="cell-5" onclick="fill(this)">
+                <div class="col" id="cell-5" onclick="fill(this, 5)">
                     5  
                 </div>
-                <div class="col" id="cell-6" onclick="fill(this)">
+                <div class="col" id="cell-6" onclick="fill(this, 6)">
                     6  
                 </div>
               </div>
               <div class="row">
-                <div class="col" id="cell-7" onclick="fill(this)">
+                <div class="col" id="cell-7" onclick="fill(this, 7)">
                     7  
                 </div>
-                <div class="col" id="cell-8" onclick="fill(this)">
+                <div class="col" id="cell-8" onclick="fill(this, 8)">
                    8  
                 </div>
-                <div class="col" id="cell-9" onclick="fill(this)">
+                <div class="col" id="cell-9" onclick="fill(this, 9)">
                   9  
                 </div>
               </div>
@@ -81,14 +81,18 @@
        var currentSquare;
        var board = "........."//string representation fo the board (to check whether the game is over)
         function fill(elem, num){
+          num=num-1;
+          if(board.substring(num, num+1) == "." && document.getElementById("resetbutton").innerHTML == "Reset"){
           if (turn%2==0)
             board=board.substring(0,num)+"o"+board.substring(num+1);
           else
             board=board.substring(0,num)+"x"+board.substring(num+1);
+          console.log(board)
           currentSquare = elem;
           showQuestion();
-          
+          }
         }
+        
         function play(){
           //make the things visible
           document.getElementById("score-container").style.display = "flex";
@@ -116,6 +120,8 @@
           
 
           turn++;
+          if(turn == 9)
+            document.getElementById("resetbutton").innerHTML = "It's a tie! Start over!"
           gameover();
           
         }
@@ -164,15 +170,14 @@
           document.getElementById("container").style.display = "none";
           document.getElementById("button-container").style.display = "none";
           //show question, press done button -> onclick (play()) will make all elements above visible again
+          document.getElementById("question-img").src = getQuestion();
           document.getElementById("question").style.display = "flex";
           document.getElementById("question").style.flexDirection = "column";
-          document.getElementById("question-img").src = getQuestion();
-          
 
         }
         function getQuestion(){
           //pictures form the blank game:
-          let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad.png", "ask_for_name.png", "bad", "big", "can_i_help.png", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity.png", "favorite_animal.png", "favorite_color.png", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me.png", "how_are_you.png", "i", "i_feel.png", "i_like_that.png", "i_like_to.png", "in", "is", "it", "Lacrosse.png", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
+          let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
           let pictureindex =  Math.floor(Math.random()*pics.length);
           //returns the name of the question image. will need to change
           return "images/"+pics[pictureindex]+".PNG";
