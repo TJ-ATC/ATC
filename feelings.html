@@ -28,10 +28,10 @@
               </div>
             </div> 
         </div>
-        <div id="elements-container">
+        <div class="elements-container">
             <h1>Feelings</h1>
-            <img id = "image-word" width="50%" src="images/happy.png">
-            <div id = "button-container" >
+            <img id = "image-word" src="images/happy.png" align-content="center">
+            <div class = "button-container" >
                 <button id = "forgot" onClick=showword(true)>forgot</button>
                 <button id = "next" onClick = showword(false)>next</button>
             </div>
@@ -52,13 +52,13 @@
             if (!staycurr){
                 index = Math.floor(Math.random()*array.length);
             };
-            document.getElementById("word").src = "images/"+array[index][0]+".png";
+            document.getElementById("image-word").src = "images/"+array[index][0]+".png";
             document.getElementById("forgot").style.visibility = "hidden";
             document.getElementById("next").style.visibility = "hidden";
             setTimeout(showsentence, 3000, index);
         };
         function showsentence(index){
-            document.getElementById("word").src = "images/"+array[index][1]+".png";
+            document.getElementById("image-word").src = "images/"+array[index][1]+".png";
             document.getElementById("forgot").style.visibility = "visible";
             document.getElementById("next").style.visibility = "visible";
         }
