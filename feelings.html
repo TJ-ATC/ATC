@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <img id = "word">
+        <button id = "forgot" onClick=showword(true)>forgot</button>
+        <button id = "next" onClick = showword(false)>next</button>
+    </body>
+    <script>
+        //word sentence pairs in an array
+        //the sentence would be a hint for the word
+        //store the index of the word sentence pair if they forget
+        var array = [["happy", "happy_sentence"], ["sad", "sad \_sentence"]]; 
+        var index = 0;
+        showword(index);
+        function showword(staycurr){
+            
+            if (!staycurr){
+                index = Math.floor(Math.random()*array.length);
+            };
+            document.getElementById("word").src = array[index][0]+".png";
+            document.getElementById("forgot").style.visibility = "hidden";
+            document.getElementById("next").style.visibility = "hidden";
+            setTimeout(showsentence, 3000, index);
+        };
+        function showsentence(index){
+            document.getElementById("word").src = array[index][1]+".png";
+            document.getElementById("forgot").style.visibility = "visible";
+            document.getElementById("next").style.visibility = "visible";
+        }
+        
+    </script>
+</html>
