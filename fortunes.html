@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+       </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <br>
+      <h1 id="instructions">Fortunes Game</h1>
+      <img id="image" src="images/traffic_light.png" height="200px">
+
+      <div class="cards-container" id="cards" style="display:none">
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage" src="images/traffic_light.png" height="200px"></button>
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage" src="images/traffic_light.png" height="200px"></button>
+
+      </div>
+
+      <button id="FortuneButton" type="button" onclick="askQuestion()">Divine the future...</button>
+      
+   </div>
+
+
+    <script>
+      let questions = [[1,2,3],[4,5,6]];
+      let tarot_cards = [1,2,3];
+      var curr_question = -1; 
+      function askQuestion(){
+        document.getElementById("instructions").innerHTML = "Ask the cards a question...";//change instructions to ask question 
+        curr_question = curr_question + 1; //save question index
+        document.getElementById("image").innerHTML = questions[curr_question][0];//display next question
+        document.getElementById("FortuneButton").innerHTML = "Bring me my fortune...";
+        document.getElementById("FortuneButton").onclick = getCards; //change button onlclick to getCards, change name
+      }
+
+      function getCards(){
+        document.getElementById("image").style.display = "none"; //remove question
+        document.getElementById("FortuneButton").style.display = "none";  //remove button
+          //play sparkly animation 
+        document.getElementById("instructions").innerHTML = "Pick a card...";//change instructions
+        document.getElementById("cards").style.display = "inline";//make cards visible
+        
+      }
+
+      function getCardFortune(){
+          //play sparkly animation 
+          document.getElementById("cards").style.display = "none";//remove cards 
+          //document.getElementById("instructions").innerHTML = questions[curr_questions][1];//change intructions (make random later)
+          //document.getElementById("image").innerHTML = tarot_cards[0];//display opened card
+          document.getElementById("FortuneButton").style.display = "inline";  //display button
+          document.getElementById("FortuneButton").onclick = askQuestion;//change button to askQuestion
+        
+      }
+
+
+     </script>
+</body>
