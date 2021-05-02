@@ -358,3 +358,21 @@ div.elements-container {
 #question-img{
     margin-bottom: 20px;
 }
+.score-meter{
+    color: lightblue;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.score{
+    width: 10%;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    height: 25px;
+}
+#next{
+    width: 100px;
+}
