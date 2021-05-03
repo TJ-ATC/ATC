@@ -27,12 +27,25 @@
    <div class="elements-container">
       <br>
       <h1 id="instructions">Fortunes Game</h1>
-      <img id="image" src="images/traffic_light.png" height="200px">
-      <img id="Fortuneimage" src="images/traffic_light.png" style="display:none" height="200px">
-
+      <img id="image" src="images/tarot12.png" height="200px">
+      <img id="Fortuneimage" src="images/tarot12.png" style="display:none" height="200px">
+      <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:40%; top:30%" src = "images/sparkle.png">
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:35%; top:83%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:70%; top:80%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:45%; top:73%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:60%; top:35%" src = "images/sparkle.png">
       <div class="cards-container" id="cards" style="display:none">
-        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage" src="images/traffic_light.png" height="200px"></button>
-        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage" src="images/traffic_light.png" height="200px"></button>
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage1" src="images/traffic_light.png" height="200px"></button>
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage2" src="images/traffic_light.png" height="200px"></button>
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:40%; top:30%" src = "images/sparkle.png">
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:35%; top:83%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:70%; top:80%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:45%; top:73%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:60%; top:35%" src = "images/sparkle.png">
 
       </div>
 
@@ -53,12 +66,21 @@
         document.getElementById("image").src = "images/" + questions[curr_question][0];//display next question
         document.getElementById("FortuneButton").innerHTML = "Bring me my fortune...";
         document.getElementById("FortuneButton").onclick = getCards; //change button onlclick to getCards, change name
+        //getting the cards and setting them
+        let random_num1 = Math.floor(15*Math.random() + 1);
+        let random_num2 = Math.floor(15*Math.random() + 1);
+        while(random_num1==random_num2){
+          random_num2 = Math.floor(15*Math.random() + 1);
+        }
+        document.getElementById("CardImage1").src = "images/tarot"+random_num1+".png";
+        document.getElementById("CardImage2").src = "images/tarot"+random_num2+".png";
       }
 
       function getCards(){
         document.getElementById("image").style.display = "none"; //remove question
         document.getElementById("FortuneButton").style.display = "none";  //remove button
           //play sparkly animation 
+          
         document.getElementById("instructions").innerHTML = "Pick a card...";//change instructions
         document.getElementById("cards").style.display = "inline";//make cards visible
         
@@ -66,6 +88,7 @@
 
       function getCardFortune(){
           //play sparkly animation 
+          
           document.getElementById("cards").style.display = "none";//remove cards 
           document.getElementById("instructions").innerHTML = "Here is your fortune!";//change intructions 
           //document.getElementById("image").src = tarot_cards[0];//display opened card
@@ -74,9 +97,8 @@
           document.getElementById("FortuneButton").style.display = "inline";  //display button
           document.getElementById("FortuneButton").onclick = askQuestion;//change button to askQuestion
           document.getElementById("FortuneButton").innerHTML= "ask another question";//change button to askQuestion
-        
       }
-
+      
 
      </script>
 </body>

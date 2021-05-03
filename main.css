@@ -376,3 +376,29 @@ div.elements-container {
 #next{
     width: 100px;
 }
+@-webkit-keyframes sparkle {
+    50% {
+      -webkit-transform: scale(1.0);
+      opacity: 1;
+    }
+    0%, 100% {
+      -webkit-transform: scale(0.5);
+      opacity: 0;
+    }
+  }
+  .glitter {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    z-index: 2;
+    animation: sparkle 1.5s linear 0s  normal;
+    -webkit-animation: sparkle 1.5s linear 0s  normal;
+    -moz-animation: sparkle 1.5s linear 0s  normal;
+    -ms-animation: sparkle 1.5s linear 0s  normal;
+    -o-animation: sparkle 1.5s linear 0s  normal;
+  }
