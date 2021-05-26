@@ -402,3 +402,9 @@ div.elements-container {
     -ms-animation: sparkle 1.5s linear 0s  normal;
     -o-animation: sparkle 1.5s linear 0s  normal;
   }
+  #Meter, #Meter1, #Meter2, #Meter3, #Meter4, #Meter5 {
+ display: inline-flex;
+flex-direction: row;
+background-color: white;
+
+  }

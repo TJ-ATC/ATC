@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <title>Happy Meter</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+           <div class="nav-link-wrapper ">
+               <a href="index.html">Home</a>
+           </div>
+             <div class="nav-link-wrapper">
+                 <a href="games.html">Games</a>
+             </div>
+         </div>
+  
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+  
+        </div>
+     </div> 
+     
+     <div class="elements-container">
+        <div id = "Meter">
+            <div id = "Meter1" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter2" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter3" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter4" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter5" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            
+            </div>
+        <br>
+        <h1 id="instructions">Happy Meter</h1>
+        <img id="image" src="images/sentenceMain.png" height="80%">
+        <br>
+        <div class="button-container">
+           <div class="sentence-button">
+              <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+              <!-- <button type="button" id="holidays" onclick="holidayMode()">Holiday Mode</button> -->
+           </div>
+        </div>
+ 
+  
+     
+     <script>
+    var happy = 3;
+    var remove = false;
+
+    function updateM(){
+    var rem = happy + 1;
+    if(happy > 0 && happy <= 5 && remove == false){
+    document.getElementById("Meter"+happy).style.backgroundColor = "green";
+    }
+    if(happy > 0 && happy <= 4 && remove == true){
+    document.getElementById("Meter"+rem).style.backgroundColor = "white";  
+        }
+    //  if(happy == 5)
+
+    }
+        updateM();
+     </script>
+
+    </body>
