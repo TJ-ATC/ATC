@@ -61,7 +61,17 @@
      <script>
     var happy = 3;
     var remove = false;
-
+    var win = false;
+    var sadQ;
+    var HappyQ;
+    function HClick(){
+     happy++;
+     updateM();
+    }
+    function SClick(){
+        happy--;
+        updateM();
+    }
     function updateM(){
     var rem = happy + 1;
     if(happy > 0 && happy <= 5 && remove == false){
@@ -70,8 +80,10 @@
     if(happy > 0 && happy <= 4 && remove == true){
     document.getElementById("Meter"+rem).style.backgroundColor = "white";  
         }
-    //  if(happy == 5)
-
+    if(happy == 5)
+        win = true;
+    if(happy > 0)
+        happy = 0;
     }
         updateM();
      </script>
