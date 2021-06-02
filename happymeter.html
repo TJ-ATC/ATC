@@ -54,8 +54,8 @@
               <button id="buttonOne" type="button" onclick="nextQuestion()">Next</button>
             </div>
               <div class="button-container">
-                  <image height="100px" id="option-one" src="#" onclick="buttonUpdate(1)"></image>
-                  <image height = "100px" id="option-two" src="#" onclick="buttonUpdate(2)"></image>
+                  <image height="50px" id="option-one" src="#" onclick="buttonUpdate(1)"></image>
+                  <image height = "50x" id="option-two" src="#" onclick="buttonUpdate(2)"></image>
               </div>
               <!-- <button type="button" id="holidays" onclick="holidayMode()">Holiday Mode</button> -->
            
@@ -112,10 +112,12 @@
     }
     function HClick(num){
      happy++;
+     document.getElementById("instructions").innerHTML = "Yay!";
      updateM(num);
     }
     function SClick(num){
         happy--;
+        document.getElementById("instructions").innerHTML = "Oh no!";
         updateM(num);
     }
     function updateM(num){
