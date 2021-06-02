@@ -47,45 +47,98 @@
             </div>
         <br>
         <h1 id="instructions">Happy Meter</h1>
-        <img id="image" src="images/sentenceMain.png" height="80%">
+        
         <br>
-        <div class="button-container">
-           <div class="sentence-button">
-              <button id="buttonOne" type="button" onclick="start_game()">Start Game</button>
+        
+           <div class="button-container">
+              <button id="buttonOne" type="button" onclick="nextQuestion()">Start Game</button>
+            </div>
+              <div class="button-container">
+                  <image height="100px" id="option-one" src="#" onclick="buttonUpdate(1)"></image>
+                  <image height = "100px" id="option-two" src="#" onclick="buttonUpdate(2)"></image>
+              </div>
               <!-- <button type="button" id="holidays" onclick="holidayMode()">Holiday Mode</button> -->
-           </div>
-        </div>
+           
+        
  
   
      
      <script>
-    var happy = 3;
+    var happy = 0;
+    var happyOption = -1;
+    var optionOneIsHappy=false;
+    var optionTwoIsHappy=true;
     var remove = false;
     var win = false;
-    var sadQ;
-    var HappyQ;
-    function HClick(){
-     happy++;
-     updateM();
-    }
-    function SClick(){
-        happy--;
-        updateM();
-    }
-    function updateM(){
-    var rem = happy + 1;
-    if(happy > 0 && happy <= 5 && remove == false){
-    document.getElementById("Meter"+happy).style.backgroundColor = "green";
-    }
-    if(happy > 0 && happy <= 4 && remove == true){
-    document.getElementById("Meter"+rem).style.backgroundColor = "white";  
+    let sadQ = ["sad1.png", "sad2.png", "sad3.png", "sad4.png"];
+    let HappyQ = ["happy1.png" ,"happy2.png" ,"happy3.png" ,"happy4.png"];
+    function nextQuestion(){
+        //button to click
+        //picks sad or happy (one of each)
+        //picks random question
+        //displays question
+        happyOption = Math.floor(Math.random()*2+1);
+        if(happyOption == 1){
+            optionOneIsHappy=true;
+            optionTwoIsHappy=false;
+            //pick from happy for option one, sad for two
+            document.getElementById("option-two").src = "images/"+sadQ[Math.floor(Math.random()*sadQ.length)];
+            document.getElementById("option-one").src = "images/"+HappyQ[Math.floor(Math.random()*HappyQ.length)];
         }
-    if(happy == 5)
+        else{
+            optionOneIsHappy=false;
+            optionTwoIsHappy=true;
+            document.getElementById("option-two").src = "images/"+HappyQ[Math.floor(Math.random()*HappyQ.length)];
+            document.getElementById("option-one").src = "images/"+sadQ[Math.floor(Math.random()*sadQ.length)];
+        }
+    }
+    function buttonUpdate(num){
+        //images' toClick
+        console.log('click')
+        if(num==1)
+         {
+             if(optionOneIsHappy)
+                HClick(num);
+            else    
+                SClick(num);
+         }
+         else{
+             if(optionTwoIsHappy)
+                HClick(num);
+             else    
+                SClick(num);
+         }
+
+    }
+    function HClick(num){
+     happy++;
+     updateM(num);
+    }
+    function SClick(num){
+        happy--;
+        updateM(num);
+    }
+    function updateM(num){
+    var rem = happy+1;
+    var isHappy = false;
+    if(num == happyOption)
+        isHappy = true;
+    if(happy > 0 && happy <= 5 && isHappy){
+        document.getElementById("Meter"+happy).style.backgroundColor = "green";
+        }
+    if(happy >= 0 && happy <= 4 && !isHappy){
+        document.getElementById("Meter"+rem).style.backgroundColor = "white";  
+        }
+    if(happy == 5){
         win = true;
-    if(happy > 0)
+        endGame();
+    }
+    if(happy > 5 || happy<0)
         happy = 0;
     }
-        updateM();
+        function endGame(){
+            document.getElementById("instructions").innerHTML = "You did it! I'm all happy now!";
+        }
      </script>
 
     </body>
