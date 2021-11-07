@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+   <link href="tictactowonwards.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+       </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <br>
+      <div id="tg_background">
+        <!-- add image of background -->
+      </div>
+        <div id="table">
+            <table>
+                <tr>
+                    <td><img id="food_img1" src='turkey.png' onClick="buildPlate('turkey.png')"></td>
+                    <td><img id="food_img2" src='chicken.png' onClick="buildPlate('chicken.png')"></td>
+                </tr>
+                <tr>
+                    <td><img id="food_text1" src='word_turkey.png' onClick="buildPlate('turkey.png')"></td>
+                    <td><img id="food_text2" src='word_chicken.png' onClick="buildPlate('chicken.png')"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script>
+        var list_of_food = [["ham.png", "duck.png"], ["potatoes.png", "corn.png"], ["broccoli.png", "green_beans.png"], 
+        ["apples.png", "strawberries.png"], ["cranberry.png", "stuffing.png"], ["icecream.png", "cookies.png"], ["pumpkin.png", "apple.png"]
+        ["chocolatepie.png", "peachpie.png"]]
+
+        var plate_food = []
+        var index = 0
+        function buildPlate(itemname){
+            plate_food.push(itemname)
+            index+=1;
+            if (index == 9){
+               // end game - play again button, show plate of images
+            }
+            else{
+                // update images on table
+                document.getElementById("food_img1").src = list_of_food[index][0]
+                document.getElementById("food_img2").onClick = "buildPlate('"+list_of_food[index][0]+"')"
+                document.getElementById("food_img1").src = "word_"+list_of_food[index][0]
+                document.getElementById("food_img2").onClick = "buildPlate('word_"+list_of_food[index][0]+"')"
+            }
+        }
+
+     </script>
+</body>
