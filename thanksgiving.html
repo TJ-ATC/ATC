@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+        </div>
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <br>
+      <div id="tg_background" >
+        <img src="images/thanksgiving_background.png" height="325" >
+        <!-- add image of background -->
+      </div>
+        <div id="table" width="100%" >
+            <table id="sub_table1" background='images/thanks_tablecloth.png'>
+                <tr>
+                    <td style='text-align: center;'><img id="food_img1" src='images/turkey.png'  height="150px"  onclick="buildPlate('turkey.png')"></td>
+                    <td style='text-align: center;'><img id="food_img2" src='images/chicken.png' height="150px"  onclick="buildPlate('chicken.png')"></td>
+                </tr>
+                <tr >
+                    <td style='text-align: center;'><img id="food_text1" src='images/word_turkey.png'  width="85%" onclick="buildPlate('turkey.png')"></td>
+                    <td style='text-align: center;'><img id="food_text2" src='images/word_chicken.png' width="85%" onclick="buildPlate('chicken.png')"></td>
+                </tr>
+            </table>
+            <table id="sub_table2" background='images/thanks_tablecloth.png' hidden width="100%">
+                <tr>
+                    <td style='text-align: center;'><img id="fin_img1" src='images/turkey.png'  height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img2" src='images/chicken.png' height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img3" src='images/turkey.png'  height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img4" src='images/chicken.png' height="200px"></td>
+                    
+                </tr>
+                <tr width="100%">
+                    <td style='text-align: center;'><img id="fin_img5" src='images/turkey.png'  height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img6" src='images/turkey.png'  height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img7" src='images/chicken.png' height="200px"></td>
+                    <td style='text-align: center;'><img id="fin_img8" src='images/turkey.png'  height="180px"></td>
+                    <!-- <td style='text-align: center;'><img id="fin_img9" src='images/chicken.png' height="180px"></td> -->
+                    <!-- <td style='text-align: center;'><img id="fin_img10" src='images/turkey.png'  width="60%"></td> -->
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script>
+        var list_of_food = [["turkey.png", "duck.png"], ["potatoes.png", "corn.png"], ["broccoli.png", "green_beans.png"], 
+        ["apples.png", "strawberries.jpg"], ["cranberry.png", "stuffing.png"], /*["icecream.png", "cookies.png"],*/ ["pumpkinpie.png", "applepie.jpg"],
+        ["chocolatepie.png", "peachpie.png"]]
+
+        var plate_food = []
+        var index = -1
+        function buildPlate(itemname){
+            console.log(itemname)
+            plate_food.push(itemname)
+            index+=1
+            let plate_ind = (index+1)
+            console.log(plate_food)
+            document.getElementById("fin_img"+plate_ind).src = "images/"+itemname
+            
+            if (plate_food.length == 8){
+               // end game - play again button, show plate of images
+               document.getElementById("sub_table2").hidden = false;
+               document.getElementById("sub_table1").hidden = true;
+            }
+            else{
+                // update images on table
+                console.log("'images/"+list_of_food[index][0]+"'")
+                document.getElementById("food_img1").src = "images/"+list_of_food[index][0]+""
+                document.getElementById("food_img1").onclick = function(){buildPlate(list_of_food[index][0]);};
+                document.getElementById("food_text1").src = "images/word_"+list_of_food[index][0]
+                document.getElementById("food_text1").onclick = function(){buildPlate(list_of_food[index][0]);};
+                document.getElementById("food_img2").src = "images/"+list_of_food[index][1]
+                document.getElementById("food_img2").onclick = function(){buildPlate(list_of_food[index][1]);};
+                document.getElementById("food_text2").src = "images/word_"+list_of_food[index][1]
+                document.getElementById("food_text2").onclick = function(){buildPlate(list_of_food[index][1]);};
+                //console.log(document.getElementById("food_text2").onClick)
+                //console.log(document.getElementById("food_text1").onClick)
+            }
+        }
+
+     </script>
+</body>
