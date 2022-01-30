@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+    <link href="mini.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <!-- <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+       </div> -->
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class = "car">
+       <p id="wintext"></p>
+
+       <div id="vroom">
+            <img id="myCar" src="CarImages/car0.png" width = 100%>
+        </div>
+
+        <div id="bubbles">
+            <img id="bub" src="CarImages/Nothing.png" width = 100% height = 250%>
+            
+        </div>
+   </div>
+   </body>
+   
+   <script>
+       var car = 0;
+       var numCars = 7;
+       //image nam follow format car#.png
+       document.addEventListener('click', () => {
+        
+         transition();
+
+        //    while(document.getElementById('bub').innerHTML.y<=1000){
+        //     document.getElementById('bub').innerHTML.y+=200;
+        //    }
+           // switch the picture
+           
+            
+           
+            if(car>= numCars){
+                document.getElementById('wintext').innerHTML = 'You Win!';
+                //next mini game
+            }
+            // else{
+            //     document.getElementById('myCar').src="CarImages/car"+car+".png";
+            // }
+           
+        
+
+       });
+
+       function transition(){
+        document.getElementById('bub').src="CarImages/bubbles.png";
+        // setTimeout('', 3000);
+         setTimeout(function(){
+            car++;
+        document.getElementById('myCar').src="CarImages/car"+car+".png";
+        },1000);
+        setTimeout(function(){
+        document.getElementById('bub').src="CarImages/Nothing.png";
+        },3000);
+
+        
+        //  setTimeout(nothing(), 3000);
+        // document.getElementById('bub').src="CarImages/Nothing.png";
+
+       }
+    //    function nothing(){
+    //        var x = 0;
+    //    }
+   </script>
