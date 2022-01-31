@@ -92,23 +92,10 @@
                 //this is showing the book on our website - we can update it
                 var books_container = document.getElementById('books-container');
                 console.log(docsURL + IDs[i]);
-                // <a href="shop.html">
-                // <div class="game-styles-wrapper">
-                //     <div class="games-img-background" style="background-image:url(assets/shop_cover.jpg)"></div>
-                //     <div class="img-text"><div class="game-name">Shopping</div></div>
-                // </div>
-                //  </a>
                 var a1 = document.createElement('a');
                 a1.setAttribute('href', docsURL + IDs[i]);
                 a1.innerHTML = names[i];
-                a1.classList.add("booklink");
-                var div1=document.createElement('div');
-                div1.classList.add('game-styles-wrapper');
-                var div2=document.createElement('div');
-                div2.classList.add('img-text');
-                div1.appendChild(div2);
-                a1.appendChild(div1);
-                books_container.appendCshild(a1);
+                books_container.appendChild(a1);
             }   
         }
         
