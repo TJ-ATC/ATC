@@ -83,8 +83,7 @@
                 console.log(line);
                 names.push(line);
             }
-            var rowDiv=document.createElement('div');
-            rowDiv.classList.add("row_div");
+            
             for (var i = 0; i < IDs.length; i++) {
                 if(names[i] == "Instructions to upload a book onto the atc website"){
                     i = i+1;
@@ -109,12 +108,8 @@
                 div2.classList.add('img-text');
                 div1.appendChild(div2);
                 a1.appendChild(div1);
-                rowDiv.appendChild(a1);
-                if(i%3==2 || i==IDs.length-1){
-                books_container.appendChild(rowDiv);
-                rowDiv = document.createElement('div');
-                rowDiv.classList.add("row_div");
-                }
+
+                books_container.appendChild(a1);
             }   
         }
         
