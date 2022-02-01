@@ -84,6 +84,7 @@
                 names.push(line);
             }
             var rowDiv=document.createElement('div');
+            rowDiv.classList.add("row_div");
             for (var i = 0; i < IDs.length; i++) {
                 if(names[i] == "Instructions to upload a book onto the atc website"){
                     i = i+1;
@@ -112,6 +113,7 @@
                 if(i%3==2 || i==IDs.length-1){
                 books_container.appendChild(rowDiv);
                 rowDiv = document.createElement('div');
+                rowDiv.classList.add("row_div");
                 }
             }   
         }

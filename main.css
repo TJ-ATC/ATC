@@ -299,3 +299,7 @@ div.elements-container {
 .booklink{
     color: black;
 }
+.row_div{}
+    display: flex;
+    flex-direction: row;
+}
