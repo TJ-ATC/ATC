@@ -301,11 +301,11 @@ div.elements-container {
     position: absolute;
 }
 
-#bubbles {
+#bub {
     position: relative;
     left:-100px;
-    top:-30%;
-    animation : slide 4s linear infinite;
+    top:-80%;
+    animation :none;
     
   }
   

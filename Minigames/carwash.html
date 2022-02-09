@@ -32,7 +32,7 @@
         </div>
 
         <div id="bubbles">
-            <img id="bub" src="CarImages/Nothing.png" width = 100% height = 250%>
+            <img id="bub" src="CarImages/Nothing.png" width = 125% height = 275%>
             
         </div>
    </div>
@@ -41,10 +41,12 @@
    <script>
        var car = 0;
        var numCars = 7;
+       document.getElementById('bub').style.animationPlayState = 'none';
+       let beat = new Audio('CarImages/TaDa.mp3');
        //image nam follow format car#.png
        document.addEventListener('click', () => {
         
-         transition();
+         
 
         //    while(document.getElementById('bub').innerHTML.y<=1000){
         //     document.getElementById('bub').innerHTML.y+=200;
@@ -55,7 +57,13 @@
            
             if(car>= numCars){
                 document.getElementById('wintext').innerHTML = 'You Win!';
+                 beat.volume=0.1;
+                beat.play();
+                // beat.load();
                 //next mini game
+            }
+            else{
+                transition();
             }
             // else{
             //     document.getElementById('myCar').src="CarImages/car"+car+".png";
@@ -66,20 +74,52 @@
        });
 
        function transition(){
+           //resetPos();
         document.getElementById('bub').src="CarImages/bubbles.png";
+        myMove();
         // setTimeout('', 3000);
-         setTimeout(function(){
-            car++;
-        document.getElementById('myCar').src="CarImages/car"+car+".png";
-        },1000);
-        setTimeout(function(){
-        document.getElementById('bub').src="CarImages/Nothing.png";
-        },3000);
-
+        //  setTimeout(function(){
+        //     car++;
+        // document.getElementById('myCar').src="CarImages/car"+car+".png";
+        // },1000);
+        // setTimeout(function(){
+        // document.getElementById('bub').src="CarImages/Nothing.png";
+        // //document.getElementById('bub').style.animationPlayState = 'none';
+        // },3000);
+        
+        
         
         //  setTimeout(nothing(), 3000);
         // document.getElementById('bub').src="CarImages/Nothing.png";
 
+       }
+
+       var id = null;
+        function myMove() {
+        document.getElementById('bub').style.top = -100 + 'px';
+        var elem = document.getElementById("bub");
+        var pos = -1050;
+        clearInterval(id);
+        id = setInterval(frame, 1);
+        function frame() {
+            if (pos == 1000) {
+            clearInterval(id);
+            document.getElementById('bub').src="CarImages/Nothing.png";
+            }
+            else {
+                 if(pos == 250){
+                    car++;
+                    document.getElementById('myCar').src="CarImages/car"+car+".png";}
+            pos+=2;
+            //document.getElementById('bub').style.top = pos + 'px';
+            document.getElementById('bub').style.left = pos + 'px';
+            }
+        }
+        } 
+       
+       function resetPos(){
+        document.getElementById('bub').style.left = -200 + 'px'; 
+        document.getElementById('bub').style.animationPlayState = 'running';
        }
     //    function nothing(){
     //        var x = 0;
