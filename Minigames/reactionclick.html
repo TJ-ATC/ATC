@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+    <link href="reaclick.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+    <div class="nav-wrapper">
+        <!-- <div class="left-nav">
+            <div class="nav-link-wrapper ">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="nav-link-wrapper">
+                <a href="games.html">Games</a>
+            </div>
+        </div> -->
+
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+    <p id = 'wait'></p>
+        </div>
+    </div> 
+    <h2 id = 'cleeck'></h2>
+    </body>
+    <script>
+        var main_menu = true;
+        var isRed = false;
+
+        if(main_menu){
+            
+        }
+        
+        var time = Math.floor((Math.random()*7000)+3000);
+
+        setTimeout(function(){
+        document.body.style.backgroundColor = "red";
+        document.getElementById('wait').innerHTML = "";
+        isRed = true;
+        document.getElementById('cleeck').innerHTML = "Click Now!";
+        },time);
+
+        document.addEventListener('click', () => {
+            if(isRed==true){
+            document.body.style.backgroundColor = "green";
+            isRed = false;
+            document.getElementById('cleeck').innerHTML = "";
+            document.getElementById('wait').innerHTML = "";
+            setTimeout(function(){
+        document.body.style.backgroundColor = "royalblue";
+        },3000);
+    }
+    else{
+        document.getElementById('wait').innerHTML = "Wait Please :)";
+    }
+        });
+    
+
+    </script>
