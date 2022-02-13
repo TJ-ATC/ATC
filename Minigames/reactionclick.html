@@ -20,42 +20,111 @@
             <div class="brand">
                 <div>ATC Game Center</div>
             </div>
-    <p id = 'wait'></p>
+            <!-- <p id = 'wait'>Get ready to click!</p> -->
         </div>
-    </div> 
-    <h2 id = 'cleeck'></h2>
+    </div>   
+
+    <div id="reactionGame">
+        <div id ="scoresScreen">
+            <!-- <br> -->
+            <div id="score1">Round 1: . . .</div>
+            <div id="score2">Round 2: . . .</div>
+            <div id="score3">Round 3: . . .</div>
+            <div id="score4">Round 4: . . .</div>
+            <div id="score5">Round 5: . . .</div>
+        </div>
+        <div id="color">
+            <h2 id = 'wait'>Get ready to click!</h2>
+            <h2 id = 'cleeck'>Click to start!</h2>
+        </div>   
+    </div>
+    
+
     </body>
     <script>
         var main_menu = true;
         var isRed = false;
-
-        if(main_menu){
-            
-        }
+        let startTime = 0;
+        let scores = [0, 0, 0, 0, 0];
+        var notClicked = true;
+        var round = 0;
+        var notInRound = true;
+        var bestScoreIndex=0;
+        var bestScore = 1000000;
         
-        var time = Math.floor((Math.random()*7000)+3000);
-
-        setTimeout(function(){
-        document.body.style.backgroundColor = "red";
-        document.getElementById('wait').innerHTML = "";
-        isRed = true;
-        document.getElementById('cleeck').innerHTML = "Click Now!";
-        },time);
-
         document.addEventListener('click', () => {
+            console.log(round);
+            if(round<5){
+            document.getElementById('cleeck').innerHTML = "";
+            document.body.style.backgroundColor = "royalblue";
+            if(notInRound){run(round);}
+
             if(isRed==true){
+            notClicked = false;
+            notInRound=true;
             document.body.style.backgroundColor = "green";
             isRed = false;
+            const date = new Date();
+            let endTime = date.getTime();
+            let totalTime = (endTime-startTime)/1000;//in seconds
+            scores[round] = totalTime;
+            document.getElementById('score'+(round + 1)).innerHTML = "Round " + (round + 1) + ": " + totalTime + "s";
+            
+            if(totalTime<bestScore){
+                document.getElementById('score'+(bestScoreIndex+1)).style.fontWeight='100';
+                bestScore = totalTime;
+                bestScoreIndex=round;
+                document.getElementById('score'+(bestScoreIndex+1)).style.fontWeight='600';
+            }
+            document.getElementById('score'+(round+1)).style.backgroundColor = "yellow";
+            if(round>0){
+                document.getElementById('score'+(round)).style.backgroundColor = 'transparent'; 
+            }
+                // document.getElementById('score'+(round+1)).style.backgroundColor='yellow';
+             
             document.getElementById('cleeck').innerHTML = "";
             document.getElementById('wait').innerHTML = "";
             setTimeout(function(){
         document.body.style.backgroundColor = "royalblue";
+        document.getElementById('wait').innerHTML = "Get ready to click!";
         },3000);
     }
-    else{
-        document.getElementById('wait').innerHTML = "Wait Please :)";
-    }
+            else if(document.body.style.backgroundColor=='royalblue'){
+                document.getElementById('wait').innerHTML = "Wait Please :)";
+            }
+            if(notInRound){
+            round++;}
+            }
+            if(round>=5){
+              document.body.style.backgroundColor = "white";
+              document.getElementById('cleeck').innerHTML = "You Win!";  
+            }
+            
         });
+    
+    
+        if(main_menu){
+            
+        }
+        
+        function run(round){
+        var time = Math.floor((Math.random()*7000)+3000);
+        notClicked = true;
+       // round=i;
+       notInRound=false;
+        setTimeout(function(){
+        document.body.style.backgroundColor = "red";
+        const d = new Date();
+        startTime = d.getTime();
+        document.getElementById('wait').innerHTML = "";
+        isRed = true;
+        document.getElementById('cleeck').innerHTML = "Click Now!";
+        },time);
+        // while(notClicked){}
+
+
+    }
+        
     
 
     </script>
