@@ -319,3 +319,10 @@ div.elements-container {
     }
   }
   
+  .crossy-game{
+    justify-content: center;
+    align-items: center;
+  }
+  #chicken{
+      bottom: 100%;
+  }
