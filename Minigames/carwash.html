@@ -39,10 +39,11 @@
    </body>
    
    <script>
-       var car = 0;
+       var car = 6;
        var numCars = 7;
        document.getElementById('bub').style.animationPlayState = 'none';
        let beat = new Audio('CarImages/TaDa.mp3');
+       var isDone = false;
        //image nam follow format car#.png
        document.addEventListener('click', () => {
         
@@ -59,6 +60,9 @@
                 document.getElementById('wintext').innerHTML = 'You Win!';
                  beat.volume=0.1;
                 beat.play();
+                isDone=true;
+                sessionStorage.setItem("isDone","true");
+                console.log(sessionStorage.getItem("isDone"));
                 // beat.load();
                 //next mini game
             }
