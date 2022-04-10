@@ -23,18 +23,97 @@
             <!-- <p id = 'wait'>Get ready to click!</p> -->
         </div>
     </div>
-    <div class="crossy-game" id = "chick">
-        <div><img id="chicken" src="CrossyRoadImages/crossboy.png" width="50px" height = "70px">
+    <div id ='road'>
         
     </div>
+    <div class="crossy-game" id = "chick">
+        <div><img id="chicken" src="CrossyRoadImages/crossboy.png" width="50px" height = "70px"></div>
+        
+    </div>
+    
+    
     <script>
-        var lineHeight = 100;
+        var lineHeight = 60;
+        var overallHeight = window.innerHeight-250;
+        //var numJumps = 10;
+        console.log('screen height: '+overallHeight);
+        var win = false;
+        var tloc = -450;
+        var numClicks = 0; //tells the row
+        document.getElementById('chicken').style.top=tloc+"px";
+        document.getElementById('chicken').style.left="50%";
         document.addEventListener('click', () => {
             //on click function. move up the character
-            console.log(document.getElementById('chicken').style.top);
-            document.getElementById('chicken').style.top="400px";
-            document.getElementById('chicken').style.left="400px";
-            console.log(document.getElementById('chicken').style.top);
+            // console.log(document.getElementById('chicken').style.top);
+            if(win == false){
+            tloc +=lineHeight+10;
+            
+            }
+            // console.log(tloc);
+            document.getElementById('chicken').style.top = tloc+'px';
+            // console.log(document.getElementById('chicken').style.top);
+            
+            if(tloc>=overallHeight){
+                win = true;
+            }
+            numClicks++;
         });
-    </script> 
+        const cars = [];
+        const leftVals = [];
+        var index = 0;
+      
+        for(var road=80; road<290; road+=50){
+            var roadImg = document.createElement("IMG");
+            roadImg.style.top=road+"px";
+            roadImg.style.position = "relative";
+            //roadImg.style.left="20px";
+            roadImg.style.width="60%";
+            roadImg.style.height = lineHeight+"px";
+            roadImg.src="CrossyRoadImages/road.jpeg";
+            document.getElementById("road").appendChild(roadImg);
+
+            var carImg = document.createElement("IMG");
+            carImg.style.top = (road-30)+"px";
+            carImg.style.left="-200px";
+            carImg.style.position = "relative";
+            carImg.style.width = "50px";
+            carImg.style.height = lineHeight/2+"px";
+            var carnum =Math.floor( Math.random()*3);
+            carImg.src = "CrossyRoadImages/car"+carnum+".png";
+            cars[index]=carImg;
+            carImg.style.animationName = "moveCar";
+            var anidur = Math.floor(Math.random()*3)+3;
+            //setAnimation(anidur, carImg, index);
+            carImg.style.animationDuration=anidur+"s";
+            carImg.style.animationIterationCount="infinite";
+            carImg.style.animationTimingFunction="linear";
+            document.getElementById("road").appendChild(carImg);
+            index+=1;
+            
+        }
+        
+ var x = document.getElementById('chicken').style.left;
+ console.log(x);
+        var checkCollision = setInterval(function(){
+            myCarElem = leftVals[Math.floor(numClicks/2)];
+           
+            if(myCarElem==x){//Math.abs(myCarElem.left-x)<=10){
+                numClicks -=1;
+                document.getElementById('chicken').style.top -= (lineHeight+10);
+            }
+        },10);
+
+        // function setAnimation(duration,carElem,index){
+        //     setInterval(function(){
+        //         carElem.style.left+=5;
+                
+        //         if(carElem.style.left>=200)
+        //             carElem.style.left==-200;
+        //         leftVals[index]=carElem.style.left;
+        //     },10);
+        // }
+        </script>
+    
+
+    
 </body>

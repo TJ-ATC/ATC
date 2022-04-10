@@ -324,5 +324,24 @@ div.elements-container {
     align-items: center;
   }
   #chicken{
-      bottom: 100%;
+    top: 100%;
+    position: relative;
   }
+#chick{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+  #road {
+    background: lightgreen;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    width:100%;
+    height:100%;
+  }
+@keyframes moveCar{
+    0% {left: -200px;}
+    100% {left:200px;}
+}
