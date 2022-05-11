@@ -39,14 +39,16 @@
    </body>
    
    <script>
-       var car = 6;
+       var car = 0;
        var numCars = 7;
        document.getElementById('bub').style.animationPlayState = 'none';
        let beat = new Audio('CarImages/TaDa.mp3');
+       let bubblebeat = new Audio('CarImages/bubbles.mp3')
        var isDone = false;
        //image nam follow format car#.png
-       document.addEventListener('click', () => {
-        
+      
+       //document.addEventListener('click', () => {
+        document.body.onkeydown=function(){
          
 
         //    while(document.getElementById('bub').innerHTML.y<=1000){
@@ -75,7 +77,8 @@
            
         
 
-       });
+    //    });
+            }
 
        function transition(){
            //resetPos();
@@ -100,6 +103,8 @@
 
        var id = null;
         function myMove() {
+            bubblebeat.volume=1;
+                bubblebeat.play();
         document.getElementById('bub').style.top = -100 + 'px';
         var elem = document.getElementById("bub");
         var pos = -1050;

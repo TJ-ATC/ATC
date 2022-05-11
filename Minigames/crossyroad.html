@@ -33,16 +33,21 @@
     
     
     <script>
+        let move = new Audio('CrossyRoadImages/chickenmove.mp3')
         var lineHeight = 60;
         var overallHeight = window.innerHeight-250;
         //var numJumps = 10;
-        console.log('screen height: '+overallHeight);
+        //console.log('screen height: '+overallHeight);
         var win = false;
         var tloc = -450;
         var numClicks = 0; //tells the row
         document.getElementById('chicken').style.top=tloc+"px";
         document.getElementById('chicken').style.left="50%";
-        document.addEventListener('click', () => {
+        
+        // document.addEventListener('click', () => {
+            document.body.onkeydown=function(){
+                move.volume=0.2;
+                move.play();
             //on click function. move up the character
             // console.log(document.getElementById('chicken').style.top);
             if(win == false){
@@ -57,7 +62,8 @@
                 win = true;
             }
             numClicks++;
-        });
+        // });
+            }
         const cars = [];
         const leftVals = [];
         var index = 0;
@@ -83,25 +89,40 @@
             cars[index]=carImg;
             carImg.style.animationName = "moveCar";
             var anidur = Math.floor(Math.random()*3)+3;
+
             //setAnimation(anidur, carImg, index);
-            carImg.style.animationDuration=anidur+"s";
-            carImg.style.animationIterationCount="infinite";
-            carImg.style.animationTimingFunction="linear";
+            // carImg.style.animationDuration=anidur+"s";
+            // carImg.style.animationIterationCount="infinite";
+            // carImg.style.animationTimingFunction="linear";
             document.getElementById("road").appendChild(carImg);
             index+=1;
             
         }
         
  var x = document.getElementById('chicken').style.left;
- console.log(x);
+ //console.log(x);
+ console.log(cars);
+ console.log(cars[0]);
         var checkCollision = setInterval(function(){
-            myCarElem = leftVals[Math.floor(numClicks/2)];
-           
-            if(myCarElem==x){//Math.abs(myCarElem.left-x)<=10){
-                numClicks -=1;
-                document.getElementById('chicken').style.top -= (lineHeight+10);
+            
+            for(let i = 0; i < cars.size; i++)
+            {
+                cars[i].style.left = 100+'px'; 
             }
-        },10);
+
+            console.log(numClicks);
+            if(numClicks % 2 != 0)
+            {
+                myCarElem = cars[Math.floor((numClicks+1)/2)];
+                console.log('left: ');
+                console.log(myCarElem);
+                if(myCarElem.style.left==0){//Math.abs(myCarElem.left-x)<=10){
+                    console.log('hit');
+                    numClicks -=1;
+                    document.getElementById('chicken').style.top -= (lineHeight+10);
+                }
+        }
+        },100);
 
         // function setAnimation(duration,carElem,index){
         //     setInterval(function(){

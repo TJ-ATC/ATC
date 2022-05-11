@@ -342,6 +342,6 @@ div.elements-container {
     height:100%;
   }
 @keyframes moveCar{
-    0% {left: -200px;}
-    100% {left:200px;}
+    0% {left: -30%;}
+    100% {left:29%;}
 }
