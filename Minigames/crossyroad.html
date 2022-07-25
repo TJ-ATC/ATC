@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+    <link href="mini.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+    <div class="nav-wrapper">
+        <!-- <div class="left-nav">
+            <div class="nav-link-wrapper ">
+                <a href="index.html">Home</a>
+            </div>
+            <div class="nav-link-wrapper">
+                <a href="games.html">Games</a>
+            </div>
+        </div> -->
+
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+            <!-- <p id = 'wait'>Get ready to click!</p> -->
+        </div>
+    </div>
+    <div class="crossy-game" id = "chick">
+        <div><img id="chicken" src="CrossyRoadImages/crossboy.png" width="50px" height = "70px">
+        
+    </div>
+    <script>
+        var lineHeight = 100;
+        document.addEventListener('click', () => {
+            //on click function. move up the character
+            console.log(document.getElementById('chicken').style.top);
+            document.getElementById('chicken').style.top="400px";
+            document.getElementById('chicken').style.left="400px";
+            console.log(document.getElementById('chicken').style.top);
+        });
+    </script> 
+</body>

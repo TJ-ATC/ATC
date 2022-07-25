@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+    <title>Happy Meter</title>
+    <link href="tictactowonwards.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+           <div class="nav-link-wrapper ">
+               <a href="index.html">Home</a>
+           </div>
+             <div class="nav-link-wrapper">
+                 <a href="games.html">Games</a>
+             </div>
+             <div class="nav-link-wrapper">
+                <a href="books.html">Books</a>
+             </div>
+             <div class="nav-link-wrapper">
+                <a href="projects.html">Projects</a>
+             </div>
+         </div>
+  
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+  
+        </div>
+     </div> 
+     
+     <div class="elements-container">
+        <div id = "Meter">
+            <div id = "Meter1" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter2" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter3" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter4" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id = "Meter5" height = "120px" width = "120px">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            
+            </div>
+        <br>
+        <h1 id="instructions">Happy Meter</h1>
+        
+        <br>
+            <div class="face">
+                <image height="100px" id="faces" src="images/face1.png"></image>
+            </div>
+           <div class="button-container">
+              <button id="buttonOne" type="button" onclick="nextQuestion()">Next</button>
+            </div>
+              <div class="button-container">
+                  <image height="50px" id="option-one" src="#" onclick="buttonUpdate(1)"></image>
+                  <image height ="50px" id="option-two" src="#" onclick="buttonUpdate(2)"></image>
+              </div>
+              <!-- <button type="button" id="holidays" onclick="holidayMode()">Holiday Mode</button> -->
+           
+        
+ 
+  
+     
+     <script>
+    var happy = 0;
+    var happyOption = -1;
+    var optionOneIsHappy=false;
+    var optionTwoIsHappy=true;
+    var remove = false;
+    var win = false;
+    let sadQ = ["sad1.png", "sad2.png", "sad3.png", "sad4.png", "sad5.png", "sad6.png", "sad7.png"];
+    let HappyQ = ["happy1.png" ,"happy2.png" ,"happy3.png" ,"happy4.png","happy5.png" ,"happy6.png" ,"happy7.png"];
+    function nextQuestion(){
+        //button to click
+        //picks sad or happy (one of each)
+        //picks random question
+        //displays question
+        happyOption = Math.floor(Math.random()*2+1);
+        if(happyOption == 1){
+            optionOneIsHappy=true;
+            optionTwoIsHappy=false;
+            //pick from happy for option one, sad for two
+            document.getElementById("option-two").src = "images/"+sadQ[Math.floor(Math.random()*sadQ.length)];
+            document.getElementById("option-one").src = "images/"+HappyQ[Math.floor(Math.random()*HappyQ.length)];
+        }
+        else{
+            optionOneIsHappy=false;
+            optionTwoIsHappy=true;
+            document.getElementById("option-two").src = "images/"+HappyQ[Math.floor(Math.random()*HappyQ.length)];
+            document.getElementById("option-one").src = "images/"+sadQ[Math.floor(Math.random()*sadQ.length)];
+        }
+    }
+    function buttonUpdate(num){
+        //images' toClick
+        console.log('click')
+        if(num==1)
+         {
+             if(optionOneIsHappy)
+                HClick(num);
+            else    
+                SClick(num);
+         }
+         else{
+             if(optionTwoIsHappy)
+                HClick(num);
+             else    
+                SClick(num);
+         }
+
+    }
+    function HClick(num){
+     happy++;
+     document.getElementById("instructions").innerHTML = "Yay!";
+     updateM(num);
+    }
+    function SClick(num){
+        happy--;
+        document.getElementById("instructions").innerHTML = "Oh no!";
+        updateM(num);
+    }
+    function updateM(num){
+    var rem = happy+1;
+    var isHappy = false;
+    if(num == happyOption)
+        isHappy = true;
+    if(happy > 0 && happy <= 5 && isHappy){
+        document.getElementById("Meter"+happy).style.backgroundColor = "green";
+        }
+    if(happy >= 0 && happy <= 4 && !isHappy){
+        document.getElementById("Meter"+rem).style.backgroundColor = "white";  
+        }
+    if(happy == 5){
+        win = true;
+        endGame();
+    }
+    if(happy > 5 || happy<0)
+        happy = 0;
+
+    //faces
+    if(happy == 1)
+    document.getElementById("faces").src = "images/face1.png";
+    if(happy == 2)
+    document.getElementById("faces").src = "images/face2.png";
+    if(happy == 3)
+    document.getElementById("faces").src = "images/face3.png";
+    if(happy == 4)
+    document.getElementById("faces").src = "images/face4.png";
+    if(happy == 5)
+    document.getElementById("faces").src = "images/face5.png";
+    }
+        function endGame(){
+            document.getElementById("instructions").innerHTML = "You did it! I'm all happy now!";
+        }
+     </script>
+
+    </body>

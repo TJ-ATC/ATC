@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+  <link href="main.css" type="text/css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+</head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+           <div class="nav-link-wrapper">
+            <a href="books.html">Books</a>
+         </div>
+           <div class="nav-link-wrapper">
+            <a href="projects.html">Projects</a>
+         </div>
+       </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+   <div class="elements-container">
+      <h1 id="blank-title">Answer the Question</h1>
+         
+         <img src="images/start.png" id="question" class="center">
+         <div id="center-button">
+            <button id="next" type="button" onclick="next()">Start</button>
+            <button type="button" id="holiday" onclick="holidayMode()">Holiday Mode</button>
+         </div>
+   </div>
+
+   <script>
+      var holidayModes = false;
+      let images = ["weather_question", "cat_dog", "family_size", "day_question", "color_question", "like_school", "like_animals", "food_question"];
+      let holidayImages = ["holiday(1)", "holiday(2)", "holiday(3)", "holiday(4)", "holiday(5)", "holiday(6)", "holiday(7)", "holiday(8)"];
+      function next() {
+         var myImg;
+         document.getElementById("next").innerHTML = "Next Question";
+         if(!holidayModes)
+            myImg= images[Math.floor(Math.random()*images.length)];
+         else
+            myImg = holidayImages[Math.floor(Math.random()*holidayImages.length)];
+         document.getElementById("question").src = "images/"+myImg+".png";
+      }
+      function holidayMode() {
+         holidayModes = !(holidayModes);
+         console.log(holidayModes);
+         
+         if(holidayModes==true) {
+            document.body.style.backgroundImage = "url('images/holiday-background.png')";
+            
+            document.getElementById("blank-title").style.backgroundColor = "#4dc3ff";
+         }
+         else {
+          document.body.style.backgroundImage = "url('#')";
+            document.getElementById("blank-title").style.backgroundColor = "white";
+         }
+      }
+   </script>
+
+</body>

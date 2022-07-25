@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+   <title>Emotions Game</title>
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-wrapper" style="background-color: #a57ace;">
+        <div class="left-nav">
+          <div class="nav-link-wrapper ">
+              <a href="index.html">Home</a>
+          </div>
+            <div class="nav-link-wrapper active-nav-link">
+                <a href="games.html">Games</a>
+            </div>
+            <div class="nav-link-wrapper">
+              <a href="books.html">Books</a>
+          </div>
+          <div class="nav-link-wrapper">
+            <a href="projects.html">Projects</a>
+         </div>
+        </div>
+  
+        <div class="right-nav">
+            <div class="brand">
+                <div>ATC Game Center</div>
+            </div>
+  
+        </div>
+      </div>
+      
+      <div class="score-meter"> <!--progess bar for tiredness level-->
+            
+            <div class="score" id="10"></div>
+            <div class="score" id="20"></div>
+            <div class="score" id="30"></div>
+            <div class="score" id="40"></div>
+            <div class="score" id="50"></div>
+            <div class="score" id="60"></div>
+            <div class="score" id="70"></div>
+            <div class="score" id="80"></div>
+            <div class="score" id="90"></div>
+            <div class="score" id="100"></div>
+            
+      </div>
+      <div class="main-info">
+            <img src="#" id="question-img"></img>
+            <img src="#" id="answer-one" onclick="checkAnswer()"></img>
+            <img src="#" id="answer-two" onclick = "checkAnswer()"></img>
+      </div>
+      <button type="button" id="next" onclick="nextQuestion()">Start!</button>
+      <script>
+          class Answer{
+               mySrc;
+               correct;
+               Answer(name, c){
+                     mySrc= name;
+                     correct = c;
+               }
+               isCorrect(){
+                   return correct;
+               }
+               getSrc(){
+                   return mySrc;
+               }
+           }
+          let questions = ["are.PNG"];//question img names
+          var size = 1; //number of quesitons
+          let answer_choices = [[new Answer("an.PNG", false), new Answer("and.PNG", true)]];//class has img name and value of correct answer
+          var percent_done = 0; //goes up by ten (shows score)
+          var correct_src = "#"; //no current question
+          function nextQuestion(){
+            //pick a question, display it and the answers (question-img, answer-one, answer-two)
+            var index = (Math.floor(Math.random()*size));
+            document.getElementById("question-img").src = "images/"+questions[index];
+            document.getElementById("answer-one").src = "images/"+answer_choices[index][0];
+            document.getElementById("answer-two").src = "images/"+answer_choices[index][1];
+            if(answer_choices[index][0].isCorrect())
+                correct_src = answer_choices[index][0].getSrc();
+            else    
+                correct_src = answer_choices[index][1].getSrc();
+          }
+          function checkAnswer(){
+              //see if your src matches correct one. shows yay and update the score bar
+          }
+           
+      </script>
+</body>
