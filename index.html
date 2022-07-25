@@ -32,6 +32,10 @@
 
     </div>
 </div> 
+    <div class="announcement-banner" style="display:block">
+        <div class="close-announcement">x</div>
+        <h2>Welcome to our new website: https://tj-atc.github.io/AT-RedGreenGame/</h2>
+    </div>
     <div class="home-container">
 
         <h2>WELCOME TO THE ASSISTIVE TECHNOLOGY GAME CENTER.</h2>
@@ -46,5 +50,18 @@
 
     </div>
    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(function () {
 
+            $(".announcement-banner").slideDown();
+
+        });
+
+        $(".close-announcement").on('click',function () {
+            $(".announcement-banner").slideUp();
+        });
+
+
+    </script>
 <body>
