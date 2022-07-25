@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+<h1>Yes</h1>
+<script>
+let gameFiles = ["carwash.html","reactionclick.html","crossyroad.html"]
+sessionStorage.setItem('isDone',false);
+const myWindow = window.open("carwash.html");
+// while(!myWindow.isDone){}
+// while(sessionStorage.getItem("isDone")=="false"){
+//             console.log("am wait :)");
+// }
+
+setInterval(function(){
+    if(sessionStorage.getItem("isDone")=="false"){
+            console.log("am wait :)");
+    }
+else{
+    console.log(sessionStorage.getItem("isDone"));
+setTimeout(function(){
+        console.log("am done :)");
+        },1000);
+}
+
+},1000)
+// console.log(sessionStorage.getItem("isDone"));
+// setTimeout(function(){
+//         console.log("am done :)");
+//         },1000);
+ 
+</script>
+</body>

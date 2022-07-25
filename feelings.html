@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Feelings</title>
+        <link href="tictactowonwards.css" type="text/css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <div class="left-nav">
+                <div class="nav-link-wrapper">
+                    <a href="index.html">Home</a>
+                </div>
+                  <div class="nav-link-wrapper ">
+                      <a href="games.html">Games</a>
+                  </div>
+                  <div class="nav-link-wrapper">
+                      <a href="books.html">Books</a>
+                  </div>
+                  <div class="nav-link-wrapper">
+                    <a href="projects.html">Projects</a>
+                 </div>
+              </div>
+        
+              <div class="right-nav">
+                  <div class="brand">
+                      <div>ATC Game Center</div>
+                  </div>
+              </div>
+            </div> 
+        </div>
+        <div class="elements-container">
+            <h1 id = "header">Feelings</h1>
+            <img id = "image-word" src="images/emotions_general.png" align-content="center">
+            <div class = "button-container">
+                <button id="start" onClick=showword(false)>start</button>
+                <button id = "forgot" onClick=showword(true) >forgot</button>
+                <button id = "next" onClick = showword(false)>next</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        //word sentence pairs in an array
+        //the sentence would be a hint for the word
+        //store the index of the word sentence pair if they forget
+        var array = [["happy", "happy_sentence"], ["sad", "sad_sentence"], ["mad", "mad_sentence"], ["bored", "bored_sentence"], 
+        ["surprise", "surprise_sentence"], ["afraid", "afraid_sentence"], ["hungry", "hungry_sentence"], ["tired", "tired_sentence"], ["proud", "proud_sentence"], 
+        ["embarrassed", "embarrassed_sentence"], ["excited", "excited_sentence"]];
+        //happy, sad, mad, bored, surprise, afraid, hungry, tired, proud, embarrassed, excited 
+        var index = -1;
+        document.getElementById("forgot").style.visibility = "hidden";
+        document.getElementById("next").style.visibility = "hidden";
+        function showword(staycurr){
+            if(index ==-1){
+                document.getElementById("start").style.visibility = "hidden";
+            }
+            if (!staycurr){
+                index = Math.floor(Math.random()*array.length);
+            };
+            document.getElementById("header").innerHTML = "Act out the word below!";
+            document.getElementById("image-word").src = "images/"+array[index][0]+".png";
+            document.getElementById("image-word").style.height = "auto";
+            document.getElementById("image-word").style.width = "100%";
+            document.getElementById("forgot").style.visibility = "hidden";
+            document.getElementById("next").style.visibility = "hidden";
+            setTimeout(showsentence, 3000, index);
+        };
+        function showsentence(index){
+            document.getElementById("header").innerHTML = "Fill in the sentence.";
+            document.getElementById("image-word").src = "images/"+array[index][1]+".png";
+            document.getElementById("image-word").style.height = "70%";
+            document.getElementById("image-word").style.width = "auto";
+            document.getElementById("forgot").style.visibility = "visible";
+            document.getElementById("next").style.visibility = "visible";
+        }
+        
+    </script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+   <link href="tictactowonwards.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+           <div class="nav-link-wrapper">
+            <a href="books.html">Books</a>
+         </div>
+         <div class="nav-link-wrapper">
+          <a href="projects.html">Projects</a>
+       </div>
+       </div>
+
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <br>
+      <h1 id="instructions">Fortunes Game</h1>
+      <img id="image" src="images/tarot12.png" height="200px">
+      <img id="Fortuneimage" src="images/tarot12.png" style="display:none" height="200px">
+      <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:40%; top:30%" src = "images/sparkle.png">
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:35%; top:83%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:70%; top:80%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:45%; top:73%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:60%; top:35%" src = "images/sparkle.png">
+      <div class="cards-container" id="cards" style="display:none">
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage1" src="images/traffic_light.png" height="200px"></button>
+        <button id="CardButton" type="button" onclick="getCardFortune()"><img id="CardImage2" src="images/traffic_light.png" height="200px"></button>
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:40%; top:30%" src = "images/sparkle.png">
+        <img class = "glitter" src = "images/sparkle.png">
+        <img class = "glitter" style="left:35%; top:83%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:70%; top:80%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:45%; top:73%" src = "images/sparkle.png">
+        <img class = "glitter" style="left:60%; top:35%" src = "images/sparkle.png">
+
+      </div>
+
+      <button id="FortuneButton" type="button" onclick="askQuestion()">Divine the future...</button>
+      
+   </div>
+
+
+    <script>
+      let questions = [["school_question.png","school_fortune1.png","school_fortune2.png"],["song_question.png","song_fortune1.png","song_fortune2.png"],["rain_question.png","rain_fortune1.png","rain_fortune2.png"], ["friend_question.png","friend_fortune1.png","friend_fortune2.png"]];
+      let tarot_cards = [1,2,3];
+      var curr_question = -1; 
+      function askQuestion(){
+        document.getElementById("instructions").innerHTML = "Ask the cards a question...";//change instructions to ask question 
+        document.getElementById("Fortuneimage").style.display = "none";
+        document.getElementById("image").style.display = "inline";
+        curr_question = curr_question + 1; //save question index
+        document.getElementById("image").src = "images/" + questions[curr_question][0];//display next question
+        document.getElementById("FortuneButton").innerHTML = "Bring me my fortune...";
+        document.getElementById("FortuneButton").onclick = getCards; //change button onlclick to getCards, change name
+        //getting the cards and setting them
+        let random_num1 = Math.floor(15*Math.random() + 1);
+        let random_num2 = Math.floor(15*Math.random() + 1);
+        while(random_num1==random_num2){
+          random_num2 = Math.floor(15*Math.random() + 1);
+        }
+        document.getElementById("CardImage1").src = "images/tarot"+random_num1+".png";
+        document.getElementById("CardImage2").src = "images/tarot"+random_num2+".png";
+      }
+
+      function getCards(){
+        document.getElementById("image").style.display = "none"; //remove question
+        document.getElementById("FortuneButton").style.display = "none";  //remove button
+          //play sparkly animation 
+          
+        document.getElementById("instructions").innerHTML = "Pick a card...";//change instructions
+        document.getElementById("cards").style.display = "inline";//make cards visible
+        
+      }
+
+      function getCardFortune(){
+          //play sparkly animation 
+          
+          document.getElementById("cards").style.display = "none";//remove cards 
+          document.getElementById("instructions").innerHTML = "Here is your fortune!";//change intructions 
+          //document.getElementById("image").src = tarot_cards[0];//display opened card
+          document.getElementById("Fortuneimage").style.display = "inline";
+          document.getElementById("Fortuneimage").src = "images/" + questions[curr_question][Math.floor(2*Math.random() + 1)];
+          document.getElementById("FortuneButton").style.display = "inline";  //display button
+          document.getElementById("FortuneButton").onclick = askQuestion;//change button to askQuestion
+          document.getElementById("FortuneButton").innerHTML= "ask another question";//change button to askQuestion
+      }
+      
+
+     </script>
+</body>

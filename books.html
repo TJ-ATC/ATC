@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <title>ATC Books</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+            <div class="nav-link-wrapper">
+                <a href="index.html">Home</a>
+            </div>
+              <div class="nav-link-wrapper ">
+                  <a href="games.html">Games</a>
+              </div>
+              <div class="nav-link-wrapper active-nav-link">
+                  <a href="books.html">Books</a>
+              </div>
+              <div class="nav-link-wrapper">
+                <a href="projects.html">Projects</a>
+             </div>
+          </div>
+    
+          <div class="right-nav">
+              <div class="brand">
+                  <div>ATC Game Center</div>
+              </div>
+    
+          </div>
+        </div> 
+    <div class="books-container" id="books-container">
+        <h2>ATC Books</h2>   
+    </div>
+
+    <script>
+        docsURL = "https://docs.google.com/presentation/d/"; //only for presentations!!!!
+        ID_fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/book_ID.txt"; //ID file on github
+        names_fileURL = "https://coding-girl314.github.io/AT-RedGreenGame/book_names.txt"; //Names file on github
+
+        
+        async function* makeTextFileLineIterator(fileURL) {
+            const utf8Decoder = new TextDecoder('utf-8');
+            const response = await fetch(fileURL); //, {mode: 'no-cors'});
+            const reader = response.body.getReader();
+            let { value: chunk, done: readerDone } = await reader.read();
+            chunk = chunk ? utf8Decoder.decode(chunk) : '';
+
+            const re = /\n|\r|\r\n/gm;
+            let startIndex = 0;
+            let result;
+
+            for (;;) {
+                let result = re.exec(chunk);
+                if (!result) {
+                if (readerDone) {
+                    break;
+                }
+                let remainder = chunk.substr(startIndex);
+                ({ value: chunk, done: readerDone } = await reader.read());
+                chunk = remainder + (chunk ? utf8Decoder.decode(chunk) : '');
+                startIndex = re.lastIndex = 0;
+                continue;
+                }
+                yield chunk.substring(startIndex, result.index);
+                startIndex = re.lastIndex;
+            }
+            if (startIndex < chunk.length) {
+                // last line didn't end in a newline char
+                yield chunk.substr(startIndex);
+            }
+        }
+
+        var IDs = [];
+        var names = [];
+        async function run() {
+            for await (let line of makeTextFileLineIterator(ID_fileURL)) {
+                console.log(line);
+                IDs.push(line);
+            }
+
+            for await (let line of makeTextFileLineIterator(names_fileURL)) {
+                console.log(line);
+                names.push(line);
+            }
+            
+            for (var i = 0; i < IDs.length; i++) {
+                if(names[i] == "Instructions to upload a book onto the atc website"){
+                    i = i+1;
+                    console.log('true')
+                }
+                //this is showing the book on our website - we can update it
+                var books_container = document.getElementById('books-container');
+                console.log(docsURL + IDs[i]);
+                // <a href="shop.html">
+                // <div class="game-styles-wrapper">
+                //     <div class="games-img-background" style="background-image:url(assets/shop_cover.jpg)"></div>
+                //     <div class="img-text"><div class="game-name">Shopping</div></div>
+                // </div>
+                //  </a>
+                var a1 = document.createElement('a');
+                a1.setAttribute('href', docsURL + IDs[i]);
+                a1.innerHTML = names[i];
+                a1.classList.add("booklink");
+                var div1=document.createElement('div');
+                div1.classList.add('game-styles-wrapper');
+                var div2=document.createElement('div');
+                div2.classList.add('img-text');
+                div1.appendChild(div2);
+                a1.appendChild(div1);
+
+                books_container.appendChild(a1);
+            }   
+        }
+        
+        
+
+        run();  
+    </script> 
+</div>
+</body>

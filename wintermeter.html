@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center | Winter Happy Meter</title>
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="nav-wrapper">
+      <div class="left-nav">
+         <div class="nav-link-wrapper ">
+             <a href="index.html">Home</a>
+         </div>
+           <div class="nav-link-wrapper">
+               <a href="games.html">Games</a>
+           </div>
+        </div>
+      <div class="right-nav">
+          <div class="brand">
+              <div>ATC Game Center</div>
+          </div>
+
+      </div>
+   </div> 
+
+   <div class="elements-container">
+      <div id = "headingdiv">
+          <!-- <img id = "thermometer" src="images/1spinner.png"/>
+          <img id = "person" src="images/1spinner.png"/> -->
+          <img id="overall-question" width='800' src="#">
+          <!-- thermometer -->
+          <!-- person -->
+          <!-- question -->
+      </div>
+      <div id="table1" width="100%" >
+        <table id="sub_table1">
+            <tr width="50%">
+                <!-- image of winter clothing -->
+                <td style='text-align: center;'><img id = "winter_clothing1" src = "#" width = "200" onclick="nextQuestion(true)"></td>
+                <td style='text-align: center;'><img id = "winter_clothing2" src = "#" width = "200" onclick="nextQuestion(false)"></td>
+                
+                
+                <!-- sentence corresponding to winter clothing -->
+                
+            </tr>
+            <tr width = "50%">
+                <!-- image of winter clothing 2 -->
+                <td style='text-align: center; border: black;'><img id = "winter_sentence1" src = "#" width = "600" onclick="nextQuestion(true)"></td>
+                <td style='text-align: center; border: black;'><img id = "winter_sentence2" src = "#" width = "600" onclick="nextQuestion(false)"></td>
+                <!-- sentence correspondinf to winter clothing 2 -->
+                
+            </tr>
+        </table>
+        
+    </div>
+    </div>
+</body>
+<script>
+    
+    var temp = 50;
+    var max = 80;
+    var img1="";
+    var img2="";
+    var img1Sentence = "";
+    var img2Sentence="";
+    var overallImg ="";
+    var img1Correct = true;
+    var img2Correct = false;
+    let questions = ['howmakefeetwarmer.png', 'handswarmer.png', 'howmakefeetwarmer.png', 'howmakeneckwarmer.png', 'howmakebodywarmer.png', 'howmakeheadwarmer.png', 'howmakelegswarmer.png',]
+    let warm = [ 'boots.png', 'gloves.png', 'socks.png', 'scarfs.png', 'winter_coat.png', 'winter_hat.png', 'pants.png'];
+    let warmSentences = [ 'bootsSentence.png', 'glovesSentence.png', 'thick_socksSentence.png', 'scarfsSentence.png', 'winter_coatSentence.png', 'winter_hatSentence.png', 'pantsSentence.png'];
+    let cold = [ 'flip_flops.png', 'bracelets.png', 'thin_socks.png', 'necklace.png', 'tank_top.png', 'baseball_cap.png', 'shorts.png'];
+    let coldSentences = ['flip_flopsSentence.png', 'braceletsSentence.png', 'thin_socksSentence.png', 'necklaceSentence.png', 'tank_topSentence.png', 'baseball_capSentence.png', 'shortsSentence.png'];
+    let index = 0
+    function nextQuestion(correct_answer){
+        if (correct_answer) {
+            temp = temp + 5;
+        }
+
+        if (temp >= max) {
+            win();
+        } 
+
+        setImages();
+        
+    }
+    function setImages(){
+
+        if (Math.random() >= 0.5) {
+            img1= warm[index];
+            img2= cold[index];
+            img1Sentence= warmSentences[index];
+            img2Sentence= coldSentences[index];
+            img1Correct= true;
+            img2Correct= false;
+        } else {
+            img1= cold[index];
+            img2= warm[index];
+            img1Sentence= coldSentences[index];
+            img2Sentence= warmSentences[index];
+            img1Correct= false;
+            img2Correct= true;
+        }
+        overallImg=questions[index];
+        index++;
+        index %= warm.length; // Ensure index doesn't go out of bounds
+        document.getElementById('winter_clothing1').src = `images/${img1}`;
+        document.getElementById('winter_clothing2').src = `images/${img2}`;
+        document.getElementById('winter_sentence1').src = `images/${img1Sentence}`;
+        document.getElementById('winter_sentence2').src = `images/${img2Sentence}`;
+        document.getElementById('overall-question').src=`images/${overallImg}`;
+        document.getElementById('winter_clothing1').onclick=function(){nextQuestion(img1Correct);}
+        document.getElementById('winter_clothing2').onclick=function(){nextQuestion(img2Correct);}
+        document.getElementById('winter_sentence1').onclick=function(){nextQuestion(img1Correct);}
+        document.getElementById('winter_sentence2').onclick=function(){nextQuestion(img2Correct);}
+    }
+    function win(){
+        document.getElementById('table1').innerHTML = "<h1>All warm now! You did it!</h1>"; 
+        document.getElementById('headingdiv').innerHTML = "";
+    }
+    setImages();
+</script>

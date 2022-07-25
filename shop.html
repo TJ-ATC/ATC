@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <title>Shopping Game</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+            <div class="nav-link-wrapper">
+                <a href="index.html">Home</a>
+            </div>
+              <div class="nav-link-wrapper active-nav-link">
+                  <a href="games.html">Games</a>
+              </div>
+              <div class="nav-link-wrapper">
+                  <a href="books.html">Books</a>
+              </div>
+              <div class="nav-link-wrapper">
+                <a href="projects.html">Projects</a>
+             </div>
+          </div>
+    
+          <div class="right-nav">
+              <div class="brand">
+                  <div>ATC Game Center</div>
+              </div>
+    
+          </div>
+    </div>
+    <div class="elements-container">
+        <h1 id="title">Welcome to the Shop!</h1>
+        <div class="board">
+            <img src="images/space_0.png" id="main">
+            <div class="spinner" style="margin-top: -150px;">
+                <h2>↓</h2>
+                <div id = "spinning" class="spinning">
+                    <img src = "images/3spinner.png" class="space3" width="100%" height=auto>
+                    <img src = "images/4spinner.png" class="space4" width="100%" height=auto>
+                    <img src = "images/1spinner.png" class="space1" width="100%" height=auto>
+                    <img src = "images/2spinner.png" class="space2" width="100%" height=auto>
+                </div>
+                <h2 id="spin-amount" ></h2>
+                <button type="button" id="spin" onclick="spin()">Spin</button>
+            </div>
+        </div>
+        <div class="coin-values">
+            <input style="display: none;" type="text" name="text" id="text" value="Type Amount to Pay"></input>
+            <button  style="display: none;" type="button" id="check" onclick="check()">Pay</button>
+    
+        </div>
+    </div>
+    <script>
+        class ShopScene{
+             source;
+             moneyAmount=0;
+            constructor(src, money){
+                this.source=src;
+                this.moneyAmount=money;
+            }
+            getSource(){
+                return this.source;
+            }
+            getMoneyAmount(){
+                console.log(this.moneyAmount)
+                return this.moneyAmount;
+            }
+            setSource(src){
+                this.source=src;
+            }
+            setMoneyAmount(money){
+                this.moneyAmount=money;
+            }
+        }
+        var index = -1;
+        var numImages=9;
+        let images = [new ShopScene("images/pickles.png", 16), new ShopScene("images/cake.png", 75), new ShopScene("images/horse.png", 75), new ShopScene("images/hammer.png", 27), new ShopScene("images/vegetables.png", 14), new ShopScene("images/grapes.png", 15), new ShopScene("images/dog_toy.png", 38), new ShopScene("images/diamond.png", 35), new ShopScene("images.phone_booth.png", 15)];
+        var current_space=0;
+        var move=2;
+        var correct_amount=0; //how much money to pay
+       var paid = true;
+        function spin() {
+            //spin the spinner
+            var min_spin = 1000
+            var max_spin = 4000
+            var spin_degree = Number(Math.random()*3000)+10000
+            document.getElementById("spinning").style.transform= "rotate("+spin_degree+"deg)" //top is 0 degrees, right is 90 deg
+            spin_degree+=45
+            var spaces = 0
+            if (spin_degree%360>=0 && spin_degree%360<=90){
+                spaces = 6;
+            }
+            else if (spin_degree%360>90 && spin_degree%360<=180){
+                spaces = 4;
+            }
+            else if (spin_degree%360>180 && spin_degree%360<=270){
+                spaces = 2;
+            }
+            else{
+                spaces = 8;
+            }
+            move = spaces;
+            setTimeout(displaySpin, 2000);
+            function displaySpin(){
+                //move=Math.floor(Math.random()*8+1);
+                document.getElementById("spin-amount").innerHTML="You spun a "+ move+".";
+                //update move based on spinner result
+                current_space+=move;
+                if(current_space>29)
+                    current_space=29;
+                document.getElementById("main").src="images/space_"+current_space+".png";
+                document.getElementById("title").innerHTML = "Welcome to the Shop!";
+                document.getElementById("spin").style.display="none";
+                setTimeout(function(){
+                    document.getElementById("main").src=getShopImage();
+                    document.getElementById("text").style.display="inline-block";
+                document.getElementById("check").style.display="inline-block";
+                }, 5000);
+            };
+        }
+        
+        function getShopImage(){
+            //return the full location of one of the shop backgrounds
+            //set the correct value depending on shop image
+            
+            index++;
+            if(index>=numImages)
+                index=-1;
+            correct_amount=images[index].getMoneyAmount();
+            return images[index].getSource();
+        }
+        function pickNumber(){
+            //pick a number without repeating old ones if possible
+            return Math.floor(Math.random()*numImages);
+        }
+        function check() {
+            if(document.getElementById("text").value==correct_amount)
+            {
+                document.getElementById("title").innerHTML = "Correct!"
+                document.getElementById("text").style.display="none";
+                document.getElementById("check").style.display="none";
+                document.getElementById("main").src="images/space_"+current_space+".png";
+                document.getElementById("spin").style.display="inline-block";
+                if(current_space==29)
+                    {
+                        //you won, do you want to replay?
+                        document.getElementById("main").src="images/congradulations.jpg";
+                        document.getElementById("title").innerHTML = "You Won!";
+                    }
+            }
+            else {
+                document.getElementById("title").innerHTML = "Please try again."
+            }
+        }
+        
+    </script>
+</body>
