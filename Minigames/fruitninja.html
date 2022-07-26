@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+   <title>ATC Game Center</title>
+    <link href="mini.css" type="text/css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<head>
+<body>
+    <!-- <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+    <p id="output">Value: 50</p> -->
+    
+    <div id="fruit"  >
+        <img src="CrossyRoadImages/car1.png" top="0px" width="100px" height = "100px" id="fruit_img">
+    </div>
+    <div id="main">
+        <div id="info" width="350px">
+            <h1>Fruit Ninja!</h1>
+            <h3>Click to destroy fruit before they reach the bottom. You must see the whole fruit before you click!</h3>
+            <h4 id="score_elem">Score: 0</h4>
+        </div>
+        
+        
+    </div>
+    
+    <script>
+        // document.getElementById("myRange").oninput = function() {
+        // document.getElementById("output").innerHTML = "Value: "+this.value;
+        // } 
+        var fruit_pos=0;
+        var score = 0;
+        var finished = false;
+        var interval_speed = 80;//decrease for faster as round goes on
+        let max_pos = window.innerHeight;
+        let fruit_images = ["apple.png", "banana.png", "blueberry.png", "kiwi.png", "peach.png", "pomegrante.png", "strawberry.png", "watermelon.png"]
+        function moveFruit(){
+            if(!finished){
+            fruit_pos+=1;
+            document.getElementById("fruit_img").style.top= fruit_pos+"px";
+            console.log(fruit_pos);
+            console.log(max_pos);
+            if(fruit_pos>=max_pos){
+                gameOver();
+            }
+        }
+        }
+        //document.getElementById("fruit_img").style.top = (window.innerHeight-100)+"px";
+        document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
+        const gameInterval = setInterval(moveFruit,interval_speed);
+        console.log(window.innerHeight);
+        document.body.onkeydown=function(){
+            if(!finished){
+                //reset lowest fruit to the top (random height!) and make it a new fruit
+                if(fruit_pos>0){
+                fruit_pos = Math.floor(Math.random()*900-1000);//from -100 to -1000
+                
+                interval_speed -=1;
+                if(interval_speed<5){
+                    interval_speed=5;
+                }
+                score+=1;
+                
+                document.getElementById("fruit_img").style.top=fruit_pos+"px";
+                document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
+                document.getElementById("score_elem").innerHTML = "Score: "+score;
+                clearInterval(gameInterval);
+                gameInterval = setInterval(moveFruit, interval_speed);
+                }
+         }
+        }
+        function gameOver(){
+            //you died
+            document.getElementById("score_elem").innerHTML="Oh no a fruit escaped! Your score is: "+score;
+            clearInterval(gameInterval);
+            fruit_pos = -2000000;
+            document.getElementById("fruit_img").style.top=fruit_pos+"px";
+
+            finished = true;
+        }
+    </script>
+</body>
