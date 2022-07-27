@@ -384,7 +384,7 @@ div.elements-container {
     background: #3a1e77; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
-  #fruit_img{
+  #fruit_img1, #fruit_img2, #fruit_img3{
     position: relative;
     left: 400px;
   }

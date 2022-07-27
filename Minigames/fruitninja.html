@@ -6,18 +6,26 @@
    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <head>
 <body>
+    <!-- TO ADD MORE FRUIT:
+            * change num_fruit_elems to desired amount
+            * make sure fruit_poss array contains that many elements
+            * add the correct amount of <img> in the fruit div, copy the existing format and change id to "fruit_img#"
+            * go to mini.css and in the fruit_img# section, add all the new fruit_img# ids not there already
+    -->
     <!-- <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
     <p id="output">Value: 50</p> -->
     
     <div id="fruit"  >
-        <img src="CrossyRoadImages/car1.png" top="0px" width="100px" height = "100px" id="fruit_img">
+        <img src="#" width="100px" height="100px" id="fruit_img1">
+        <img src="#" width="100px" height="100px" id="fruit_img2">
+        <img src="#" width="100px" height="100px" id="fruit_img3">
     </div>
     <div id="main">
         <div id="info" width="350px">
             <h1>Fruit Ninja!</h1>
-            <h3>Click to destroy fruit before they reach the bottom. You must see the whole fruit before you click!</h3>
+            <h3>Click to destroy fruit before they reach the bottom.</h3>
             <h4 id="score_elem">Score: 0</h4>
         </div>
         
@@ -28,55 +36,96 @@
         // document.getElementById("myRange").oninput = function() {
         // document.getElementById("output").innerHTML = "Value: "+this.value;
         // } 
-        var fruit_pos=0;
+        let fruit_poss=[0,0,0];
+        var num_fruit_elems=3;//num fruits at a time!!
         var score = 0;
         var finished = false;
-        var interval_speed = 80;//decrease for faster as round goes on
+        var interval_speed = 40;//decrease for faster as round goes on
         let max_pos = window.innerHeight;
         let fruit_images = ["apple.png", "banana.png", "blueberry.png", "kiwi.png", "peach.png", "pomegrante.png", "strawberry.png", "watermelon.png"]
-        function moveFruit(){
-            if(!finished){
-            fruit_pos+=1;
-            document.getElementById("fruit_img").style.top= fruit_pos+"px";
-            console.log(fruit_pos);
-            console.log(max_pos);
-            if(fruit_pos>=max_pos){
-                gameOver();
-            }
-        }
-        }
+        setUpFruits();
+        
         //document.getElementById("fruit_img").style.top = (window.innerHeight-100)+"px";
-        document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
+        //document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
         const gameInterval = setInterval(moveFruit,interval_speed);
         console.log(window.innerHeight);
-        document.body.onkeydown=function(){
-            if(!finished){
-                //reset lowest fruit to the top (random height!) and make it a new fruit
-                if(fruit_pos>0){
-                fruit_pos = Math.floor(Math.random()*200-300);//from -100 to -300
-                
-                interval_speed -=1;
-                if(interval_speed<5){
-                    interval_speed=5;
-                }
-                score+=1;
-                
-                document.getElementById("fruit_img").style.top=fruit_pos+"px";
-                document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
-                document.getElementById("score_elem").innerHTML = "Score: "+score;
-                clearInterval(gameInterval);
-                gameInterval = setInterval(moveFruit, interval_speed);
-                }
-         }
+
+        function setUpFruits(){
+            //all get rand images and init locations
+            for(var i=1; i<=num_fruit_elems; i++){
+                elem_name = "fruit_img"+i;
+                setRandLoc(elem_name,i-1);
+                setRandImg(elem_name);
+            }
         }
+        
+        function setRandLoc(elem_id,idx){
+            var widthNum = (window.innerWidth-400);
+            var x = Math.floor(Math.random()*widthNum+100);
+            var y = Math.floor(Math.random()*200-300);
+            document.getElementById(elem_id).style.top = y+"px";
+            console.log("x val of "+x+" for "+elem_id);
+            document.getElementById(elem_id).style.left = x+"px";
+            fruit_poss[idx]=y;
+        }
+        function setRandImg(elem_id){
+            document.getElementById(elem_id).src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
+        }
+        function moveFruit(){
+            if(!finished){
+                for(var i=1; i<=num_fruit_elems; i++){
+                    fruit_poss[i-1]+=1;
+                    //console.log("new y of "+fruit_poss[i-1]);
+                    document.getElementById("fruit_img"+i).style.top= fruit_poss[i-1]+"px";
+                    if(fruit_poss[i-1]>=max_pos){
+                        gameOver();
+                    }
+                }
+            }
+        }
+        
         function gameOver(){
             //you died
             document.getElementById("score_elem").innerHTML="Oh no a fruit escaped! Your score is: "+score;
             clearInterval(gameInterval);
             fruit_pos = -2000000;
-            document.getElementById("fruit_img").style.top=fruit_pos+"px";
-
+            for(var i=1; i<=num_fruit_elems; i++){
+                document.getElementById("fruit_img"+i).style.top=fruit_pos+"px";
+                fruit_poss[i-1]=fruit_pos;
+            }
             finished = true;
+        }
+        document.body.onkeydown=function(){
+            if(!finished){
+                //reset lowest fruit to the top (random height!) and make it a new fruit
+                var maxI=0;
+                var maxY = -200;
+                for(var i=1; i<=num_fruit_elems; i++){
+                    if(fruit_poss[i-1]>maxY){
+                        maxI=i;
+                        maxY=fruit_poss[i-1];
+                    }
+                }
+                if(maxI!=0){
+                setRandLoc("fruit_img"+maxI,maxI-1);//from -100 to -300
+                setRandImg("fruit_img"+maxI);
+            //     if(score%10==0){
+            //     interval_speed -=1;//get faster every 10 fruits
+            //     console.log("speed "+interval_speed);
+            // }
+            //     if(interval_speed<5){
+            //         interval_speed=5;
+            //     }
+                
+                score+=1;
+                document.getElementById("score_elem").innerHTML = "Score: "+score;     
+                // document.getElementById("fruit_img"+maxI).style.top=fruit_poss[maxI-1]+"px";
+                // document.getElementById("fruit_img"+maxI).src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
+                
+                //clearInterval(gameInterval);//will this still work??
+                //gameInterval = setInterval(moveFruit, interval_speed);
+                }
+         }
         }
     </script>
 </body>
