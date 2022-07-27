@@ -24,35 +24,6 @@
         canvas.width = Window.innerWidth;
         canvas.height = Window.innerHeight;
 
+        
 
-
-        for(var road=80; road<290; road+=50) {
-            var roadImg = document.createElement("IMG");
-            roadImg.style.top=road+"px";
-            roadImg.style.position = "relative";
-            //roadImg.style.left="20px";
-            roadImg.style.width="60%";
-            roadImg.style.height = lineHeight+"px";
-            roadImg.src="CrossyRoadImages/road.jpeg";
-            document.getElementById("road").appendChild(roadImg);
-
-            var carImg = document.createElement("IMG");
-            carImg.style.top = (road-30)+"px";
-            carImg.style.left="-200px";
-            carImg.style.position = "relative";
-            carImg.style.width = "50px";
-            carImg.style.height = lineHeight/2+"px";
-            var carnum =Math.floor( Math.random()*3);
-            carImg.src = "CrossyRoadImages/car"+carnum+".png";
-            cars[index]=carImg;
-            carImg.style.animationName = "moveCar";
-            var anidur = Math.floor(Math.random()*3)+3;
-
-            document.getElementById("road").appendChild(carImg);
-            index+=1;
-            
-        }
-        // document.getElementById('road').style.left = '-1000000px';
-        //document.getElementById('road').style.top = '-1000000px';
-        // Set visibility of div road to invisible. Add it to canvas later
     </script>
