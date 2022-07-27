@@ -384,7 +384,7 @@ div.elements-container {
     background: #3a1e77; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
-  #fruit_img1, #fruit_img2, #fruit_img3{
+  #fruit_img1, #fruit_img2{
     position: relative;
     left: 400px;
   }
@@ -392,8 +392,25 @@ div.elements-container {
     display: flex;
     flex-direction: row;
     word-wrap: normal;
+    
   }
   #info{
     display: flex;
     flex-direction: column;
+    text-align: center;
+  }
+  .ninja{
+    font-family: 'Shojumaru', cursive;
+    font-size: 80px;
+  }
+#score_elem{
+    font-family: 'Shojumaru', cursive;
+    font-size: 40px;
+  }
+  #my_timer,#instructions{
+    font-family: 'Cuprum', sans-serif;
+    font-size: 45px;
+  }
+  body{
+    background-color: rgb(167, 210, 227);
   }
