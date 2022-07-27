@@ -27,6 +27,7 @@
             <h1>Fruit Ninja!</h1>
             <h3>Click to destroy fruit before they reach the bottom.</h3>
             <h4 id="score_elem">Score: 0</h4>
+            <h4 id="my_timer"></h4>
         </div>
         
         
@@ -39,12 +40,13 @@
         let fruit_poss=[0,0,0];
         var num_fruit_elems=3;//num fruits at a time!!
         var score = 0;
+        var game_length = 120; //time in seconds for the game
         var finished = false;
         var interval_speed = 40;//decrease for faster as round goes on
         let max_pos = window.innerHeight;
         let fruit_images = ["apple.png", "banana.png", "blueberry.png", "kiwi.png", "peach.png", "pomegrante.png", "strawberry.png", "watermelon.png"]
         setUpFruits();
-        
+        startTimer();
         //document.getElementById("fruit_img").style.top = (window.innerHeight-100)+"px";
         //document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
         const gameInterval = setInterval(moveFruit,interval_speed);
@@ -58,7 +60,39 @@
                 setRandImg(elem_name);
             }
         }
-        
+        function startTimer(){
+            var countDownDate = new Date().getTime()+1000*game_length;
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                
+                
+                // Time calculations for days, hours, minutes and seconds
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                if(minutes>0){
+                document.getElementById("my_timer").innerHTML = "Time left: "+minutes + "m " + seconds + "s ";
+                }
+                else{
+                    document.getElementById("my_timer").innerHTML = "Time left: "+ seconds + "s ";
+                }
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("my_timer").innerHTML = "DONE!";
+                    gameOver();
+                }
+            }, 1000);
+
+        }
         function setRandLoc(elem_id,idx){
             var widthNum = (window.innerWidth-400);
             var x = Math.floor(Math.random()*widthNum+100);
@@ -77,8 +111,9 @@
                     fruit_poss[i-1]+=1;
                     //console.log("new y of "+fruit_poss[i-1]);
                     document.getElementById("fruit_img"+i).style.top= fruit_poss[i-1]+"px";
-                    if(fruit_poss[i-1]>=max_pos){
-                        gameOver();
+                    if(fruit_poss[i-1]>=max_pos){//reset if it goes off screen
+                        setRandLoc("fruit_img"+i,i-1);//from -100 to -300
+                        setRandImg("fruit_img"+i);
                     }
                 }
             }
@@ -86,7 +121,7 @@
         
         function gameOver(){
             //you died
-            document.getElementById("score_elem").innerHTML="Oh no a fruit escaped! Your score is: "+score;
+            document.getElementById("score_elem").innerHTML="Good game! Your score is: "+score;
             clearInterval(gameInterval);
             fruit_pos = -2000000;
             for(var i=1; i<=num_fruit_elems; i++){
