@@ -1,0 +1,92 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.starting_title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+h1 {
+    margin: 0px;
+    font-size: 130px;
+    font-family: Kanit;
+    animation: rainbow 2.5s linear;
+    animation-iteration-count: infinite;
+}
+
+h3 {
+    margin: 0px;
+    margin-bottom: -35px;
+    font-size: 40px;
+    font-family: Kanit;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.startbutton {
+    border: none;
+    padding: 0px 20px;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: rgb(104, 245, 104);
+    font-family: Kanit;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+@keyframes rainbow {
+
+    100%,
+    0% {
+        color: rgb(255, 0, 0);
+    }
+
+    8% {
+        color: rgb(255, 127, 0);
+    }
+
+    16% {
+        color: rgb(255, 255, 0);
+    }
+
+    25% {
+        color: rgb(127, 255, 0);
+    }
+
+    33% {
+        color: rgb(0, 255, 0);
+    }
+
+    41% {
+        color: rgb(0, 255, 127);
+    }
+
+    50% {
+        color: rgb(0, 255, 255);
+    }
+
+    58% {
+        color: rgb(0, 127, 255);
+    }
+
+    66% {
+        color: rgb(0, 0, 255);
+    }
+
+    75% {
+        color: rgb(127, 0, 255);
+    }
+
+    83% {
+        color: rgb(255, 0, 255);
+    }
+
+    91% {
+        color: rgb(255, 0, 127);
+    }
+}
