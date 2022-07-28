@@ -2,56 +2,60 @@
 <head>
    <title>ATC Game Center</title>
     <link href="mini.css" type="text/css" rel="stylesheet">
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@600&family=Shojumaru&display=swap" rel="stylesheet"> 
 <head>
 <body>
     <!-- TO ADD MORE FRUIT:
             * change num_fruit_elems to desired amount
-            * make sure fruit_poss array contains that many elements
-            * add the correct amount of <img> in the fruit div, copy the existing format and change id to "fruit_img#"
-            * go to mini.css and in the fruit_img# section, add all the new fruit_img# ids not there already
     -->
     <!-- <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
     <p id="output">Value: 50</p> -->
+    <!-- hi -->
+    <div id="fruit"  ></div>
     
-    <div id="fruit"  >
-        <img src="#" width="100px" height="100px" id="fruit_img1">
-        <img src="#" width="100px" height="100px" id="fruit_img2">
-        <img src="#" width="100px" height="100px" id="fruit_img3">
-    </div>
-    <div id="main">
-        <div id="info" width="350px">
-            <h1>Fruit Ninja!</h1>
-            <h3>Click to destroy fruit before they reach the bottom.</h3>
+        <div id="info" width="100%" height="100%">
+            <h1 class="ninja">Fruit Ninja!</h1>
             <h4 id="score_elem">Score: 0</h4>
+            <h3 id="instructions">Click to destroy fruit before they reach the bottom.</h3>
+            
             <h4 id="my_timer"></h4>
         </div>
         
         
-    </div>
+   
     
     <script>
-        // document.getElementById("myRange").oninput = function() {
-        // document.getElementById("output").innerHTML = "Value: "+this.value;
-        // } 
-        let fruit_poss=[0,0,0];
+        
         var num_fruit_elems=3;//num fruits at a time!!
         var score = 0;
+        var fruit_poss=new Array(num_fruit_elems);
         var game_length = 120; //time in seconds for the game
         var finished = false;
         var interval_speed = 40;//decrease for faster as round goes on
         let max_pos = window.innerHeight;
-        let fruit_images = ["apple.png", "banana.png", "blueberry.png", "kiwi.png", "peach.png", "pomegrante.png", "strawberry.png", "watermelon.png"]
+        var num_fruit_rows = 3; // rough number of rows the fruit form as they come down
+        let fruit_images = ["apple.png", "banana.png", "blueberry.png", "raspberry.png","kiwi.png", "peach.png", "pomegrante.png", "strawberry.png", "watermelon.png"]
+        createImages();
         setUpFruits();
         startTimer();
         //document.getElementById("fruit_img").style.top = (window.innerHeight-100)+"px";
         //document.getElementById("fruit_img").src = "FruitImages/"+fruit_images[Math.floor(Math.random()*fruit_images.length)];
         const gameInterval = setInterval(moveFruit,interval_speed);
         console.log(window.innerHeight);
-
+        function createImages(){
+            for(var i=1; i<=num_fruit_elems; i++){
+                var newImg = document.createElement("IMG");
+                newImg.style.position="relative";
+                newImg.style.width = "100px";
+                newImg.style.height = "100px";
+                newImg.id = "fruit_img"+i;
+                document.getElementById("fruit").appendChild(newImg);
+            }
+        }
         function setUpFruits(){
             //all get rand images and init locations
             for(var i=1; i<=num_fruit_elems; i++){
@@ -94,9 +98,19 @@
 
         }
         function setRandLoc(elem_id,idx){
-            var widthNum = (window.innerWidth-400);
+            var widthNum = (window.innerWidth-600);
             var x = Math.floor(Math.random()*widthNum+100);
-            var y = Math.floor(Math.random()*200-300);
+            
+            var type = Math.floor(Math.random()*num_fruit_rows);
+            var y = -200-(type/3.0)*window.innerHeight;
+            var extra = Math.floor(Math.random()*(1/8.0)*window.innerHeight);
+            if(Math.random()<.5){
+                y+=extra;
+            }
+            else{
+                y-=extra;
+            }
+            //var y = Math.floor(Math.random()*window.innerHeight-300-window.innerHeight);
             document.getElementById(elem_id).style.top = y+"px";
             console.log("x val of "+x+" for "+elem_id);
             document.getElementById(elem_id).style.left = x+"px";
@@ -108,7 +122,7 @@
         function moveFruit(){
             if(!finished){
                 for(var i=1; i<=num_fruit_elems; i++){
-                    fruit_poss[i-1]+=1;
+                    fruit_poss[i-1]+=getSpeed(fruit_poss[i-1]);
                     //console.log("new y of "+fruit_poss[i-1]);
                     document.getElementById("fruit_img"+i).style.top= fruit_poss[i-1]+"px";
                     if(fruit_poss[i-1]>=max_pos){//reset if it goes off screen
@@ -118,7 +132,12 @@
                 }
             }
         }
-        
+        function getSpeed(pos){
+            var maxHeight = window.innerHeight;
+            var maxSpeed = 6;
+            var minSpeed = .01;
+            return (maxHeight-pos)*(maxSpeed-minSpeed)/maxHeight+minSpeed;
+        }
         function gameOver(){
             //you died
             document.getElementById("score_elem").innerHTML="Good game! Your score is: "+score;
@@ -151,7 +170,7 @@
             //     if(interval_speed<5){
             //         interval_speed=5;
             //     }
-                
+                console.log("max y: "+maxY)
                 score+=1;
                 document.getElementById("score_elem").innerHTML = "Score: "+score;     
                 // document.getElementById("fruit_img"+maxI).style.top=fruit_poss[maxI-1]+"px";

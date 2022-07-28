@@ -354,6 +354,7 @@ div.elements-container {
     width: 100%;
     height: 100%;
 }
+<<<<<<< HEAD
 
 @keyframes moveCar {
     0% {
@@ -364,3 +365,74 @@ div.elements-container {
         left: 29%;
     }
 }
+=======
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 200px; /* Full-width */
+    height: 9px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 10px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    background: #3a1e77; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 10px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+  
+    background: #3a1e77; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  #fruit_img1, #fruit_img2{
+    position: relative;
+    left: 400px;
+  }
+  #main{
+    display: flex;
+    flex-direction: row;
+    word-wrap: normal;
+    
+  }
+  #info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .ninja{
+    font-family: 'Shojumaru', cursive;
+    font-size: 80px;
+  }
+#score_elem{
+    font-family: 'Shojumaru', cursive;
+    font-size: 40px;
+  }
+  #my_timer,#instructions{
+    font-family: 'Cuprum', sans-serif;
+    font-size: 45px;
+  }
+  body{
+    background-color: rgb(167, 210, 227);
+  }
+>>>>>>> 72c3ed8c7386b6409ceda73726a4a7844728fbf5
