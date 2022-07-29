@@ -1,19 +1,14 @@
-
-
-
-
-
 body {
     margin: 0px;
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    
+
 }
 
 /*navigation bar*/
 
-.nav-wrapper{
+.nav-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,61 +16,62 @@ body {
     color: black;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.555);
-    
-    
+
+
 }
 
-.nav-wrapper > .left-nav > div{
+.nav-wrapper>.left-nav>div {
     margin-right: 20px;
     font-size: 22px;
     font-weight: 500;
 
 }
 
-.nav-wrapper > .right-nav > div{
+.nav-wrapper>.right-nav>div {
     margin-right: 20px;
     font-size: 22px;
     font-weight: 500;
 
 }
 
-.left-nav{
+.left-nav {
     display: flex;
 }
 
-.nav-link-wrapper{
+.nav-link-wrapper {
     height: 40px;
     border-bottom: 1px solid transparent;
-    transition: border-bottom  0.5s;
+    transition: border-bottom 0.5s;
 }
 
-.nav-link-wrapper a{
+.nav-link-wrapper a {
     color: black;
     text-decoration: none;
     transition: color 0.5s;
 }
 
-.nav-link-wrapper:hover{
+.nav-link-wrapper:hover {
     border-bottom: 1px solid black;
 
 }
 
-.active-nav-link{
+.active-nav-link {
     border-bottom: 1px solid black;
 }
 
-.active-nav-link a{
+.active-nav-link a {
     color: black !important;
 }
 
 
 /*button styles*/
-.button-container{
+.button-container {
     display: flex;
     flex-direction: row;
     padding: 38px;
 }
-button{
+
+button {
     color: white;
     font-weight: 600;
     font-size: large;
@@ -86,23 +82,25 @@ button{
     text-decoration: none;
     margin-left: 14px;
     margin-right: 14px
-
 }
 
-.start-button > button:hover{
+.start-button>button:hover {
     transition: color .5s;
     color: lightgreen;
 }
-.stop-button > button:hover{
+
+.stop-button>button:hover {
     transition: color .5s;
     color: red;
 }
+
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
+
 /*#next {
   position: relative;
   margin-top: 30px;
@@ -126,7 +124,7 @@ button{
 }*/
 /*home styles */
 
-.home-container{
+.home-container {
     display: flex;
     flex-direction: column;
     width: 39%;
@@ -135,24 +133,24 @@ button{
     margin: auto
 }
 
-.home-container > .text-link > a{
+.home-container>.text-link>a {
     text-decoration: none;
     color: black;
     border-bottom: 1px solid transparent;
     height: 22px;
-    
+
 }
 
-.home-container > .text-link:hover{
+.home-container>.text-link:hover {
     transition: border-bottom .5s;
     border-bottom: 1px solid black;
 }
 
-.home-container > a{
+.home-container>a {
     margin-top: 50px;
 }
 
-/* lights */ 
+/* lights */
 
 div.elements-container {
     justify-content: center;
@@ -161,29 +159,31 @@ div.elements-container {
     flex-direction: column;
 }
 
-.elements-container > img {
+.elements-container>img {
     margin: 20px;
 }
 
 /*games page styles*/
-.games-container{
+.games-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.game-styles-wrapper{
+.game-styles-wrapper {
     position: relative;
     padding-top: 30px;
     padding-bottom: 30px;
     width: 100%;
 
 }
+
 .games-img-background {
     height: 200px;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    background-size: cover; /* crops the images of different sizes so they sit next to each other*/
+    background-size: cover;
+    /* crops the images of different sizes so they sit next to each other*/
     background-position: center;
     align-content: center;
     justify-content: center;
@@ -192,7 +192,7 @@ div.elements-container {
     transition: border 0.5s;
 }
 
-.img-text{
+.img-text {
     position: absolute;
     text-align: center;
     height: 100%;
@@ -201,14 +201,14 @@ div.elements-container {
     color: white;
 }
 
-.games-img-background:hover{
+.games-img-background:hover {
     border-bottom-color: #a57ace;
-    border-right-color:  #a57ace;
-    
+    border-right-color: #a57ace;
+
 }
 
 /* banner styles*/
-.close-announcement{
+.close-announcement {
     font-size: 3vh;
     color: white;
     transition: 0.2s ease;
@@ -217,7 +217,7 @@ div.elements-container {
     margin-left: 20%;
 }
 
-.announcement-banner{
+.announcement-banner {
     background-color: #a57ace;
     width: 100%;
     height: min-content;
@@ -225,12 +225,14 @@ div.elements-container {
     margin-left: auto;
     font-size: 12px;
 }
-.announcement-banner > h2{
+
+.announcement-banner>h2 {
     margin-left: 20%;
     margin-right: 20%;
     align-self: center;
 }
-.books-container{
+
+.books-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -239,29 +241,33 @@ div.elements-container {
 }
 
 /*shopping game*/
-.board{
+.board {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
 }
-.spinner{
+
+.spinner {
     margin-left: 10%;
     text-align: center;
     height: 150px;
     width: 150px;
 }
-#main{
+
+#main {
     height: 50%;
     max-height: 450px;
     max-width: 50%;
     overflow: hidden;
 }
-.coins-values{
+
+.coins-values {
     margin-top: 20px;
 }
-.spinning{
+
+.spinning {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -270,81 +276,95 @@ div.elements-container {
     overflow: hidden;
     transition: all ease 2s;
 }
-.space1{
+
+.space1 {
     clip-path: polygon(50% 50%, 100% 100%, 0 100%);
     position: relative;
     bottom: 203%;
     left: 0%;
-    
+
 }
-.space2{
+
+.space2 {
     clip-path: polygon(50% 50%, 100% 0, 0 0);
     position: relative;
     bottom: 305%;
     left: 0px;
 }
-.space3{
+
+.space3 {
     clip-path: polygon(50% 50%, 0 100%, 0 0);
     position: relative;
     vertical-align: middle;
-    top:0px;
-    left:0px;
-}
-.space4{
-    clip-path: polygon(50% 50%, 100% 100%, 100% 0);
-    position: relative;
-    left:0px;
-    bottom:100%;
+    top: 0px;
+    left: 0px;
 }
 
-#vroom{
+.space4 {
+    clip-path: polygon(50% 50%, 100% 100%, 100% 0);
+    position: relative;
+    left: 0px;
+    bottom: 100%;
+}
+
+#vroom {
     position: absolute;
 }
 
 #bub {
     position: relative;
-    left:-100px;
-    top:-80%;
-    animation :none;
-    
-  }
-  
-  @keyframes slide {
+    left: -100px;
+    top: -80%;
+    animation: none;
+
+}
+
+@keyframes slide {
     0% {
-      transform: translatex(0%)
+        transform: translatex(0%)
     }
-  
+
     100% {
-      transform: translatex(100%)
+        transform: translatex(100%)
     }
-  }
-  
-  .crossy-game{
+}
+
+.crossy-game {
     justify-content: center;
     align-items: center;
-  }
-  #chicken{
+}
+
+#chicken {
     top: 100%;
     position: relative;
-  }
-#chick{
+}
+
+#chick {
     display: grid;
     align-items: center;
     justify-items: center;
 }
-  #road {
+
+#road {
     background: lightgreen;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     justify-items: center;
-    width:100%;
-    height:100%;
-  }
-@keyframes moveCar{
-    0% {left: -30%;}
-    100% {left:29%;}
+    width: 100%;
+    height: 100%;
 }
+
+@keyframes moveCar {
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 29%;
+    }
+}
+
 .slidecontainer {
     width: 100%; /* Width of the outside container */
   }
@@ -415,7 +435,7 @@ div.elements-container {
   body{
     background-color: rgb(167, 210, 227);
   }
-
-  #fruit{
+#fruit{
     height: 0%;
   }
+
