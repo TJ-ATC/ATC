@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <head>
    <title>ATC Game Center</title>
-    <link href="mini.css" type="text/css" rel="stylesheet">
+    <link href="mini2.css" type="text/css" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <head>
 <body>
+    <div id="endscreen" class="box stack-top" style="background: blue;"></div>
    <div class="nav-wrapper">
       <!-- <div class="left-nav">
          <div class="nav-link-wrapper ">
@@ -39,6 +40,8 @@
    </body>
    
    <script>
+        document.getElementById('endscreen').style.visibility='hidden';
+
        var car = 0;
        var numCars = 7;
        document.getElementById('bub').style.animationPlayState = 'none';
@@ -67,6 +70,10 @@
                 console.log(sessionStorage.getItem("isDone"));
                 // beat.load();
                 //next mini game
+                setTimeout(function(){
+                document.getElementById('endscreen').style.visibility='visible';
+                
+                },1000);
             }
             else{
                 transition();
@@ -119,7 +126,7 @@
                  if(pos == 250){
                     car++;
                     document.getElementById('myCar').src="CarImages/car"+car+".png";}
-            pos+=2;
+            pos+=8;
             //document.getElementById('bub').style.top = pos + 'px';
             document.getElementById('bub').style.left = pos + 'px';
             }
