@@ -2,8 +2,8 @@ html {
     padding-top: 75px;
     margin: 0;
     background-color: lightgreen;
+    scroll-behavior: smooth;
 }
-
 
 body {
     padding: 100px 20px;
