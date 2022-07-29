@@ -398,19 +398,24 @@ div.elements-container {
     display: flex;
     flex-direction: column;
     text-align: center;
+    
   }
   .ninja{
     font-family: 'Shojumaru', cursive;
-    font-size: 80px;
+    font-size:369%;
   }
 #score_elem{
     font-family: 'Shojumaru', cursive;
-    font-size: 40px;
+    font-size:x-large;
   }
   #my_timer,#instructions{
     font-family: 'Cuprum', sans-serif;
-    font-size: 45px;
+    font-size: x-large;
   }
   body{
     background-color: rgb(167, 210, 227);
+  }
+
+  #fruit{
+    height: 0%;
   }
