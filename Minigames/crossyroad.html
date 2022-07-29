@@ -13,7 +13,7 @@
     <div class="game">
         <div class="roads" id="roads">
             <div class="caRRoad" id="caRRoad0">
-                <img class="road" id="referenceRoad" src="CrossyRoadImages/road.jpeg" alt="road">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
             </div>
             <div class="caRRoad" id="caRRoad1">
                 <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
@@ -37,7 +37,6 @@
         var carSpeeds = [];
         var carLocation = [5, 5, 5, 5, 5];
         var step = 0; // total 10 = finish
-        console.log(document.getElementById("referenceRoad").style.width)
 
         var roadWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         roadWidth -= 40;
@@ -58,6 +57,7 @@
         }
 
         document.body.onkeydown = function () {
+            window.scroll(0, (step * 75));
             step++;
             document.getElementById("chicken").style.top = (100 + (step * 75)) + "px";
         }
@@ -74,6 +74,7 @@
                     if (carLocation[i] >= roadCenter - 90 && carLocation[i] <= (roadCenter)) {
                         step = 0;
                         document.getElementById("chicken").style.top = "100px";
+                        window.scroll(0,0);
                     }
 
                 }
