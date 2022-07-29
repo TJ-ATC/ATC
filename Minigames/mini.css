@@ -435,7 +435,6 @@ div.elements-container {
   body{
     background-color: rgb(167, 210, 227);
   }
-<<<<<<< HEAD
 
   .box{
     width: 100%;
@@ -446,12 +445,21 @@ div.elements-container {
     opacity: 0.8;  /* for demo purpose  */
 }
 .stack-top{
-    z-index: 9;
-    margin: 20px; /* for demo purpose  */
+    z-index: 9;    
 }
-=======
-#fruit{
-    height: 0%;
-  }
 
->>>>>>> ba5c2828dba228fc1686dcbadffa2af65ad80e20
+#nextgame{
+    background-color: green;
+    opacity: 2000%;
+    width: 50%;
+    height: 35%;
+    border-style: solid;
+    border-width: 2px;
+    border:visible;
+    border-color: white;
+    color:black;
+    position:absolute;
+    top:35.5%;
+    left:25%;
+    font-family: 'Courier New', Courier, monospace;
+}

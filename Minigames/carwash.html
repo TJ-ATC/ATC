@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <head>
    <title>ATC Game Center</title>
-    <link href="mini2.css" type="text/css" rel="stylesheet">
+    <link href="mini.css" type="text/css" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <head>
 <body>
-    <div id="endscreen" class="box stack-top" style="background: blue;"></div>
+   <!-- ENDSCREEN STEP 1 -->
+   <div id="endscreen" class="box stack-top" style="background: black;">
+    <button id="nextgame">Click to go to the next game</button>
+    </div>
    <div class="nav-wrapper">
       <!-- <div class="left-nav">
          <div class="nav-link-wrapper ">
@@ -40,7 +43,9 @@
    </body>
    
    <script>
-        document.getElementById('endscreen').style.visibility='hidden';
+// END SCREEN STEP 2
+document.getElementById('endscreen').style.visibility='hidden';
+
 
        var car = 0;
        var numCars = 7;
@@ -52,7 +57,14 @@
       
        //document.addEventListener('click', () => {
         document.body.onkeydown=function(){
-         
+         if(isDone){
+            // ENDSCREEN STEP 4
+            //CHANGE WHEN NEW GAME IS ADDED 
+            // Make sure to not include the game you're currently in
+            let gameNames = ["reactionclick.html", "crossyroad.html", "fruitninja.html"]
+            var url = gameNames[Math.floor(Math.random()*gameNames.length)];
+            window.open(url,"_self");
+         }
 
         //    while(document.getElementById('bub').innerHTML.y<=1000){
         //     document.getElementById('bub').innerHTML.y+=200;
@@ -70,10 +82,11 @@
                 console.log(sessionStorage.getItem("isDone"));
                 // beat.load();
                 //next mini game
-                setTimeout(function(){
+                // ENDSCREEN STEP 3
+            setTimeout(function(){
                 document.getElementById('endscreen').style.visibility='visible';
-                
-                },1000);
+                 
+                },3069);
             }
             else{
                 transition();

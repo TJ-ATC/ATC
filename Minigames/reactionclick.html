@@ -6,6 +6,10 @@
    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <head>
 <body>
+     <!-- ENDSCREEN STEP 1 -->
+     <div id="endscreen" class="box stack-top" style="background: black;">
+        <button id="nextgame">Click to go to the next game</button>
+        </div>
     <div class="nav-wrapper">
         <!-- <div class="left-nav">
             <div class="nav-link-wrapper ">
@@ -42,6 +46,9 @@
 
     </body>
     <script>
+// END SCREEN STEP 2
+document.getElementById('endscreen').style.visibility='hidden';
+
         var main_menu = true;
         var isRed = false;
         let startTime = 0;
@@ -51,9 +58,19 @@
         var notInRound = true;
         var bestScoreIndex=0;
         var bestScore = 1000000;
-        
+
+        var win = false;
+
         document.addEventListener('click', () => {
             console.log(round);
+            if(win){
+                // ENDSCREEN STEP 4
+            //CHANGE WHEN NEW GAME IS ADDED 
+            // Make sure to not include the game you're currently in
+            let gameNames = ["carwash.html", "crossyroad.html", "fruitninja.html"]
+            var url = gameNames[Math.floor(Math.random()*gameNames.length)];
+            window.open(url,"_self");
+            }
             if(round<5){
             document.getElementById('cleeck').innerHTML = "";
             document.body.style.backgroundColor = "royalblue";
@@ -97,7 +114,13 @@
             }
             if(round>=5){
               document.body.style.backgroundColor = "white";
-              document.getElementById('cleeck').innerHTML = "You Win!";  
+              document.getElementById('cleeck').innerHTML = "You Win!"; 
+              win = true; 
+              // ENDSCREEN STEP 3
+            setTimeout(function(){
+                document.getElementById('endscreen').style.visibility='visible';
+                 
+                },3069);
             }
             
         });
