@@ -14,15 +14,15 @@
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
     <p id="output">Value: 50</p> -->
-    <!-- hi -->
-    <div id="fruit"  ></div>
+    
+    <div id="fruit" height="0px" ></div>
     
         <div id="info" width="100%" height="100%">
-            <h1 class="ninja">Fruit Ninja!</h1>
-            <h4 id="score_elem">Score: 0</h4>
-            <h3 id="instructions">Click to destroy fruit before they reach the bottom.</h3>
+            <p class="ninja">Fruit Ninja!</p>
+            <p id="score_elem">Score: 0</p>
+            <p id="instructions">Click to destroy fruit before they reach the bottom.</p>
             
-            <h4 id="my_timer"></h4>
+            <p id="my_timer"></p>
         </div>
         
         
@@ -55,6 +55,7 @@
                 newImg.id = "fruit_img"+i;
                 document.getElementById("fruit").appendChild(newImg);
             }
+            
         }
         function setUpFruits(){
             //all get rand images and init locations
@@ -63,6 +64,7 @@
                 setRandLoc(elem_name,i-1);
                 setRandImg(elem_name);
             }
+            document.getElementById('fruit').style.height='0px';
         }
         function startTimer(){
             var countDownDate = new Date().getTime()+1000*game_length;

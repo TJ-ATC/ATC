@@ -1,29 +1,92 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-   <title>ATC Game Center</title>
-    <link href="mini.css" type="text/css" rel="stylesheet">
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossy Road - ATC Game Center</title>
+    <link href="crossyroad.css" rel="stylesheet">
+</head>
+
 <body>
-    <div class="crossy-game" id = "chick">
-        <div><img id="chicken" src="CrossyRoadImages/crossboy.png" width="50px" height = "70px"></div>
-        
+    <div class="game">
+        <div class="roads" id="roads">
+            <div class="caRRoad" id="caRRoad0">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
+            </div>
+            <div class="caRRoad" id="caRRoad1">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
+            </div>
+            <div class="caRRoad" id="caRRoad2">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
+            </div>
+            <div class="caRRoad" id="caRRoad3">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
+            </div>
+            <div class="caRRoad" id="caRRoad4">
+                <img class="road" src="CrossyRoadImages/road.jpeg" alt="road">
+            </div>
+        </div>
+        <img id="chicken" src="CrossyRoadImages/crossboy.png" alt="chicken">
     </div>
-    <div id ='road'>
-        
-    </div>
-    </body>
-<canvas id = 'canvas' width="100%" height="100%">
 
-</canvas>
+
     <script>
-        const canvas = document.querySelector('canvas');
-        const context = canvas.getContext('2d');
+        var cars = [];
+        var carSpeeds = [];
+        var carLocation = [5, 5, 5, 5, 5];
+        var step = 0; // total 10 = finish
 
-        canvas.width = Window.innerWidth;
-        canvas.height = Window.innerHeight;
+        var roadWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        roadWidth -= 40;
+        if (roadWidth > 1200) {
+            roadWidth = 1200;
+        }
+        var roadCenter = Math.floor(roadWidth / 2);
 
-        
+        for (var i = 0; i < 5; i++) {
+            var carImg = document.createElement("IMG");
+            carImg.classList.add("car");
+            var carnum = Math.floor(Math.random() * 3);
+            carImg.src = "CrossyRoadImages/car" + carnum + ".png";
+            cars[i] = carImg;
+            document.getElementById("caRRoad" + i).appendChild(carImg);
+            var carSpeed = Math.floor(Math.random() * 5) + 5;
+            carSpeeds[i] = carSpeed;
+        }
 
+        document.body.onkeydown = function () {
+            window.scroll(0, (step * 75));
+            step++;
+            document.getElementById("chicken").style.top = (100 + (step * 75)) + "px";
+        }
+
+        var gameInterval = setInterval(function () {
+            for (var i = 0; i < 5; i++) {
+                carLocation[i] = carLocation[i] + carSpeeds[i]
+                if (carLocation[i] > parseInt(getComputedStyle(document.querySelector(".road")).width) - 100 || 0) {
+                    carLocation[i] = 5;
+                }
+                cars[i].style.left = carLocation[i] + "px";
+
+                if ((step - 1) / 2 == i) { // chicken is on this road
+                    if (carLocation[i] >= roadCenter - 90 && carLocation[i] <= (roadCenter)) {
+                        step = 0;
+                        document.getElementById("chicken").style.top = "100px";
+                        window.scroll(0,0);
+                    }
+
+                }
+
+                if(step == 10)
+                {
+                    alert('YOU WIN!');
+                    step++;
+                }
+            }
+        }, 50);
     </script>
+</body>
+
+</html>
