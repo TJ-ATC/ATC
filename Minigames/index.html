@@ -20,5 +20,11 @@
 
 
 </body>
-
+<script>
+    document.body.onkeydown=function(){
+        let gameNames = ["carwash.html", "crossyroad.html", "reactionclick.html", "fruitninja.html"]
+        var url = gameNames[Math.floor(Math.random()*gameNames.length)];
+        window.open(url,"_self");
+    }
+</script>
 </html>
