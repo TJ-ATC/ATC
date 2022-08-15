@@ -34,6 +34,11 @@ body {
     text-decoration: none;
 }
 
+.nav-wrapper > .right-nav > div a {
+    color:white;
+    text-decoration: none;
+}
+
 .left-nav{
     display: flex;
 }
@@ -63,25 +68,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.home-container h2{
-    background-color: #E65462;
-    color: white;
-    font-size: 50px;
-    padding: 15px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-}
-
-.home-container p{
-    background-color: #C7C7C7;
-    color: black;
-    padding: 15px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 20px;
-    font-size: 20px;
 }
 
 
@@ -212,15 +198,23 @@ div.elements-container {
 .img-text{
     position: absolute;
     text-align: center;
-    height: 100%;
-    width: 100%;
-    top: 130px;
+    width: 200px;
+    top: 50px;
+    left: 100px;
     color: white;
+    font-size: 20px;
+    font-weight: 400px; 
+    background-color: rgba(0, 0, 0, 0.75);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
 }
 
 .games-img-background:hover{
-    border-bottom-color: #a57ace;
-    border-right-color:  #a57ace;
+    border-bottom-color: #E65462;
+    border-right-color:  #E65462;
+    border-top-color: #E65462;
+    border-left-color:  #E65462;
     
 }
 
