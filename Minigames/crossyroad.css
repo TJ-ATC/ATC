@@ -49,3 +49,19 @@ body {
     left: 50%;
     top: 100px;
 }
+#nextgame{
+    background-color: green;
+    opacity: 2000%;
+    width: 50%;
+    height: 35%;
+    border-style: solid;
+    border-width: 2px;
+    border:visible;
+    border-color: white;
+    color:black;
+    position:absolute;
+    top:35.5%;
+    left:25%;
+    z-index: 20;
+    font-family: 'Courier New', Courier, monospace;
+}
