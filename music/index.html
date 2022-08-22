@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html style="background-color: black;">
+
+<head>
+    <title> >Canvas Background through CSS</title>
+    <style type="text/css" media="screen">
+        canvas,
+        img {
+            display: block;
+            width: 1200px;
+            height: 600px;
+            margin: 4em auto;
+            border: 2px solid orange;
+        }
+
+        canvas {
+            background: url(musicstaff.png)
+        }
+
+        h1 {
+            margin-top: 0.25em;
+            font-size: 70px;
+        }
+    </style>
+
+</head>
+<h1 style="font-family: 'Courier New', monospace; text-align:center; color: azure; font-size: small;"> <pre>  
+    █████╗ ████████╗ ██████╗     ███╗   ███╗██╗   ██╗███████╗██╗ ██████╗     ██████╗  █████╗ ███╗   ███╗███████╗      ██╗██████╗ 
+    ██╔══██╗╚══██╔══╝██╔════╝    ████╗ ████║██║   ██║██╔════╝██║██╔════╝    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝     ██╔╝╚════██╗
+    ███████║   ██║   ██║         ██╔████╔██║██║   ██║███████╗██║██║         ██║  ███╗███████║██╔████╔██║█████╗      ██╔╝  █████╔╝
+    ██╔══██║   ██║   ██║         ██║╚██╔╝██║██║   ██║╚════██║██║██║         ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ╚██╗  ╚═══██╗
+    ██║  ██║   ██║   ╚██████╗    ██║ ╚═╝ ██║╚██████╔╝███████║██║╚██████╗    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗     ╚██╗██████╔╝
+    ╚═╝  ╚═╝   ╚═╝    ╚═════╝    ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝ ╚═════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝      ╚═╝╚═════╝ 
+                                                                                                                                 
+</pre> </h1>
+
+<body>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div style="display:none;">
+        <img id="source1" src="musicnote_blue.png" width="3" height="3">
+        <img id="source2" src="musicnote_cyan.png" width="3" height="3">
+        <img id="source3" src="musicnote_green.png" width="3" height="3">
+        <img id="source4" src="musicnote_orange.png" width="3" height="3">
+        <img id="source5" src="musicnote_pink.png" width="3" height="3">
+        <img id="source6" src="musicnote_yellow.png" width="3" height="3">
+
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const image1 = document.getElementById('source1');
+        const image2 = document.getElementById('source2');
+        const image3 = document.getElementById('source3');
+        const image4 = document.getElementById('source4');
+        const image5 = document.getElementById('source5');
+        const image6 = document.getElementById('source6');
+        const coords = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var x = 0, y = 0;
+
+        ctx.globalAlpha = 0.5;
+        ctx.fillStyle = "#474973";
+
+        loop(210);
+
+        function update_rectangle_leftright() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(x - 50, 0, 100, canvas.height);
+            drawLines();
+            ++x;
+            x %= canvas.width;
+        }
+
+        function update_rectangle_updown() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, y - 80, canvas.width, 160);
+            ctx.fillRect(x - 50, 0, 100, canvas.height);
+            drawLines();
+            ++y;
+            y %= canvas.height;
+        }
+        function drawLines() {
+            ctx.globalAlpha = 1;
+            for (let i = 0; i < coords.length; i++) {
+                ctx.drawImage(coords[i].img, coords[i].x - 75, coords[i].y - 75, 150, 150);
+            }
+            ctx.globalAlpha = 0.5; //transparency of the lines
+        }
+
+        function loop(a) {
+            x = a;
+            y = 50;
+
+            let continueloop = true;
+
+            document.addEventListener('keydown', function _listener(e) {
+                if (e.key !== ' ')
+                    return;
+                e.preventDefault();
+                continueloop = false;
+                document.removeEventListener('keydown', _listener, true);
+            });
+
+            function updateUpDownTimeout() {
+                update_rectangle_updown();
+                if (continueloop) {
+                    setTimeout(updateUpDownTimeout, 7); //SPEED
+                } else {
+                    if (y <= 130) {
+                        y = 130;
+                    }
+                    else if (y <= 300 && y > 130) {
+                        y = 200;
+                    }
+                    else if (y <= 390) {
+                        y = 390;
+                    }
+                    else {
+                        y = 430;
+                    }
+
+                    coords.push({ x: x, y: y, img: randomImage() });
+                    playsound(y);
+
+                    loop(x);
+                }
+            }
+
+            function updateLeftRightTimeout() {
+                update_rectangle_leftright();
+                if (continueloop) {
+                    setTimeout(updateLeftRightTimeout, 7);
+                }
+                else {
+                    continueloop = true;
+                    setTimeout(updateUpDownTimeout, 7);
+                    document.addEventListener('keydown', function _listener(e) {
+                        if (e.key !== ' ')
+                            return;
+                        e.preventDefault();
+                        document.removeEventListener('keydown', _listener, true);
+                    })
+                }
+            }
+            setTimeout(updateLeftRightTimeout, 7);
+        }
+        function randomImage() {
+            const rand = parseInt((Math.random() * (6 - 1) + 1));
+            if (rand == 1) {
+                return image1;
+            }
+            if (rand == 2) {
+                return image2;
+            }
+            if (rand == 3) {
+                return image3;
+            }
+            if (rand == 4) {
+                return image4;
+            }
+            if (rand == 5) {
+                return image5;
+            }
+            if (rand == 6) {
+                return image6;
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+Music notes:
+
+<button id="button" onclick="playmusic(1)">click me</button>
+<button id="button2" onclick="playmusic(2)">click me for audio 2</button>
+<audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" id="audio1"
+    style="display: none;"></audio>
+<audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" id="audio2"
+    style="display: none;"></audio>
+<!-- <audio controls src="./sounds/audiochime.mp3" id = "audiosample" style="display: none;"></audio> -->
+<script>
+    function playmusic(i) {
+        //(document.getElementById("audio"+String(i))).play(); //on the button click (you can replace this with note addition)
+        replay(coords);
+    }
+    function playmusic_all() {
+        (document.getElementById("audio" + String(1))).play();
+        //need to have a wait in between i think
+        (document.getElementById("audio" + String(2))).play();
+    }
+    //    function playsoundold() {                
+    //     var audio = new Audio('./sounds/audiochime.mp3');///used for testing
+    //     audio.play();
+    //    }
+
+    function playsound(y) {
+        var audio;
+        if (y == 130) {
+            audio = new Audio('./sounds/e4.mp3');
+        }
+        else if (y == 200) {
+            audio = new Audio('./sounds/c4.mp3');
+        }
+        else if (y == 390) {
+            audio = new Audio('./sounds/a4.mp3');
+        }
+        else if (y == 430) {
+            audio = new Audio('./sounds/f3.mp3');
+        }
+        audio.play();
+    }
+
+
+    function replay(coords) {
+        for (let i = 0; i < coords.length; i++) {
+            setTimeout(() => { playsound(coords[i].y); }, (coords[i].x - coords[0].x) * 4)
+        }
+    }
+    function getRandomNote() {
+
+
+    }
+</script>
