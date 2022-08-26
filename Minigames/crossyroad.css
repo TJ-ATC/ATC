@@ -65,3 +65,7 @@ body {
     z-index: 20;
     font-family: 'Courier New', Courier, monospace;
 }
+#end{
+    display: flex;
+    flex-direction: column;
+}
