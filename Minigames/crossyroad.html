@@ -11,9 +11,10 @@
 
 <body>
     <!-- ENDSCREEN STEP 1 -->
-    <div id="endscreen" class="box stack-top" style="background: black;">
+    <!-- <div id="endscreen" class="box stack-top" style="background: black;">
         <button id="nextgame">Click to go to the next game</button>
-    </div>
+    </div> -->
+    <div id="end">
     <div class="game">
         <div class="roads" id="roads">
             <div class="caRRoad" id="caRRoad0">
@@ -34,11 +35,12 @@
         </div>
         <img id="chicken" src="CrossyRoadImages/crossboy.png" alt="chicken">
     </div>
-
+    
+    <h1 id="wintext"></h1></div>
 
     <script>
         // END SCREEN STEP 2
-        document.getElementById('endscreen').style.visibility='hidden';
+        //document.getElementById('endscreen').style.visibility='hidden';
         var cars = [];
         var carSpeeds = [];
         var carLocation = [5, 5, 5, 5, 5];
@@ -95,12 +97,13 @@
 
                 if(step == 10)
                 {
-                    alert('YOU WIN!');
+                    //alert('YOU WIN!');
                     step++;
+                    document.getElementById("wintext").innerHTML = "YOU WON!";
                     // ENDSCREEN STEP 3
-                    setTimeout(function(){
-                    document.getElementById('endscreen').style.visibility='visible';
-                    },3069);
+                    // setTimeout(function(){
+                    // document.getElementById('endscreen').style.visibility='visible';
+                    // },3069);
                 }
             }
         }, 50);
