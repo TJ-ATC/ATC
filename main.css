@@ -78,6 +78,11 @@ body {
     flex-direction: row;
     padding: 38px;
 }
+.button-container2{
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+}
 button{
     color: white;
     font-weight: 600;
@@ -348,3 +353,19 @@ div.elements-container {
     text-decoration: underline;
 }
 
+#person{
+    border-radius: 50%;
+}
+#Meter{
+    display: flex;
+    flex-direction: row;
+    background-color: antiquewhite;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    margin: 10px 4px 10px 4px;
+}
+#ProgBar{
+    display: flex;
+    flex-direction: row;
+}
