@@ -40,7 +40,7 @@
 
 
     <div id="membercontent">
-        <div class="member">
+        <!-- <div class="member">
             <img class="memImg" src="#">
             <p class="memText">I am an ATC member.</p>
         </div>   
@@ -50,7 +50,34 @@
         </div>   
         <div class="member">
             <img class="memImg" src="#">
+            <p class="names">John Smith</p>
             <p class="memText">I am an ATC member.</p>
-        </div>   
+        </div>    -->
     </div>
+
+    <script>
+        var nameIndex = 0;
+        var desIndex=1;
+        var imgIndex = 2;
+        let memberInfo = [["My Name","My Description", "imageHere.png"],
+                          ["My Name","My Description", "imageHere.png"]]//Name, Description, Image
+        for(var i=0; i<memberInfo.length; i++){
+            var newDiv = document.createElement("div");
+            newDiv.className = "member";
+            var newImg = document.createElement("img");
+            var myname = document.createElement("p");
+            var newP = document.createElement("p");
+            newImg.className="memImg";
+            newP.className = "memText";
+            newP.innerHTML = memberInfo[i][desIndex];
+            myname.className="names";
+            myname.innerHTML=memberInfo[i][nameIndex];
+            newImg.src=memberInfo[i][imgIndex];
+            newDiv.appendChild(newImg);
+            newDiv.appendChild(myname);
+            newDiv.appendChild(newP);
+            document.getElementById("membercontent").appendChild(newDiv);
+        }
+
+    </script>
     </body>
