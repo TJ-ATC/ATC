@@ -380,7 +380,7 @@ div.elements-container {
   border-width: 0.75px; 
   padding: 1.5%; 
   /* width: 30%;  */
-  height: 200px;
+  /* height: 200px; */
   margin: 10px;
 }
 #membercontent{
@@ -391,4 +391,13 @@ div.elements-container {
     font-size: 20px;
     font-style: bold;
     margin-bottom:0px;
+}
+.memText{
+    margin-left:10px;
+    margin-right: 10px;
+    
+}
+.memImg{
+    max-width:80%;
+    /* height: 100px; */
 }

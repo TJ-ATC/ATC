@@ -59,8 +59,8 @@
         var nameIndex = 0;
         var desIndex=1;
         var imgIndex = 2;
-        let memberInfo = [["My Name","My Description", "imageHere.png"],
-                          ["My Name","My Description", "imageHere.png"]]//Name, Description, Image
+        let memberInfo = [["Vivian Denny (Co-President)","I like working with other dedicated members of ATC to bring smiles to the faces of the kids we work with. I also enjoy building and coding in a way that helps others, and I am glad to have been a part of ATC for over three years now.", "Vivian.jpg"],
+                          ["Amith Polineni","I enjoy using my programming and engineering skills to make our community more accessible. Working with the dedicated and supportive community in ATC is the highlight of my week.", "amith.jpg"]]//Name, Description, Image
         for(var i=0; i<memberInfo.length; i++){
             var newDiv = document.createElement("div");
             newDiv.className = "member";
@@ -72,7 +72,7 @@
             newP.innerHTML = memberInfo[i][desIndex];
             myname.className="names";
             myname.innerHTML=memberInfo[i][nameIndex];
-            newImg.src=memberInfo[i][imgIndex];
+            newImg.src="memberImages/"+memberInfo[i][imgIndex];
             newDiv.appendChild(newImg);
             newDiv.appendChild(myname);
             newDiv.appendChild(newP);
