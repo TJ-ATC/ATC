@@ -43,19 +43,6 @@
 
 
     <div id="membercontent">
-        <!-- <div class="member">
-            <img class="memImg" src="#">
-            <p class="memText">I am an ATC member.</p>
-        </div>   
-        <div class="member">
-            <img class="memImg" src="#">
-            <p class="memText">I am an ATC member.</p>
-        </div>   
-        <div class="member">
-            <img class="memImg" src="#">
-            <p class="names">John Smith</p>
-            <p class="memText">I am an ATC member.</p>
-        </div>    -->
     </div>
 
     <script>
@@ -70,6 +57,7 @@
             var newDiv = document.createElement("div");
             newDiv.className = "member";
             var newImg = document.createElement("img");
+            var nameDiv = document.createElement("div");
             var myfirstname = document.createElement("h1");
             var mylastname = document.createElement("h1");
             var mydesc = document.createElement("p");
@@ -79,6 +67,7 @@
             mydesc.innerHTML = memberInfo[i][desIndex];
             myfirstname.className="names";
             mylastname.className="names last";
+            nameDiv.className="name-container";
             myrole.className="memRole"
             myfirstname.innerHTML=memberInfo[i][firstNameIndex];
             mylastname.innerHTML=memberInfo[i][lastNameIndex];
@@ -89,8 +78,9 @@
                 myrole.innerHTML=memberInfo[i][roleIndex];
                 newDiv.appendChild(myrole);
             }
-            newDiv.appendChild(myfirstname);
-            newDiv.appendChild(mylastname);
+            nameDiv.appendChild(myfirstname);
+            nameDiv.appendChild(mylastname);
+            newDiv.appendChild(nameDiv);
             document.getElementById("membercontent").appendChild(newDiv);
         }
 

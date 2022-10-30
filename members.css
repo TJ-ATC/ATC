@@ -3,12 +3,12 @@
   align-items: center;
   flex-direction: column; 
   border: solid;
-  border-color:rgba(255, 255, 255, 0.3);
+  border-color: #c93846;
   border-width: 3px; 
   padding: 15px;
   position: relative;
   margin: 15px;
-  background-color: #5c979b;
+  background-color: #E65462;
   border-radius: 20px;
 }
 #membercontent{
@@ -21,11 +21,15 @@
 .names{
     font-size: 35px;
     margin:0px;
-    align-self: start;
-    margin-left: 15px;
+    display: inline;
 }
 .last {
-    color: #9c0917;
+    margin-left: 10px;
+    color: #7cafb3;
+}
+.name-container {
+    display: flex;
+    justify-content: center;
 }
 .memText{
     padding: 15px;
