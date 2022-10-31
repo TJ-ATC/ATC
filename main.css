@@ -369,35 +369,3 @@ div.elements-container {
     display: flex;
     flex-direction: row;
 }
-
-.member{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-  border: solid;
-  border-color:rgba(255, 255, 255, 0.3);
-  border-width: 0.75px; 
-  padding: 1.5%; 
-  /* width: 30%;  */
-  /* height: 200px; */
-  margin: 10px;
-}
-#membercontent{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-.names{
-    font-size: 20px;
-    font-style: bold;
-    margin-bottom:0px;
-}
-.memText{
-    margin-left:10px;
-    margin-right: 10px;
-    
-}
-.memImg{
-    max-width:80%;
-     height: 70%; 
-}
