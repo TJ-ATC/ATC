@@ -2,7 +2,7 @@
 
 <head>
     <title>ATC Game Center</title>
-    <link href="home.css" type="text/css" rel="stylesheet">
+    <link href="members.css" type="text/css" rel="stylesheet">
     <link href="main.css" type="text/css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis" rel="stylesheet">
@@ -12,8 +12,11 @@
 <body>
     <div class="nav-wrapper">
         <div class="left-nav">
-            <div class="nav-link-wrapper active-nav-link">
+            <div class="nav-link-wrapper">
                 <a href="index.html">Home</a>
+            </div>
+            <div class="nav-link-wrapper active-nav-link">
+                <a href="members.html">Members</a>
             </div>
             <div class="nav-link-wrapper ">
                 <a href="games.html">Games</a>
@@ -40,44 +43,82 @@
 
 
     <div id="membercontent">
-        <!-- <div class="member">
-            <img class="memImg" src="#">
-            <p class="memText">I am an ATC member.</p>
-        </div>   
-        <div class="member">
-            <img class="memImg" src="#">
-            <p class="memText">I am an ATC member.</p>
-        </div>   
-        <div class="member">
-            <img class="memImg" src="#">
-            <p class="names">John Smith</p>
-            <p class="memText">I am an ATC member.</p>
-        </div>    -->
     </div>
 
     <script>
-        var nameIndex = 0;
-        var desIndex=1;
-        var imgIndex = 2;
-        let memberInfo = [["Vivian Denny (Co-President)","I like working with other dedicated members of ATC to bring smiles to the faces of the kids we work with. I also enjoy building and coding in a way that helps others, and I am glad to have been a part of ATC for over three years now.", "Vivian.jpg"],
-                          ["Amith Polineni","I enjoy using my programming and engineering skills to make our community more accessible. Working with the dedicated and supportive community in ATC is the highlight of my week.", "amith.jpg"]]//Name, Description, Image
+        var firstNameIndex = 0;
+        var lastNameIndex = 1;
+        var roleIndex = 2;
+        var desIndex=3;
+        var imgIndex = 4;
+        var memberInfo = [["Vivian", "Denny", "Co-President","I like working with other dedicated members of ATC to bring smiles to the faces of the kids we work with. I also enjoy building and coding in a way that helps others, and I am glad to have been a part of ATC for over three years now.", "Vivian.jpg"],
+                          ["Amith", "Polineni", "Activities Coordinator", "I enjoy using my programming and engineering skills to make our community more accessible. Working with the dedicated and supportive community in ATC is the highlight of my week.", "amith.jpg"]]//Name, Description, Image
         for(var i=0; i<memberInfo.length; i++){
             var newDiv = document.createElement("div");
             newDiv.className = "member";
             var newImg = document.createElement("img");
-            var myname = document.createElement("p");
-            var newP = document.createElement("p");
+            var nameDiv = document.createElement("div");
+            var myfirstname = document.createElement("h1");
+            var mylastname = document.createElement("h1");
+            var mydesc = document.createElement("p");
+            var myrole = document.createElement("p");
             newImg.className="memImg";
-            newP.className = "memText";
-            newP.innerHTML = memberInfo[i][desIndex];
-            myname.className="names";
-            myname.innerHTML=memberInfo[i][nameIndex];
-            newImg.src="memberImages/"+memberInfo[i][imgIndex];
+            mydesc.className = "memText";
+            mydesc.innerHTML = memberInfo[i][desIndex];
+            myfirstname.className="names";
+            mylastname.className="names last";
+            nameDiv.className="name-container";
+            myrole.className="memRole"
+            myfirstname.innerHTML=memberInfo[i][firstNameIndex];
+            mylastname.innerHTML=memberInfo[i][lastNameIndex];
+            newImg.src="memberImages/"+memberInfo[i][imgIndex];            
+            newDiv.appendChild(mydesc);
             newDiv.appendChild(newImg);
-            newDiv.appendChild(myname);
-            newDiv.appendChild(newP);
+            if(memberInfo[i][roleIndex].length > 0) {
+                myrole.innerHTML=memberInfo[i][roleIndex];
+                newDiv.appendChild(myrole);
+            }
+            nameDiv.appendChild(myfirstname);
+            nameDiv.appendChild(mylastname);
+            newDiv.appendChild(nameDiv);
             document.getElementById("membercontent").appendChild(newDiv);
         }
 
+        const ppl = document.querySelectorAll('.member')
+
+        ppl.forEach(item => {
+
+            item.addEventListener('mouseover', () => {
+                console.log(item);
+                item.childNodes[0].style.opacity = "1";
+            })
+
+            item.addEventListener('mouseleave', () => {
+                console.log(item.childNodes[1]);
+                item.childNodes[0].style.opacity = "0";
+            })
+
+        })
+
+        const subteams = document.querySelectorAll('.subTeamCard')
+
+        subteams.forEach(item => {
+
+            item.addEventListener('mouseover', () => {
+            /*console.log(item);*/
+            item.childNodes[1].childNodes[1].style.opacity = "0";
+            setTimeout(function () {
+                item.childNodes[3].style.opacity = "1";
+            }, 100);
+            })
+
+            item.addEventListener('mouseout', () => {
+            //console.log(item.childNodes[9]);
+            item.childNodes[1].childNodes[1].style.opacity = "1";
+            setTimeout(function () {
+                item.childNodes[3].style.opacity = "0";
+            }, 100);
+            })
+        })
     </script>
     </body>
