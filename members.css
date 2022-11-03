@@ -30,12 +30,14 @@
 .name-container {
     display: flex;
     justify-content: center;
+    flex-direction: row;
 }
 .memText{
     padding: 15px;
     position: absolute;
     height: 230px;
     top: -5px;
+    width: 80%;
     margin-right: 15px;
     margin-left: 15px;
     background-color: #418185;
