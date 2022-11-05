@@ -112,26 +112,5 @@
             })
 
         })
-
-        const subteams = document.querySelectorAll('.subTeamCard')
-
-        subteams.forEach(item => {
-
-            item.addEventListener('mouseover', () => {
-            /*console.log(item);*/
-            item.childNodes[1].childNodes[1].style.opacity = "0";
-            setTimeout(function () {
-                item.childNodes[3].style.opacity = "1";
-            }, 100);
-            })
-
-            item.addEventListener('mouseout', () => {
-            //console.log(item.childNodes[9]);
-            item.childNodes[1].childNodes[1].style.opacity = "1";
-            setTimeout(function () {
-                item.childNodes[3].style.opacity = "0";
-            }, 100);
-            })
-        })
     </script>
     </body>
