@@ -11,5 +11,5 @@ Our games being converted to holiday mode for the winter season.
 - School Questionarre: allows students to choose how they want to spend their school day
 - Feelings: reviews a variety of emotions
 - Fortunes: students can ask questions and understand the responses from tarot cards
-- Going to the Beach: students choose hwo they want to spend their time at the beach
+- Going to the Beach: students choose how they want to spend their time at the beach
 - Happy Meter: students need to determine how to make the cartoon happier
