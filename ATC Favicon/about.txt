@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Dosis
+- Font Author: Copyright 2011 The Dosis Project Authors (https://github.com/googlefonts/dosis-vf)
+- Font Source: http://fonts.gstatic.com/s/dosis/v27/HhyJU5sn9vOmLxNkIwRSjTVNWLEJt7QV3BkFTq4EPw.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
