@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../main.css" type="text/css" rel="stylesheet">
+    <link href="snowstyle.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATC Game Center</title>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="left-nav">
+           <div class="nav-link-wrapper ">
+               <a href="../index.html">Home</a>
+           </div>
+             <div class="nav-link-wrapper">
+                 <a href="../games.html">Games</a>
+             </div>
+             <!-- <div class="nav-link-wrapper">
+              <a href="../books.html">Books</a>
+           </div> -->
+           <div class="nav-link-wrapper">
+              <a href="../projects.html">Projects</a>
+           </div>
+          </div>
+        <div class="right-nav">
+            <div class="brand">
+              <a href="index.html"><div>TJ Assistive Technology Club</div></a>
+            </div>
+  
+        </div>
+     </div> 
+     <img src="images/fallingSnow.gif" class="backgroundSnow"> 
+    <div id="progressBar" style="margin-top:20px">
+        
+    </div>
+    <div id="question">
+        
+    </div>
+    <div id="endscreen">
+        <h1>Happy Snow Day!</h1>
+        <img src = "images/snowman.gif" id="congrats" >
+    </div>    
+    <div id="choices">
+        <div id="answer1" class="answer">
+            <img src = "#" id="img1" onclick="processAnswer(1)" >
+            <img src = "#" id="a1img">
+        </div>
+        <div id="answer2" class="answer">
+            <img src = "#" id="img2" onclick="processAnswer(2)">
+            <img src = "#" id="a2img">
+        </div>
+    </div>
+    <script>
+        //questions have id's starting at 1
+        var questionList = ["atc is cool!", 
+                            "It’s snowing! Let’s go play in the snow. What will I wear?",
+                            "We found some hills - what should we do?", 
+                            "Which hills should we play on?", 
+                            "We found a frozen lake - what will we play?",  
+                            "What should we build with the snow?",
+                            "Let’s have a snowball fight. How many snowballs will we make?",
+                            "It’s time to go inside. Now that we’re inside, what should I drink?",
+                            "I’m hungry after all that playing the snow! Which flavor of cookie will I eat?",
+                            "There’s no school, so what should I do inside?", 
+                            "The weather says it will snow tomorrow. How much snow will I hope for?"]
+        //call answers q1a1, q1a2
+        var currQuestion = 1;
+        var totalQuestions = 10;
+        //let choices = [["answer1.png", "answer2.png"]];
+        const chosen = ["q1a1.png", "q2a2.png"] //the index of the chosen option
+
+        //starting q and a's
+        document.getElementById('question').innerHTML = questionList[currQuestion];
+        document.getElementById("img1").src = "images/q1a1.png";
+        document.getElementById("img2").src = "images/q1a2.png";
+        document.getElementById("a1img").src = "images/q1a1img.png";
+        document.getElementById("a2img").src = "images/q1a2img.png";
+        document.getElementById("endscreen").style.display = "none";
+        //adding the questionmark bubbles
+        for(let i = 1; i <= totalQuestions; i++){
+            //images/QuestionMark.png
+            let bubble = document.createElement("img");
+            bubble.src = "images/QuestionMark.png";
+            bubble.classList.add("questionBubble");
+            bubble.id="progress"+i;
+            // bubble.width = 100;
+            // bubble.height = 100;
+            document.getElementById("progressBar").appendChild(bubble);
+        }
+        
+        function processAnswer(num){
+            console.log(num);
+            newChoice = "q"+currQuestion+"a"+num+".png";
+            chosen.push(newChoice); //add to array
+            document.getElementById("progress"+currQuestion).src="images/q"+currQuestion+"a"+num+"img.png";
+            console.log(newChoice);
+            //next question
+            currQuestion+=1;
+            if(currQuestion<=totalQuestions){
+                document.getElementById('question').innerHTML = questionList[currQuestion]
+                document.getElementById("img1").src = "images/q"+currQuestion+"a1.png";
+                document.getElementById("img2").src = "images/q"+currQuestion+"a2.png";
+                document.getElementById("a1img").src = "images/q"+currQuestion+"a1img.png"
+                document.getElementById("a2img").src = "images/q"+currQuestion+"a2img.png";
+            }
+            else{
+                //end screen
+                document.getElementById("endscreen").style.display = "block";
+                document.getElementById("question").style.display = "none";
+                document.getElementById("choices").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
