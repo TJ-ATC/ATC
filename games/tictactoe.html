@@ -182,7 +182,8 @@
         }
         function getQuestion(){
           //pictures form the blank game:
-          let pics = ["a", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
+          //let pics = ["a", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
+          let pics = ["how_are_you"]
           let pictureindex =  Math.floor(Math.random()*pics.length);
           //returns the name of the question image. will need to change
           return "images/"+pics[pictureindex]+".PNG";
