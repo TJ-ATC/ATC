@@ -140,10 +140,10 @@
               vert+=board[j*3+i];
             }
             if (vert.localeCompare("ooo")==0 || horiz.localeCompare("ooo")==0){
-              document.getElementById("resetbutton").innerHTML = "Player 1 wins! Click to reset."
+              document.getElementById("resetbutton").innerHTML = "Congratulations Player 1! Click this button to reset."
             }
             if (vert.localeCompare("xxx")==0 || horiz.localeCompare("xxx")==0){
-              document.getElementById("resetbutton").innerHTML = "Player 2 wins! Click to reset."
+              document.getElementById("resetbutton").innerHTML = "Congratulations Player 2! Click this button to reset."
             }
             horiz = "";
             vert = "";
@@ -151,10 +151,10 @@
           var diag1 = board[0]+board[4]+board[8]; //048
           var diag2 = board[6]+board[4]+board[2];//642
           if (diag1.localeCompare("ooo")==0 || diag2.localeCompare("ooo")==0){
-            document.getElementById("resetbutton").innerHTML = "Player 1 wins! Click to reset."
+            document.getElementById("resetbutton").innerHTML = "Congratulations Player 1! Click this button to reset."
           }
           if (diag1.localeCompare("xxx")==0 || diag2.localeCompare("xxx")==0){
-            document.getElementById("resetbutton").innerHTML = "Player 2 wins! Click to reset."
+            document.getElementById("resetbutton").innerHTML = "Congratulations Player 2! Click this button to reset."
           }
         }
 
@@ -182,7 +182,7 @@
         }
         function getQuestion(){
           //pictures form the blank game:
-          let pics = ["a", "like", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
+          let pics = ["a", "all", "an", "and", "are", "are_you_mad", "ask_for_name", "bad", "big", "can_i_help", "color", "come", "do", "down", "drink", "eat", "end", "fast", "favorite_activity", "favorite_animal", "favorite_color", "feel", "find", "finished", "follow", "Football", "get", "go", "good", "have", "he", "hear", "help", "help_me", "how_are_you", "i", "i_feel", "i_like_that", "i_like_to", "in", "is", "it", "Lacrosse", "like", "little", "live", "look", "love", "make", "me", "mine", "more"];
           let pictureindex =  Math.floor(Math.random()*pics.length);
           //returns the name of the question image. will need to change
           return "images/"+pics[pictureindex]+".PNG";
