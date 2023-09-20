@@ -6,4 +6,3 @@ atc_book7
 atc_book6
 atc_book5
 atc_book4
-atc_book2.pptx
