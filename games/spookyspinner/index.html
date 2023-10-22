@@ -16,38 +16,38 @@
     <div id="spinners">
         <div class="spinner">
             <div class="container container1">
-                <div class="one">1</div>
-                <div class="two">2</div>
-                <div class="three">three</div>
-                <div class="four">4</div>
-                <div class="five">5</div>
-                <div class="six">6</div>
-                <div class="seven">7</div>
-                <div class="eight">8</div>
+                <div class="one">The Ghost</div>
+                <div class="two">The Witch</div>
+                <div class="three">The House</div>
+                <div class="four">The Zombie</div>
+                <div class="five">The Man</div>
+                <div class="six">The Vampire</div>
+                <div class="seven">The Child</div>
+                <div class="eight">The Pirate</div>
             </div>
         </div>
         <div class="spinner">
             <div class="container container2">
-                <div class="one">1</div>
-                <div class="two">2</div>
-                <div class="three">3</div>
-                <div class="four">4</div>
-                <div class="five">5</div>
-                <div class="six">6</div>
-                <div class="seven">7</div>
-                <div class="eight">8</div>
+                <div class="one">Laughs at</div>
+                <div class="two">Loves</div>
+                <div class="three">Runs from</div>
+                <div class="four">Scares</div>
+                <div class="five">Tricks</div>
+                <div class="six">Throws</div>
+                <div class="seven">Jumps Over</div>
+                <div class="eight">Laughs</div>
             </div>
         </div>
         <div class="spinner">
             <div class="container container3">
-                <div class="one">1</div>
-                <div class="two">2</div>
-                <div class="three">3</div>
-                <div class="four">4</div>
-                <div class="five">5</div>
-                <div class="six">six</div>
-                <div class="seven">7</div>
-                <div class="eight">8</div>
+                <div class="one">The Broom</div>
+                <div class="two">The Cat</div>
+                <div class="three">The Dog</div>
+                <div class="four">The Children</div>
+                <div class="five">The Parents</div>
+                <div class="six">The Pumpkin</div>
+                <div class="seven">The Spider</div>
+                <div class="eight">The Bat</div>
             </div>
         </div>
     </div>
@@ -56,6 +56,10 @@
         <img id="img1" src="images/noun1.png">
         <img id="img2" src="images/verb1.png">
         <img id="img3" src="images/do1.png">
+    </div>
+
+    <div class="credits">
+        made by ATC; specifically Leah Zhang, Amith Polineni, Danielle Cheong, Shabeer Manalai
     </div>
 
     <script>
@@ -82,9 +86,12 @@
                 container2.style.transform = "rotate(" + randoms[1] * 100 + "deg)";
                 container3.style.transform = "rotate(" + randoms[2] * 100 + "deg)";
 
-                document.getElementById("img1").src = "images/noun" + randoms[0] + ".png"
-                document.getElementById("img2").src = "images/verb" + randoms[1] + ".png"
-                document.getElementById("img3").src = "images/do" + randoms[2] + ".png"
+                setTimeout(function() {
+                    document.getElementById("img1").src = "images/noun" + randoms[0] + ".png"
+                    document.getElementById("img2").src = "images/verb" + randoms[1] + ".png"
+                    document.getElementById("img3").src = "images/do" + randoms[2] + ".png"
+                }, 1000);
+                
 
             }
         }

@@ -6,7 +6,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #804526;
+    background-color: #403d39;
     height: 100vh;
 }
 
@@ -18,7 +18,7 @@ body {
     border: 15px solid #dde;
     position: relative;
     overflow: hidden;
-    transition: 3s;
+    transition: 2s;
 }
 
 .container div {
@@ -37,45 +37,47 @@ body {
     font-family: sans-serif;
     color: #fff;
     left: 135px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
 .container .one {
-    background-color: #2136a8;
+    background-color: #f37610;
     left: 50%;
 }
 
 .container .two {
-    background-color: #ff9800;
+    background-color: #000000;
     transform: rotate(45deg);
 }
 
 .container .three{
-    background-color: #e91e63;
+    background-color: #f37610;
     transform: rotate(90deg);
 }
 
 .container .four {
-    background-color: #4caf50;
+    background-color: #000000;
     transform: rotate(135deg);
 }
 
 .container .five {
-    background-color: #009688;
+    background-color: #f37610;
     transform: rotate(180deg);
 }
 
 .container .six {
-    background-color: #795548;
+    background-color: #000000;
     transform: rotate(225deg);
 }
 
 .container .seven {
-    background-color: #9c27b0;
+    background-color: #f37610;
     transform: rotate(270deg);
 }
 
 .container .eight {
-    background-color: #f44336;
+    background-color: #000000;
     transform: rotate(315deg);
 }
 
@@ -112,7 +114,8 @@ body {
 
 img {
     height: 100px;
-    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-top: 12px;
     border: 5px solid white;
     border-radius: 20px;
 
@@ -123,13 +126,25 @@ img {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: auto;
+    border: 30px;
+    background-color: #ccc5b9;
+    margin: 50px;
+    padding: 14px;
+    border-radius: 60px;
 }
 
 h1 {
     color: white;
     text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Nosifer', sans-serif;
     font-size: 50px;
-    margin-bottom: -50px;
+}
+
+.credits {
+    color: #ccc5b9;
+    op
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-family: 'Nosifer', sans-serif;
 }
