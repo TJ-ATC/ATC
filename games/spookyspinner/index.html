@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spin Wheel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="spinners">
+        <div class="spinner">
+            <div class="container container1">
+                <div class="one">1</div>
+                <div class="two">2</div>
+                <div class="three">three</div>
+                <div class="four">4</div>
+                <div class="five">5</div>
+                <div class="six">6</div>
+                <div class="seven">7</div>
+                <div class="eight">8</div>
+            </div>
+        </div>
+        <div class="spinner">
+            <div class="container container2">
+                <div class="one">1</div>
+                <div class="two">2</div>
+                <div class="three">3</div>
+                <div class="four">4</div>
+                <div class="five">5</div>
+                <div class="six">6</div>
+                <div class="seven">7</div>
+                <div class="eight">8</div>
+            </div>
+        </div>
+        <div class="spinner">
+            <div class="container container3">
+                <div class="one">1</div>
+                <div class="two">2</div>
+                <div class="three">3</div>
+                <div class="four">4</div>
+                <div class="five">5</div>
+                <div class="six">six</div>
+                <div class="seven">7</div>
+                <div class="eight">8</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sentences">
+        <img id="img1" src="images/hello.jpeg">
+        <img id="img2" src="hello.png">
+        <img id="img3" src="hello.png">
+    </div>
+
+    <script>
+        let container1 = document.querySelector(".container1");
+        let container2 = document.querySelector(".container2");
+        let container3 = document.querySelector(".container3");
+
+        // spinners = document.querySelectorAll(".spinner")
+        // for(let i = 0; i < spinners.length; i++) {
+        //     spinners[i].style.transform = 'scale('+ window.innerWidth/(window.innerWidth*1.2) +')'
+        // }
+
+        document.getElementById("spinners").style.transform = 'scale('+ 1/((3000-window.innerWidth)/1200) +')'
+        console.log(window.innerWidth)
+
+        document.body.onkeyup = function (e) {
+            if (e.key == " " ||
+                e.code == "Space" ||
+                e.keyCode == 32
+            ) {
+                let randoms = generateRandoms()
+                console.log(randoms)
+                container1.style.transform = "rotate(" + randoms[0] * 100 + "deg)";
+                container2.style.transform = "rotate(" + randoms[1] * 100 + "deg)";
+                container3.style.transform = "rotate(" + randoms[2] * 100 + "deg)";
+            }
+        }
+
+        function generateRandoms() {
+            return [Math.ceil(Math.random() * 8), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10)]
+        }
+    </script>
+</body>
+
+</html>
