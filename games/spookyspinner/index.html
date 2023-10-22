@@ -72,7 +72,7 @@
         //     spinners[i].style.transform = 'scale('+ window.innerWidth/(window.innerWidth*1.2) +')'
         // }
 
-        document.getElementById("spinners").style.transform = 'scale('+ 1/((3000-window.innerWidth)/1200) +')'
+        document.getElementById("spinners").style.transform = 'scale(' + 1 / ((3000 - window.innerWidth) / 1200) + ')'
         console.log(window.innerWidth)
 
         document.body.onkeyup = function (e) {
@@ -86,15 +86,29 @@
                 container2.style.transform = "rotate(" + randoms[1] * 100 + "deg)";
                 container3.style.transform = "rotate(" + randoms[2] * 100 + "deg)";
 
-                setTimeout(function() {
+                setTimeout(function () {
                     document.getElementById("img1").src = "images/noun" + randoms[0] + ".png"
                     document.getElementById("img2").src = "images/verb" + randoms[1] + ".png"
                     document.getElementById("img3").src = "images/do" + randoms[2] + ".png"
                 }, 1000);
-                
+
 
             }
         }
+
+        window.addEventListener('click', (event) => {
+            let randoms = generateRandoms()
+                console.log(randoms)
+                container1.style.transform = "rotate(" + randoms[0] * 100 + "deg)";
+                container2.style.transform = "rotate(" + randoms[1] * 100 + "deg)";
+                container3.style.transform = "rotate(" + randoms[2] * 100 + "deg)";
+
+                setTimeout(function () {
+                    document.getElementById("img1").src = "images/noun" + randoms[0] + ".png"
+                    document.getElementById("img2").src = "images/verb" + randoms[1] + ".png"
+                    document.getElementById("img3").src = "images/do" + randoms[2] + ".png"
+                }, 1000);
+        })
 
         function generateRandoms() {
             return [Math.ceil(Math.random() * 8), Math.ceil(Math.random() * 8), Math.ceil(Math.random() * 8)]
