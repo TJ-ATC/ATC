@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Nosifer&family=Pixelify+Sans:wght@500&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -5,7 +6,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #dc5400;
+    background-color: #804526;
     height: 100vh;
 }
 
@@ -17,7 +18,7 @@ body {
     border: 15px solid #dde;
     position: relative;
     overflow: hidden;
-    transition: 5s;
+    transition: 3s;
 }
 
 .container div {
@@ -39,7 +40,7 @@ body {
 }
 
 .container .one {
-    background-color: #3f51b5;
+    background-color: #2136a8;
     left: 50%;
 }
 
@@ -48,7 +49,7 @@ body {
     transform: rotate(45deg);
 }
 
-.container .three {
+.container .three{
     background-color: #e91e63;
     transform: rotate(90deg);
 }
@@ -111,6 +112,10 @@ body {
 
 img {
     height: 100px;
+    margin-top: 10px;
+    border: 5px solid white;
+    border-radius: 20px;
+
 }
 
 .sentences {
@@ -119,4 +124,12 @@ img {
     justify-content: center;
     flex-direction: column;
     width: 100%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 50px;
+    margin-bottom: -50px;
 }
