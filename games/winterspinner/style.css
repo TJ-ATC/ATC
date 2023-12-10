@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@300;400;500;700&family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Silkscreen:wght@400;700&display=swap');
 
 * {
     box-sizing: border-box;
@@ -8,10 +8,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #F1FFFA;
+    background-color: #caf0f8;
     height: 100vh;
-    /*background-image: url("images/snow.gif");
-    background-size: 60%; /* CHANGES SIZE OF BACKGROUND */
+    background-image: url("images/snow.gif"); 
+    background-size: 40%; /* CHANGES SIZE OF BACKGROUND */
     background-repeat: repeat;
 }
 
@@ -20,7 +20,7 @@ body {
     height: 500px;
     background-color: #ccc;
     border-radius: 50%;
-    border: 15px solid #dde;
+    border: 15px solid #93B7BE;
     position: relative;
     overflow: hidden;
     transition: 2s;
@@ -47,42 +47,42 @@ body {
 }
 
 .container .one {
-    background-color: #f37610;
+    background-color: #f35e53;
     left: 50%;
 }
 
 .container .two {
-    background-color: #000000;
+    background-color: #0C7C59;
     transform: rotate(45deg);
 }
 
 .container .three{
-    background-color: #f37610;
+    background-color: #f35e53;
     transform: rotate(90deg);
 }
 
 .container .four {
-    background-color: #000000;
+    background-color: #0C7C59;
     transform: rotate(135deg);
 }
 
 .container .five {
-    background-color: #f37610;
+    background-color: #f35e53;
     transform: rotate(180deg);
 }
 
 .container .six {
-    background-color: #000000;
+    background-color: #0C7C59;
     transform: rotate(225deg);
 }
 
 .container .seven {
-    background-color: #f37610;
+    background-color: #f35e53;
     transform: rotate(270deg);
 }
 
 .container .eight {
-    background-color: #000000;
+    background-color: #0C7C59;
     transform: rotate(315deg);
 }
 
@@ -97,7 +97,6 @@ body {
     border: 8px solid #fff;
     font-weight: bold;
     font-size: 20px;
-    color: #a2a2a2;
     width: 80px;
     height: 80px;
     font-family: sans-serif;
@@ -133,23 +132,24 @@ img {
     flex-direction: column;
     width: auto;
     border: 30px;
-    background-color: #ccc5b9;
+    background-color: #93B7BE;
     margin: 50px;
     padding: 14px;
     border-radius: 60px;
 }
 
 h1 {
-    color: #454545;
+    color: #0C7C59;
     text-align: center;
-    font-family: 'Kalnia', sans-serif;
-    font-size: 50px;
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 70px;
 }
 
 .credits {
-    color: #ccc5b9;
+    text-align: center;
+    color: #0d563f;
     padding: 5px;
     margin-bottom: 20px;
     font-size: 12px;
-    font-family: 'Nosifer', sans-serif;
+    font-family: 'Silkscreen', sans-serif;
 }

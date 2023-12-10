@@ -17,40 +17,40 @@
         <div class="spinner">
             <!-- SUBJECTS -->
             <div class="container container1">
-                <div class="one"> __ </div>
-                <div class="two"> __ </div>
-                <div class="three"> __ </div>
-                <div class="four"> __ </div>
-                <div class="five"> __ </div>
-                <div class="six"> __ </div>
-                <div class="seven"> __ </div>
-                <div class="eight"> __ </div>
+                <div class="one"> The Elf </div>
+                <div class="two"> Santa </div>
+                <div class="three"> The Children </div>
+                <div class="four"> The Snowman </div>
+                <div class="five"> The Reindeer </div>
+                <div class="six"> The Ice Bear </div>
+                <div class="seven"> The Teacher </div>
+                <div class="eight"> The Parent </div>
             </div>
         </div>
         <div class="spinner">
             <!-- VERBS -->
             <div class="container container2">
-                <div class="one"> __ </div>
-                <div class="two"> __ </div>
-                <div class="three"> __ </div>
-                <div class="four"> __ </div>
-                <div class="five"> __ </div>
-                <div class="six"> __ </div>
-                <div class="seven"> __ </div>
-                <div class="eight"> __ </div>
+                <div class="one"> Jumped Over </div>
+                <div class="two"> Gave Out </div>
+                <div class="three"> Made A </div>
+                <div class="four"> Laughed At </div>
+                <div class="five"> Decorates </div>
+                <div class="six"> Dances With </div>
+                <div class="seven"> Wore </div>
+                <div class="eight"> Sings With </div>
             </div>
         </div>
         <div class="spinner">
             <!-- OBJECTS -->
             <div class="container container3">
-                <div class="one"> __ </div>
-                <div class="two"> __ </div>
-                <div class="three"> __ </div>
-                <div class="four"> __ </div>
-                <div class="five"> __ </div>
-                <div class="six"> __ </div>
-                <div class="seven"> __ </div>
-                <div class="eight"> __ </div>
+                <div class="one"> The Snowflake </div>
+                <div class="two"> Gifts </div>
+                <div class="three"> The Igloo </div>
+                <div class="four"> The Christmas tree </div>
+                <div class="five"> The Candy </div>
+                <div class="six"> The Wreath </div>
+                <div class="seven"> A Warm Sweater </div>
+                <div class="eight"> A Winter Scarf  </div>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="credits">
-        made by ATC; specifically 
+        made by ATC; specifically: Shabeer Manalai, Naomi Bisrat, R.S., Leah Zhang, Amith Polineni
     </div>
 
     <script>
@@ -105,17 +105,9 @@
             let newRandoms = generateRandoms()
             console.log(newRandoms)
 
-            for(let i = 0; i < 3; i++){
-                if(newRandoms[i] == oldRandoms[i]){
-                    newRandoms[i] = (newRandoms[i] + 3)%8
-                }
-            }
-
             container1.style.transform = "rotate(" + newRandoms[0] * 100 + "deg)";
             container2.style.transform = "rotate(" + newRandoms[1] * 100 + "deg)";
             container3.style.transform = "rotate(" + newRandoms[2] * 100 + "deg)";
-
-            oldRandoms = newRandoms
 
             setTimeout(function () {
                 document.getElementById("img1").src = "images/noun" + newRandoms[0] + ".png"
@@ -126,7 +118,7 @@
         })
 
         function generateRandoms() {
-            return [Math.ceil(Math.random() * 8), Math.ceil(Math.random() * 8), Math.ceil(Math.random() * 8)]
+            return [Math.floor(Math.random() * 8) +1, Math.floor(Math.random() * 8)+1, Math.floor(Math.random() * 8)+1]
         }
     </script>
 </body>
